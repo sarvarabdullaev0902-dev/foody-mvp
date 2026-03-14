@@ -114,7 +114,7 @@ export const DEMO_LISTINGS: Listing[] = [
     supplier: 'Dolce Vita',
     category: 'cafe',
     title: 'Tiramisu Box (4 pcs)',
-    image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542124948-dc391252a940?w=400&h=300&fit=crop',
     originalPrice: 65000,
     discountedPrice: 39000,
     discount: 40,
