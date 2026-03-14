@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link, useRouter } from '@/i18n/navigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import { Leaf, Menu, X, ShoppingCart, User, LogOut } from 'lucide-react';
+import { StarButton } from '@/components/ui/star-button';
 import { useCart } from '@/lib/cart-context';
 import { useAuth } from '@/lib/auth-context';
 import { motion, useAnimationControls } from 'framer-motion';
@@ -119,9 +120,9 @@ export default function Navbar() {
               <span>{t('login')}</span>
             </Link>
           )}
-          <button className="bg-[#E8594F] hover:bg-[#D14840] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-md whitespace-nowrap">
+          <StarButton lightColor="#E8594F" backgroundColor="rgba(255,255,255,0.15)" className="bg-[#1E1E1E] whitespace-nowrap">
             {t('download')}
-          </button>
+          </StarButton>
           <Link
             href="/supplier/register"
             className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-sm font-semibold px-5 py-2.5 rounded-full transition-all whitespace-nowrap"
@@ -191,9 +192,9 @@ export default function Navbar() {
                 </Link>
               </>
             )}
-            <button className="w-full bg-[#E8594F] hover:bg-[#D14840] text-white text-sm font-semibold px-5 py-3 rounded-full transition-all">
+            <StarButton lightColor="#E8594F" backgroundColor="rgba(255,255,255,0.15)" className="bg-[#1E1E1E] w-full justify-center py-3">
               {t('download')}
-            </button>
+            </StarButton>
             <Link
               href="/supplier/register"
               onClick={() => setMenuOpen(false)}
