@@ -2,23 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Theme tokens ─────────────────────────────────────────────────── */
 :root {
+  /* Next.js defaults */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Theme A — Warm Earthy (default) */
+  --color-bg:           #FFF3E0;
+  --color-primary:      #8D6E63;
+  --color-primary-dark: #6D4C41;
+  --color-primary-light:#efebe9;
+  --color-accent:       #FF8A65;
+  --color-accent-hover: #f4784f;
+  --color-accent-light: #fff0eb;
+  --color-accent-faint: rgba(255,138,101,0.15);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="b"] {
+  /* Theme B — Vibrant Orange + Deep Green */
+  --color-bg:           #FFF8F0;
+  --color-primary:      #FF6B35;
+  --color-primary-dark: #e55a28;
+  --color-primary-light:#ffe0d0;
+  --color-accent:       #2D6A4F;
+  --color-accent-hover: #245940;
+  --color-accent-light: #e8f5ee;
+  --color-accent-faint: rgba(45,106,79,0.12);
 }
 
+/* ─── Page background ──────────────────────────────────────────────── */
 body {
   color: var(--foreground);
-  background: var(--background);
+  background-color: var(--color-bg);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ─── Emerald → theme accent ───────────────────────────────────────── */
+
+/* Solid backgrounds */
+.bg-emerald-600 { background-color: var(--color-accent) !important; }
+.bg-emerald-700 { background-color: var(--color-accent-hover) !important; }
+.bg-emerald-500 { background-color: var(--color-accent) !important; }
+.bg-emerald-400 { background-color: var(--color-accent) !important; }
+.bg-emerald-50  { background-color: var(--color-accent-light) !important; }
+.bg-emerald-100 { background-color: var(--color-accent-light) !important; }
+
+/* Opacity-variant backgrounds */
+.bg-emerald-500\/20 { background-color: var(--color-accent-faint) !important; }
+
+/* Text */
+.text-emerald-600 { color: var(--color-accent) !important; }
+.text-emerald-700 { color: var(--color-accent-hover) !important; }
+.text-emerald-500 { color: var(--color-accent) !important; }
+.text-emerald-400 { color: var(--color-accent) !important; }
+.text-emerald-300 { color: color-mix(in srgb, var(--color-accent) 65%, white) !important; }
+.text-emerald-200 { color: color-mix(in srgb, var(--color-accent) 40%, white) !important; }
+.text-emerald-100 { color: color-mix(in srgb, var(--color-accent) 20%, white) !important; }
+
+/* Borders */
+.border-emerald-600 { border-color: var(--color-accent) !important; }
+.border-emerald-500 { border-color: var(--color-accent) !important; }
+.border-emerald-400 { border-color: var(--color-accent) !important; }
+.border-emerald-200 { border-color: var(--color-primary-light) !important; }
+.border-emerald-500\/30 { border-color: var(--color-accent-faint) !important; }
+
+/* Focus rings */
+.ring-emerald-400 { --tw-ring-color: var(--color-accent) !important; }
+.focus\:ring-emerald-400:focus { --tw-ring-color: var(--color-accent) !important; }
+
+/* Gradients — from */
+.from-emerald-600  { --tw-gradient-from: var(--color-accent) !important; }
+.from-emerald-800  { --tw-gradient-from: var(--color-accent-hover) !important; }
+.from-emerald-950  { --tw-gradient-from: color-mix(in srgb, var(--color-primary) 25%, #0f172a) !important; }
+
+/* Gradients — from (extra) */
+.from-emerald-50 { --tw-gradient-from: var(--color-accent-light) !important; }
+
+/* Gradients — to */
+.to-teal-600    { --tw-gradient-to: var(--color-primary) !important; }
+.to-teal-700    { --tw-gradient-to: var(--color-primary) !important; }
+.to-emerald-700 { --tw-gradient-to: var(--color-accent-hover) !important; }
+.to-emerald-800 { --tw-gradient-to: var(--color-accent-hover) !important; }
+
+/* Gradients — via */
+.via-emerald-950 { --tw-gradient-via: color-mix(in srgb, var(--color-primary) 20%, #0f172a) !important; }
+
+/* ─── Hover states ─────────────────────────────────────────────────── */
+.hover\:bg-emerald-700:hover   { background-color: var(--color-accent-hover) !important; }
+.hover\:bg-emerald-600:hover   { background-color: var(--color-accent) !important; }
+.hover\:bg-emerald-400:hover   { background-color: var(--color-accent) !important; }
+.hover\:bg-emerald-50:hover    { background-color: var(--color-accent-light) !important; }
+.hover\:text-emerald-600:hover { color: var(--color-accent) !important; }
+.hover\:text-emerald-700:hover { color: var(--color-accent-hover) !important; }
+.hover\:border-emerald-400:hover { border-color: var(--color-accent) !important; }
+.hover\:border-emerald-500:hover { border-color: var(--color-accent) !important; }
+
+/* ─── Teal overrides (used in "to-teal-700" gradient stops) ────────── */
+.bg-teal-700    { background-color: var(--color-primary) !important; }
+.text-teal-700  { color: var(--color-primary) !important; }
 
 @layer utilities {
   .text-balance {
