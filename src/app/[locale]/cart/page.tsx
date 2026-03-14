@@ -22,7 +22,7 @@ export default function CartPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-slate-50">
+      <div className="min-h-screen bg-[#F5ECDE]">
         <Navbar />
 
         <div className="max-w-5xl mx-auto px-4 py-8">

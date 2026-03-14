@@ -10,10 +10,10 @@ export default function AboutPage() {
   const t = useTranslations('about');
 
   const impactStats = [
-    { value: t('impact1_value'), label: t('impact1_label'), color: 'text-emerald-600' },
-    { value: t('impact2_value'), label: t('impact2_label'), color: 'text-green-600' },
-    { value: t('impact3_value'), label: t('impact3_label'), color: 'text-blue-600' },
-    { value: t('impact4_value'), label: t('impact4_label'), color: 'text-violet-600' },
+    { value: t('impact1_value'), label: t('impact1_label') },
+    { value: t('impact2_value'), label: t('impact2_label') },
+    { value: t('impact3_value'), label: t('impact3_label') },
+    { value: t('impact4_value'), label: t('impact4_label') },
   ];
 
   return (
@@ -49,14 +49,14 @@ export default function AboutPage() {
         </section>
 
         {/* Impact stats */}
-        <section className="py-16 px-6 bg-slate-900 text-white">
+        <section className="py-16 px-6 bg-[#FFF0E6]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-extrabold text-center mb-10">{t('impact_title')}</h2>
+            <h2 className="text-2xl font-extrabold text-center text-slate-900 mb-10">{t('impact_title')}</h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {impactStats.map(({ value, label, color }) => (
+              {impactStats.map(({ value, label }) => (
                 <div key={label} className="text-center">
-                  <p className={`text-3xl sm:text-4xl font-extrabold mb-1 ${color}`}>{value}</p>
-                  <p className="text-sm text-slate-400 font-medium">{label}</p>
+                  <p className="text-3xl sm:text-4xl font-extrabold mb-1 text-[#FF6B2C]">{value}</p>
+                  <p className="text-sm text-slate-600 font-medium">{label}</p>
                 </div>
               ))}
             </div>
@@ -77,13 +77,13 @@ export default function AboutPage() {
         </section>
 
         {/* Team */}
-        <section className="py-20 px-6 bg-slate-50">
+        <section className="py-20 px-6 bg-[#F5ECDE]">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-extrabold text-slate-900 text-center mb-10">{t('team_title')}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
                 { name: t('founder1_name'), role: t('founder1_role'), initials: 'MS', color: 'bg-emerald-600' },
-                { name: t('founder2_name'), role: t('founder2_role'), initials: 'SA', color: 'bg-blue-600' },
+                { name: t('founder2_name'), role: t('founder2_role'), initials: 'SA', color: 'bg-[#FF6B2C]' },
               ].map(({ name, role, initials, color }) => (
                 <div key={name} className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 flex items-center gap-4">
                   <div className={`shrink-0 w-14 h-14 rounded-2xl ${color} text-white font-extrabold text-xl flex items-center justify-center`}>

@@ -90,7 +90,7 @@ export default function BrowsePage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-slate-50">
+      <div className="min-h-screen bg-[#F5ECDE]">
         <Navbar />
 
         {/* Page header */}

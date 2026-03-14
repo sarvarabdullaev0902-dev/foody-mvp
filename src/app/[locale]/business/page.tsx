@@ -29,20 +29,20 @@ export default function BusinessPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-800 text-white py-20 px-6">
+        <section className="text-white py-20 px-6" style={{ background: 'linear-gradient(135deg, #FF6B2C 0%, #FF8F5C 50%, #e55a1e 100%)' }}>
           <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+            <span className="inline-block bg-white/20 border border-white/30 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
               Foody Business
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">
               {t('hero_title')}
             </h1>
-            <p className="text-lg text-slate-300 max-w-xl mx-auto mb-8">
+            <p className="text-lg text-white/80 max-w-xl mx-auto mb-8">
               {t('hero_subtitle')}
             </p>
             <Link
               href="/supplier/register"
-              className="inline-block bg-emerald-500 hover:bg-emerald-400 text-white font-bold px-8 py-3.5 rounded-2xl transition-colors shadow-lg shadow-emerald-900/40"
+              className="inline-block bg-white text-[#FF6B2C] hover:bg-orange-50 font-bold px-8 py-3.5 rounded-2xl transition-colors shadow-lg"
             >
               {t('cta_btn')}
             </Link>
@@ -57,7 +57,7 @@ export default function BusinessPage() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {benefits.map(({ icon: Icon, title, desc, color }) => (
-                <div key={title} className="flex gap-4 bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                <div key={title} className="flex gap-4 bg-[#FFF9F5] rounded-2xl p-6 border border-[#FFD4BB]">
                   <div className={`shrink-0 inline-flex p-3 rounded-xl h-fit ${color}`}>
                     <Icon className="w-5 h-5" />
                   </div>
@@ -72,7 +72,7 @@ export default function BusinessPage() {
         </section>
 
         {/* How it works */}
-        <section className="py-20 px-6 bg-slate-50">
+        <section className="py-20 px-6 bg-[#F5ECDE]">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 text-center mb-12">
               {t('how_title')}
@@ -97,24 +97,24 @@ export default function BusinessPage() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-8">
               {t('pricing_title')}
             </h2>
-            <div className="bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-200 rounded-3xl p-10 shadow-sm">
-              <div className="inline-block bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+            <div className="bg-white border-2 border-[#FFD4BB] rounded-3xl p-10 shadow-sm">
+              <div className="inline-block bg-[#FF6B2C] text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
                 Free
               </div>
-              <p className="text-4xl font-extrabold text-emerald-600 mb-3">{t('pricing_free')}</p>
+              <p className="text-4xl font-extrabold text-[#FF6B2C] mb-3">{t('pricing_free')}</p>
               <p className="text-slate-500 text-sm leading-relaxed">{t('pricing_note')}</p>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6 bg-emerald-600 text-white text-center">
+        <section className="py-20 px-6 text-white text-center" style={{ background: 'linear-gradient(135deg, #FF6B2C 0%, #FF8F5C 50%, #e55a1e 100%)' }}>
           <div className="max-w-lg mx-auto">
             <h2 className="text-3xl font-extrabold mb-3">{t('cta_title')}</h2>
-            <p className="text-emerald-100 mb-8">{t('cta_subtitle')}</p>
+            <p className="text-white/80 mb-8">{t('cta_subtitle')}</p>
             <Link
               href="/supplier/register"
-              className="inline-block bg-white text-emerald-700 font-bold px-8 py-3.5 rounded-2xl hover:bg-emerald-50 transition-colors shadow-lg"
+              className="inline-block bg-white text-[#FF6B2C] font-bold px-8 py-3.5 rounded-2xl hover:bg-orange-50 transition-colors shadow-lg"
             >
               {t('cta_btn')}
             </Link>

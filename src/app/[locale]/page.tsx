@@ -43,7 +43,7 @@ export default function HomePage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-slate-50">
+      <div className="min-h-screen bg-[#F5ECDE]">
         <Navbar />
 
         {/* ── Hero ── */}
@@ -177,7 +177,7 @@ export default function HomePage() {
         </motion.section>
 
         {/* ── Featured Deals ── */}
-        <section className="py-14 px-4 bg-slate-50">
+        <section className="py-14 px-4 bg-[#F5ECDE]">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial="hidden"

@@ -11,10 +11,10 @@ export default function FoodWastePage() {
   const t = useTranslations('food_waste');
 
   const stats = [
-    { value: t('stat1_value'), label: t('stat1_label'), bg: 'bg-red-500' },
-    { value: t('stat2_value'), label: t('stat2_label'), bg: 'bg-orange-500' },
-    { value: t('stat3_value'), label: t('stat3_label'), bg: 'bg-amber-500' },
-    { value: t('stat4_value'), label: t('stat4_label'), bg: 'bg-rose-600' },
+    { value: t('stat1_value'), label: t('stat1_label') },
+    { value: t('stat2_value'), label: t('stat2_label') },
+    { value: t('stat3_value'), label: t('stat3_label') },
+    { value: t('stat4_value'), label: t('stat4_label') },
   ];
 
   const impacts = [
@@ -28,7 +28,7 @@ export default function FoodWastePage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="bg-gradient-to-br from-red-700 via-orange-600 to-amber-500 text-white py-20 px-6">
+        <section className="text-white py-20 px-6" style={{ background: 'linear-gradient(135deg, #FF6B2C 0%, #FF8F5C 50%, #e55a1e 100%)' }}>
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
               Food Waste
@@ -43,16 +43,16 @@ export default function FoodWastePage() {
         </section>
 
         {/* Big stats */}
-        <section className="py-20 px-6 bg-slate-900 text-white">
+        <section className="py-20 px-6 bg-[#FFF0E6]">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 text-center mb-12">
               {t('stats_title')}
             </h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {stats.map(({ value, label, bg }) => (
-                <div key={label} className={`${bg} rounded-2xl p-6 text-center`}>
-                  <p className="text-3xl sm:text-4xl font-extrabold mb-2">{value}</p>
-                  <p className="text-xs sm:text-sm text-white/80 font-medium leading-snug">{label}</p>
+              {stats.map(({ value, label }) => (
+                <div key={label} className="bg-white border-2 border-[#FFD4BB] rounded-2xl p-6 text-center shadow-sm">
+                  <p className="text-3xl sm:text-4xl font-extrabold mb-2 text-[#FF6B2C]">{value}</p>
+                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-snug">{label}</p>
                 </div>
               ))}
             </div>
@@ -67,7 +67,7 @@ export default function FoodWastePage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {impacts.map(({ icon: Icon, title, text, color }) => (
-                <div key={title} className="bg-slate-50 rounded-2xl border border-slate-100 p-6">
+                <div key={title} className="bg-[#FFF9F5] rounded-2xl border border-[#FFD4BB] p-6">
                   <div className={`inline-flex p-3 rounded-xl mb-4 ${color}`}>
                     <Icon className="w-6 h-6" />
                   </div>
@@ -80,10 +80,10 @@ export default function FoodWastePage() {
         </section>
 
         {/* How Foody helps */}
-        <section className="py-20 px-6 bg-emerald-50">
+        <section className="py-20 px-6 bg-[#FFF0E6]">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex p-4 rounded-2xl bg-emerald-100 mb-6">
-              <Leaf className="w-8 h-8 text-emerald-600" />
+            <div className="inline-flex p-4 rounded-2xl bg-[#FFD4BB] mb-6">
+              <Leaf className="w-8 h-8 text-[#FF6B2C]" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-5">
               {t('how_title')}
@@ -93,19 +93,19 @@ export default function FoodWastePage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6 bg-slate-900 text-white text-center">
+        <section className="py-20 px-6 text-white text-center" style={{ background: 'linear-gradient(135deg, #FF6B2C 0%, #FF8F5C 50%, #e55a1e 100%)' }}>
           <div className="max-w-lg mx-auto">
             <h2 className="text-3xl font-extrabold mb-8">{t('cta_title')}</h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/browse"
-                className="inline-block bg-emerald-500 hover:bg-emerald-400 text-white font-bold px-8 py-3.5 rounded-2xl transition-colors shadow-lg shadow-emerald-900/40"
+                className="inline-block bg-white text-[#FF6B2C] hover:bg-orange-50 font-bold px-8 py-3.5 rounded-2xl transition-colors shadow-lg"
               >
                 {t('cta_customer')}
               </Link>
               <Link
                 href="/supplier/register"
-                className="inline-block border-2 border-white text-white hover:bg-white hover:text-slate-900 font-bold px-8 py-3.5 rounded-2xl transition-colors"
+                className="inline-block border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-3.5 rounded-2xl transition-colors"
               >
                 {t('cta_supplier')}
               </Link>
