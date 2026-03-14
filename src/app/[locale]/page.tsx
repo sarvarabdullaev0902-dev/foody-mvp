@@ -57,6 +57,12 @@ export default function HomePage() {
               animation: 'heroGradient 8s ease infinite',
             }}
           />
+          {/* Food imagery */}
+          <img
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&h=900&fit=crop"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay"
+          />
           {/* Subtle radial overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.12),transparent_60%)]" />
           {/* Floating decoration circles */}

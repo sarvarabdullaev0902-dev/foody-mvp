@@ -29,8 +29,13 @@ export default function BusinessPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="text-white py-20 px-6" style={{ background: 'linear-gradient(135deg, #E8594F 0%, #F4845F 50%, #D14840 100%)' }}>
-          <div className="max-w-3xl mx-auto text-center">
+        <section className="relative text-white py-20 px-6 overflow-hidden" style={{ background: 'linear-gradient(135deg, #E8594F 0%, #F4845F 50%, #D14840 100%)' }}>
+          <img
+            src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1200&h=600&fit=crop"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-15 mix-blend-overlay"
+          />
+          <div className="relative max-w-3xl mx-auto text-center">
             <span className="inline-block bg-white/20 border border-white/30 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
               Foody Business
             </span>
