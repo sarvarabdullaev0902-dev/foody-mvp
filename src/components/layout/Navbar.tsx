@@ -120,7 +120,7 @@ export default function Navbar() {
               <span>{t('login')}</span>
             </Link>
           )}
-          <StarButton lightColor="#E8594F" backgroundColor="rgba(255,255,255,0.15)" className="bg-[#1E1E1E] whitespace-nowrap">
+          <StarButton lightColor="#FFB3A0" backgroundColor="rgba(255,255,255,0.12)" className="bg-[#E8594F] hover:bg-[#D14840] whitespace-nowrap">
             {t('download')}
           </StarButton>
           <Link
@@ -192,7 +192,7 @@ export default function Navbar() {
                 </Link>
               </>
             )}
-            <StarButton lightColor="#E8594F" backgroundColor="rgba(255,255,255,0.15)" className="bg-[#1E1E1E] w-full justify-center py-3">
+            <StarButton lightColor="#FFB3A0" backgroundColor="rgba(255,255,255,0.12)" className="bg-[#E8594F] hover:bg-[#D14840] w-full justify-center py-3">
               {t('download')}
             </StarButton>
             <Link
