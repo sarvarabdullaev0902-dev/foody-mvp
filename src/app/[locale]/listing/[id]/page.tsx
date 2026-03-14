@@ -140,7 +140,7 @@ export default function ListingDetailPage() {
                 className="w-full h-72 md:h-96 object-cover"
               />
               {/* Discount badge */}
-              <span className="absolute top-4 left-4 bg-[#FF6B2C] text-white font-extrabold text-lg px-4 py-1.5 rounded-full shadow-lg">
+              <span className="absolute top-4 left-4 bg-[#E8594F] text-white font-extrabold text-lg px-4 py-1.5 rounded-full shadow-lg">
                 -{listing.discount}%
               </span>
               {/* Expiry pill */}
@@ -152,7 +152,7 @@ export default function ListingDetailPage() {
 
             {/* Title + description */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <p className="text-xs text-[#FF6B2C] font-bold uppercase tracking-widest mb-1">
+              <p className="text-xs text-[#E8594F] font-bold uppercase tracking-widest mb-1">
                 {CATEGORY_ICONS[listing.category]} {tCat(listing.category as Parameters<typeof tCat>[0])}
               </p>
               <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3 leading-tight">
@@ -163,7 +163,7 @@ export default function ListingDetailPage() {
 
             {/* Pickup window */}
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-center gap-4">
-              <div className="w-12 h-12 bg-[#FFF0E6] rounded-2xl flex items-center justify-center text-2xl shrink-0">
+              <div className="w-12 h-12 bg-[#FAD6CC] rounded-2xl flex items-center justify-center text-2xl shrink-0">
                 🕐
               </div>
               <div>
@@ -221,10 +221,10 @@ export default function ListingDetailPage() {
                 {/* Center pin */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="flex flex-col items-center -translate-y-3">
-                    <div className="w-9 h-9 bg-[#1B7A4A] rounded-full border-3 border-white shadow-xl flex items-center justify-center text-white text-base">
+                    <div className="w-9 h-9 bg-[#E8594F] rounded-full border-3 border-white shadow-xl flex items-center justify-center text-white text-base">
                       {CATEGORY_ICONS[listing.category]}
                     </div>
-                    <div className="w-2 h-2 bg-[#1B7A4A] rotate-45 -mt-1" />
+                    <div className="w-2 h-2 bg-[#E8594F] rotate-45 -mt-1" />
                   </div>
                 </div>
               </div>
@@ -240,7 +240,7 @@ export default function ListingDetailPage() {
                 <div>
                   <p className="text-xs text-gray-400 font-medium uppercase tracking-wide mb-1">{t('original_price')}</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-extrabold text-[#1B7A4A]">
+                    <span className="text-3xl font-extrabold text-[#E8594F]">
                       {listing.discountedPrice.toLocaleString()}
                     </span>
                     <span className="text-sm font-semibold text-gray-400">{tCommon('currency')}</span>
@@ -251,9 +251,9 @@ export default function ListingDetailPage() {
                 </div>
 
                 {/* Savings badge */}
-                <div className="bg-[#FFF0E6] border border-[#FFD4BB] rounded-xl px-4 py-3 flex items-center justify-between">
+                <div className="bg-[#FAD6CC] border border-[#F9C0B8] rounded-xl px-4 py-3 flex items-center justify-between">
                   <span className="text-sm font-semibold text-[#1E1E1E]">🍊 {t('you_save')}</span>
-                  <span className="text-sm font-extrabold text-[#FF6B2C]">
+                  <span className="text-sm font-extrabold text-[#E8594F]">
                     {savings.toLocaleString()} {tCommon('currency')}
                   </span>
                 </div>
@@ -264,14 +264,14 @@ export default function ListingDetailPage() {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => setQty((q) => Math.max(1, q - 1))}
-                      className="w-10 h-10 rounded-xl border-2 border-gray-200 text-gray-600 text-xl font-bold flex items-center justify-center hover:border-[#FF6B2C] hover:text-[#FF6B2C] transition-colors"
+                      className="w-10 h-10 rounded-xl border-2 border-gray-200 text-gray-600 text-xl font-bold flex items-center justify-center hover:border-[#E8594F] hover:text-[#E8594F] transition-colors"
                     >
                       −
                     </button>
                     <span className="w-10 text-center text-lg font-extrabold text-gray-900">{qty}</span>
                     <button
                       onClick={() => setQty((q) => Math.min(10, q + 1))}
-                      className="w-10 h-10 rounded-xl border-2 border-gray-200 text-gray-600 text-xl font-bold flex items-center justify-center hover:border-[#FF6B2C] hover:text-[#FF6B2C] transition-colors"
+                      className="w-10 h-10 rounded-xl border-2 border-gray-200 text-gray-600 text-xl font-bold flex items-center justify-center hover:border-[#E8594F] hover:text-[#E8594F] transition-colors"
                     >
                       +
                     </button>
@@ -284,7 +284,7 @@ export default function ListingDetailPage() {
                 {/* Reserve button */}
                 <button
                   onClick={() => { addToCart(listing); showToast(); }}
-                  className="w-full bg-[#1B7A4A] hover:bg-[#155E3A] active:bg-[#0f4a2c] text-white font-extrabold py-4 rounded-2xl text-base shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+                  className="w-full bg-[#E8594F] hover:bg-[#D14840] active:bg-[#C03C35] text-white font-extrabold py-4 rounded-2xl text-base shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
                 >
                   {t('reserve_now')} →
                 </button>
@@ -294,11 +294,11 @@ export default function ListingDetailPage() {
               </div>
 
               {/* Expiry urgency */}
-              <div className="bg-orange-50 border border-orange-100 rounded-2xl p-4 flex items-center gap-3">
+              <div className="bg-[#FAD6CC] border border-[#F9C0B8] rounded-2xl p-4 flex items-center gap-3">
                 <span className="text-2xl">⏰</span>
                 <div>
-                  <p className="text-sm font-bold text-orange-700">{t('expires_in')} {listing.expiresIn}</p>
-                  <p className="text-xs text-orange-500">{t('hurry_limited_stock')}</p>
+                  <p className="text-sm font-bold text-[#E8594F]">{t('expires_in')} {listing.expiresIn}</p>
+                  <p className="text-xs text-[#D14840]">{t('hurry_limited_stock')}</p>
                 </div>
               </div>
             </div>

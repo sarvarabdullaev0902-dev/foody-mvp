@@ -29,7 +29,7 @@ export default function OrderConfirmationPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-slate-50">
+      <div className="min-h-screen bg-[#F5ECDE]">
         <Navbar />
 
         <div className="max-w-lg mx-auto px-4 py-12">
@@ -39,9 +39,9 @@ export default function OrderConfirmationPage() {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: 'spring', stiffness: 200, damping: 14, delay: 0.1 }}
-              className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-5"
+              className="w-20 h-20 bg-[#E8F5EE] rounded-full flex items-center justify-center mb-5"
             >
-              <CheckCircle className="w-10 h-10 text-emerald-600" strokeWidth={2} />
+              <CheckCircle className="w-10 h-10 text-[#1B7A4A]" strokeWidth={2} />
             </motion.div>
 
             <motion.h1
@@ -83,9 +83,9 @@ export default function OrderConfirmationPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.44, duration: 0.4 }}
-            className="bg-emerald-600 rounded-2xl p-6 mb-4 text-center text-white"
+            className="bg-[#1B7A4A] rounded-2xl p-6 mb-4 text-center text-white"
           >
-            <p className="text-sm font-semibold text-emerald-100 mb-2">{t('pickup_code')}</p>
+            <p className="text-sm font-semibold text-white/80 mb-2">{t('pickup_code')}</p>
             <div className="flex items-center justify-center gap-3 mb-3">
               {pickupCode.split('').map((digit, i) => (
                 <motion.div
@@ -99,7 +99,7 @@ export default function OrderConfirmationPage() {
                 </motion.div>
               ))}
             </div>
-            <p className="text-xs text-emerald-100">{t('pickup_code_hint')}</p>
+            <p className="text-xs text-white/70">{t('pickup_code_hint')}</p>
           </motion.div>
 
           {/* Pickup details */}
@@ -112,8 +112,8 @@ export default function OrderConfirmationPage() {
             <h2 className="text-sm font-bold text-slate-700 uppercase tracking-wide">{t('pickup_details')}</h2>
 
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0">
-                <Store className="w-4 h-4 text-emerald-600" />
+              <div className="w-8 h-8 bg-[#FAD6CC] rounded-xl flex items-center justify-center shrink-0">
+                <Store className="w-4 h-4 text-[#E8594F]" />
               </div>
               <div>
                 <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wide">{t('supplier')}</p>
@@ -122,8 +122,8 @@ export default function OrderConfirmationPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0">
-                <MapPin className="w-4 h-4 text-emerald-600" />
+              <div className="w-8 h-8 bg-[#FAD6CC] rounded-xl flex items-center justify-center shrink-0">
+                <MapPin className="w-4 h-4 text-[#E8594F]" />
               </div>
               <div>
                 <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wide">{t('address')}</p>
@@ -132,8 +132,8 @@ export default function OrderConfirmationPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0">
-                <Clock className="w-4 h-4 text-emerald-600" />
+              <div className="w-8 h-8 bg-[#FAD6CC] rounded-xl flex items-center justify-center shrink-0">
+                <Clock className="w-4 h-4 text-[#E8594F]" />
               </div>
               <div>
                 <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wide">{t('pickup_window')}</p>
@@ -159,10 +159,10 @@ export default function OrderConfirmationPage() {
               {/* Center pin */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="flex flex-col items-center -translate-y-3">
-                  <div className="w-9 h-9 bg-emerald-500 rounded-full border-2 border-white shadow-xl flex items-center justify-center text-white text-base">
+                  <div className="w-9 h-9 bg-[#1B7A4A] rounded-full border-2 border-white shadow-xl flex items-center justify-center text-white text-base">
                     🥐
                   </div>
-                  <div className="w-2 h-2 bg-emerald-500 rotate-45 -mt-1" />
+                  <div className="w-2 h-2 bg-[#1B7A4A] rotate-45 -mt-1" />
                 </div>
               </div>
             </div>

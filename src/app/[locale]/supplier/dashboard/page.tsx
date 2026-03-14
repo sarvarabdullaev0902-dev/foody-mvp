@@ -19,7 +19,7 @@ const DEMO_ORDERS = [
 const STATUS_CLS: Record<string, string> = {
   pending: 'bg-amber-100 text-amber-700',
   confirmed: 'bg-blue-100 text-blue-700',
-  picked_up: 'bg-emerald-100 text-emerald-700',
+  picked_up: 'bg-[#E8F5EE] text-[#1B7A4A]',
   cancelled: 'bg-red-100 text-red-700',
 };
 

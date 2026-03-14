@@ -75,7 +75,7 @@ export default function Navbar() {
       {/* Main navbar */}
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-bold text-[#FF6B2C] text-lg shrink-0">
+        <Link href="/" className="flex items-center gap-2 font-bold text-[#E8594F] text-lg shrink-0">
           <Leaf className="w-5 h-5" />
           <span className="tracking-tight">Foody</span>
         </Link>
@@ -119,7 +119,7 @@ export default function Navbar() {
               <span>{t('login')}</span>
             </Link>
           )}
-          <button className="bg-[#FF6B2C] hover:bg-[#e55a1e] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-md whitespace-nowrap">
+          <button className="bg-[#E8594F] hover:bg-[#D14840] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-md whitespace-nowrap">
             {t('download')}
           </button>
           <Link
@@ -191,7 +191,7 @@ export default function Navbar() {
                 </Link>
               </>
             )}
-            <button className="w-full bg-[#FF6B2C] hover:bg-[#e55a1e] text-white text-sm font-semibold px-5 py-3 rounded-full transition-all">
+            <button className="w-full bg-[#E8594F] hover:bg-[#D14840] text-white text-sm font-semibold px-5 py-3 rounded-full transition-all">
               {t('download')}
             </button>
             <Link

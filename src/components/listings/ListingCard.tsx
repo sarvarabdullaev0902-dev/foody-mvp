@@ -58,7 +58,7 @@ export default function ListingCard({ listing, view = 'grid', index = 0 }: Props
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.92, opacity: 0 }}
           transition={{ duration: 0.15 }}
-          className="block w-full bg-emerald-700 text-white font-bold py-3 rounded-xl text-sm shadow-sm text-center cursor-default"
+          className="block w-full bg-[#1B7A4A] text-white font-bold py-3 rounded-xl text-sm shadow-sm text-center cursor-default"
         >
           {tBtn('added')}
         </motion.button>

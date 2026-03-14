@@ -11,19 +11,19 @@
   --color-bg:         #F5ECDE;
   --color-bg-white:   #FFFFFF;
 
-  /* 20% — orange (navbar accents, hero, section backgrounds, borders) */
-  --color-orange:       #FF6B2C;
-  --color-orange-hover: #e55a1e;
-  --color-orange-light: #FF8F5C;
-  --color-orange-faint: #FFF2EC;
-  --color-orange-border:#ffd4bb;
+  /* 20% — primary red/coral (navbar accents, hero, section backgrounds, borders) */
+  --color-orange:       #E8594F;
+  --color-orange-hover: #D14840;
+  --color-orange-light: #F4845F;
+  --color-orange-faint: #FAD6CC;
+  --color-orange-border:#F9C0B8;
 
-  /* 10% — green (CTA buttons, badges, active states) */
-  --color-green:        #1B7A4A;
-  --color-green-hover:  #155E3A;
-  --color-green-light:  #E8F5EE;
-  --color-green-border: #b6dfc9;
-  --color-green-faint:  rgba(27,122,74,0.08);
+  /* 10% — CTA buttons, badges, active states (now red, green ONLY for success) */
+  --color-green:        #E8594F;
+  --color-green-hover:  #D14840;
+  --color-green-light:  #FAD6CC;
+  --color-green-border: #F9C0B8;
+  --color-green-faint:  rgba(232,89,79,0.08);
 }
 
 /* ─── Page background ──────────────────────────────────────────────── */

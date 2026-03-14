@@ -57,7 +57,7 @@ export default function MapPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('search_placeholder')}
-              className="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+              className="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E8594F] focus:border-transparent"
             />
           </div>
           <span className="text-sm text-gray-500 hidden sm:block">
@@ -114,7 +114,7 @@ export default function MapPage() {
                     {colors.icon}
                   </div>
                   {/* Deal count badge */}
-                  <div className="absolute -top-1 -right-1 bg-green-500 text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none">
+                  <div className="absolute -top-1 -right-1 bg-[#E8594F] text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none">
                     {s.deals}
                   </div>
                   {/* Pin tail */}
@@ -166,7 +166,7 @@ export default function MapPage() {
                   </div>
                   <a
                     href="browse"
-                    className="block w-full mt-1 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold text-center py-2 rounded-xl transition-colors"
+                    className="block w-full mt-1 bg-[#E8594F] hover:bg-[#D14840] text-white text-sm font-semibold text-center py-2 rounded-xl transition-colors"
                   >
                     {t('view_deals')} →
                   </a>
@@ -191,7 +191,7 @@ export default function MapPage() {
                   key={s.id}
                   onClick={() => handlePinClick(s)}
                   className={`w-full text-left px-4 py-3 flex items-center gap-3 transition-colors hover:bg-gray-50 ${
-                    isSelected ? 'bg-green-50' : ''
+                    isSelected ? 'bg-[#FAD6CC]' : ''
                   }`}
                 >
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-white text-base flex-shrink-0 ${colors.bg}`}>
@@ -202,7 +202,7 @@ export default function MapPage() {
                     <p className="text-xs text-gray-400">{s.area}</p>
                   </div>
                   <div className="flex flex-col items-end gap-0.5 flex-shrink-0">
-                    <span className="text-xs font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                    <span className="text-xs font-bold text-[#E8594F] bg-[#FAD6CC] px-2 py-0.5 rounded-full">
                       {t('active_deals', { count: s.deals })}
                     </span>
                     <span className="text-[10px] text-gray-400">{t('km_away', { km: s.distance })}</span>
@@ -230,8 +230,8 @@ export default function MapPage() {
                 onClick={() => handlePinClick(s)}
                 className={`flex-shrink-0 flex flex-col items-center gap-1.5 p-3 rounded-2xl border-2 transition-all min-w-[80px] ${
                   isSelected
-                    ? 'border-green-500 bg-green-50'
-                    : 'border-gray-200 bg-white hover:border-green-300'
+                    ? 'border-[#E8594F] bg-[#FAD6CC]'
+                    : 'border-gray-200 bg-white hover:border-[#F9C0B8]'
                 }`}
               >
                 <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-white text-base ${colors.bg}`}>
@@ -240,7 +240,7 @@ export default function MapPage() {
                 <p className="text-[10px] font-semibold text-gray-700 text-center leading-tight max-w-[72px] truncate">
                   {s.name}
                 </p>
-                <span className="text-[9px] font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full">
+                <span className="text-[9px] font-bold text-[#E8594F] bg-[#FAD6CC] px-1.5 py-0.5 rounded-full">
                   {s.deals}
                 </span>
               </button>

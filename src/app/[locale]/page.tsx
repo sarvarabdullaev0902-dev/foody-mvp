@@ -52,7 +52,7 @@ export default function HomePage() {
           <div
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(135deg, #FF6B2C 0%, #FF8F5C 40%, #e55a1e 80%, #FF6B2C 100%)',
+              background: 'linear-gradient(135deg, #E8594F 0%, #F4845F 40%, #D14840 80%, #E8594F 100%)',
               backgroundSize: '300% 300%',
               animation: 'heroGradient 8s ease infinite',
             }}
@@ -110,7 +110,7 @@ export default function HomePage() {
                 href="browse"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-white text-[#FF6B2C] font-bold px-8 py-4 rounded-full text-base shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-white text-[#E8594F] font-bold px-8 py-4 rounded-full text-base shadow-lg hover:shadow-xl transition-shadow"
               >
                 {t('browse_deals')} →
               </motion.a>
@@ -222,7 +222,7 @@ export default function HomePage() {
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
           variants={fadeUp}
-          className="bg-[#1B7A4A] text-white py-16 px-4"
+          className="bg-[#FAD6CC] py-16 px-4"
         >
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
             {[
@@ -236,11 +236,11 @@ export default function HomePage() {
                 variants={fadeUp}
                 className="flex flex-col items-center gap-2"
               >
-                <div className="w-12 h-12 bg-white/15 rounded-2xl flex items-center justify-center mb-1">
-                  <Icon className="w-6 h-6" />
+                <div className="w-12 h-12 bg-[#E8594F]/15 rounded-2xl flex items-center justify-center mb-1">
+                  <Icon className="w-6 h-6 text-[#E8594F]" />
                 </div>
-                <p className="text-4xl md:text-5xl font-extrabold tracking-tight">{value}</p>
-                <p className="text-white/70 text-sm font-medium">{label}</p>
+                <p className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1E1E1E]">{value}</p>
+                <p className="text-[#4B5563] text-sm font-medium">{label}</p>
               </motion.div>
             ))}
           </div>

@@ -31,11 +31,11 @@ export default function LoginPage() {
     'w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFF0E6] via-white to-[#F5ECDE] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#FAD6CC] via-white to-[#F5ECDE] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-[#FF6B2C] font-bold text-2xl">
+          <Link href="/" className="inline-flex items-center gap-2 text-[#E8594F] font-bold text-2xl">
             <Leaf className="w-7 h-7" />
             <span>Foody</span>
           </Link>
