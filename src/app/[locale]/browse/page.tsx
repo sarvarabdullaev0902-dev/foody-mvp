@@ -1,13 +1,14 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { LayoutGrid, List, SlidersHorizontal, X } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ListingCard from '@/components/listings/ListingCard';
 import PageTransition from '@/components/ui/PageTransition';
+import SkeletonCard from '@/components/ui/SkeletonCard';
 import { DEMO_LISTINGS } from '@/lib/demo-listings';
 
 const CATEGORIES = [
@@ -37,6 +38,12 @@ export default function BrowsePage() {
   const [sortBy, setSortBy] = useState<SortKey>('newest');
   const [view, setView] = useState<ViewMode>('grid');
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const filtered = useMemo(() => {
     let result = [...DEMO_LISTINGS];
@@ -255,7 +262,11 @@ export default function BrowsePage() {
           </p>
 
           {/* Listings */}
-          {paginated.length === 0 ? (
+          {loading ? (
+            <div className={view === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' : 'flex flex-col gap-4'}>
+              {Array.from({ length: 6 }, (_, i) => <SkeletonCard key={i} />)}
+            </div>
+          ) : paginated.length === 0 ? (
             <div className="text-center py-24 text-slate-400">
               <p className="text-5xl mb-4">🔍</p>
               <p className="font-semibold text-slate-500 mb-2">{t('no_results')}</p>

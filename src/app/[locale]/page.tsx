@@ -1,13 +1,15 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { UtensilsCrossed, Croissant, ShoppingCart, Pill, Coffee, Store, MapPin, TrendingDown, Leaf } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ListingCard from '@/components/listings/ListingCard';
 import PageTransition from '@/components/ui/PageTransition';
+import CountUp from '@/components/ui/CountUp';
+import SkeletonCard from '@/components/ui/SkeletonCard';
 import { DEMO_LISTINGS } from '@/lib/demo-listings';
 
 const CATEGORIES = [
@@ -20,6 +22,15 @@ const CATEGORIES = [
 ] as const;
 
 const FEATURED = DEMO_LISTINGS.slice(0, 6);
+
+const FLOATING_ICONS = [
+  { emoji: '🥐', top: '12%',  left: '7%',   anim: 'float-a', duration: '4s',   delay: '0s',   opacity: 0.22 },
+  { emoji: '🍕', top: '18%',  right: '9%',  anim: 'float-b', duration: '5.5s', delay: '0.6s', opacity: 0.18 },
+  { emoji: '🥗', top: '62%',  left: '4%',   anim: 'float-c', duration: '6s',   delay: '1s',   opacity: 0.20 },
+  { emoji: '☕', top: '68%',  right: '7%',  anim: 'float-a', duration: '3.8s', delay: '0.9s', opacity: 0.22 },
+  { emoji: '🌮', top: '38%',  left: '2%',   anim: 'float-b', duration: '5s',   delay: '1.6s', opacity: 0.16 },
+  { emoji: '🍜', top: '44%',  right: '2%',  anim: 'float-c', duration: '4.5s', delay: '2.1s', opacity: 0.18 },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -36,10 +47,41 @@ export default function HomePage() {
   const tCat = useTranslations('supplier.categories');
 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollY } = useScroll();
+  const heroBgY = useTransform(scrollY, [0, 500], [0, 150]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const listings = activeCategory
     ? FEATURED.filter((l) => l.category === activeCategory)
     : FEATURED;
+
+  function handleBrowseClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const ripple = document.createElement('span');
+    Object.assign(ripple.style, {
+      position: 'absolute',
+      borderRadius: '50%',
+      pointerEvents: 'none',
+      background: 'rgba(255,255,255,0.35)',
+      transform: 'scale(0)',
+      animation: 'ripple 0.6s linear',
+      left: `${x - 20}px`,
+      top: `${y - 20}px`,
+      width: '40px',
+      height: '40px',
+    });
+    e.currentTarget.appendChild(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  }
 
   return (
     <PageTransition>
@@ -47,7 +89,7 @@ export default function HomePage() {
         <Navbar />
 
         {/* ── Hero ── */}
-        <section className="relative text-white overflow-hidden">
+        <section ref={heroRef} className="relative text-white overflow-hidden">
           {/* Animated gradient background */}
           <div
             className="absolute inset-0"
@@ -57,8 +99,9 @@ export default function HomePage() {
               animation: 'heroGradient 8s ease infinite',
             }}
           />
-          {/* Food imagery */}
-          <img
+          {/* Parallax food imagery */}
+          <motion.img
+            style={{ y: heroBgY }}
             src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&h=900&fit=crop"
             alt=""
             className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay"
@@ -76,6 +119,21 @@ export default function HomePage() {
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
           />
+
+          {/* Floating food icons */}
+          {FLOATING_ICONS.map(({ emoji, top, left, right, anim, duration, delay, opacity }) => (
+            <div
+              key={emoji}
+              className="absolute pointer-events-none select-none text-4xl"
+              style={{
+                top, left, right,
+                opacity,
+                animation: `${anim} ${duration} ease-in-out ${delay} infinite`,
+              }}
+            >
+              {emoji}
+            </div>
+          ))}
 
           <div className="relative max-w-4xl mx-auto px-4 py-24 md:py-32 text-center">
             <motion.span
@@ -114,9 +172,10 @@ export default function HomePage() {
             >
               <motion.a
                 href="browse"
+                onClick={handleBrowseClick}
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-white text-[#E8594F] font-bold px-8 py-4 rounded-full text-base shadow-lg hover:shadow-xl transition-shadow"
+                className="relative overflow-hidden bg-white text-[#E8594F] font-bold px-8 py-4 rounded-full text-base shadow-lg hover:shadow-xl transition-shadow"
               >
                 {t('browse_deals')} →
               </motion.a>
@@ -207,7 +266,11 @@ export default function HomePage() {
               </a>
             </motion.div>
 
-            {listings.length === 0 ? (
+            {loading ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {Array.from({ length: 6 }, (_, i) => <SkeletonCard key={i} />)}
+              </div>
+            ) : listings.length === 0 ? (
               <div className="text-center py-20 text-slate-400">
                 <p className="text-5xl mb-4">🔍</p>
                 <p className="font-medium">{t('no_results_category')}</p>
@@ -232,10 +295,10 @@ export default function HomePage() {
         >
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
             {[
-              { value: '1,200+', label: t('stats_meals_saved'), Icon: UtensilsCrossed },
-              { value: '50+',    label: t('stats_suppliers'),   Icon: Store },
-              { value: '30%',    label: t('stats_avg_discount'), Icon: TrendingDown },
-            ].map(({ value, label, Icon }, i) => (
+              { end: 1200, suffix: '+', label: t('stats_meals_saved'), Icon: UtensilsCrossed },
+              { end: 50,   suffix: '+', label: t('stats_suppliers'),   Icon: Store },
+              { end: 30,   suffix: '%', label: t('stats_avg_discount'), Icon: TrendingDown },
+            ].map(({ end, suffix, label, Icon }, i) => (
               <motion.div
                 key={label}
                 custom={i}
@@ -245,7 +308,9 @@ export default function HomePage() {
                 <div className="w-12 h-12 bg-[#E8594F]/15 rounded-2xl flex items-center justify-center mb-1">
                   <Icon className="w-6 h-6 text-[#E8594F]" />
                 </div>
-                <p className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1E1E1E]">{value}</p>
+                <p className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1E1E1E]">
+                  <CountUp end={end} suffix={suffix} />
+                </p>
                 <p className="text-[#4B5563] text-sm font-medium">{label}</p>
               </motion.div>
             ))}

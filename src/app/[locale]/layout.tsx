@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import ScrollProgress from '@/components/ui/ScrollProgress';
 
 export default async function LocaleLayout({
   children,
@@ -13,6 +14,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
+      <ScrollProgress />
       {children}
     </NextIntlClientProvider>
   );
