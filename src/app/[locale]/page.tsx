@@ -52,7 +52,7 @@ export default function HomePage() {
           <div
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(135deg, #059669 0%, #0d9488 40%, #047857 80%, #059669 100%)',
+              background: 'linear-gradient(135deg, #FF6B2C 0%, #FF8F5C 40%, #e55a1e 80%, #FF6B2C 100%)',
               backgroundSize: '300% 300%',
               animation: 'heroGradient 8s ease infinite',
             }}
@@ -66,7 +66,7 @@ export default function HomePage() {
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           />
           <motion.div
-            className="absolute -bottom-16 -left-16 w-80 h-80 rounded-full bg-teal-300/10 blur-2xl"
+            className="absolute -bottom-16 -left-16 w-80 h-80 rounded-full bg-white/10 blur-2xl"
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
           />
@@ -110,7 +110,7 @@ export default function HomePage() {
                 href="browse"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-white text-emerald-700 font-bold px-8 py-4 rounded-full text-base shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-white text-[#FF6B2C] font-bold px-8 py-4 rounded-full text-base shadow-lg hover:shadow-xl transition-shadow"
               >
                 {t('browse_deals')} →
               </motion.a>
@@ -222,7 +222,7 @@ export default function HomePage() {
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
           variants={fadeUp}
-          className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-16 px-4"
+          className="bg-[#1B7A4A] text-white py-16 px-4"
         >
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
             {[
@@ -240,7 +240,7 @@ export default function HomePage() {
                   <Icon className="w-6 h-6" />
                 </div>
                 <p className="text-4xl md:text-5xl font-extrabold tracking-tight">{value}</p>
-                <p className="text-emerald-200 text-sm font-medium">{label}</p>
+                <p className="text-white/70 text-sm font-medium">{label}</p>
               </motion.div>
             ))}
           </div>

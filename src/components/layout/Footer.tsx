@@ -5,12 +5,12 @@ export default function Footer() {
   const t = useTranslations('footer');
 
   return (
-    <footer className="bg-gray-950 text-gray-400 py-12 px-4">
+    <footer className="bg-[#1E1E1E] text-gray-400 py-12 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-8">
           <div>
             <p className="text-white font-bold text-xl flex items-center gap-2">
-              <Leaf className="w-5 h-5 text-emerald-400" /> Foody
+              <Leaf className="w-5 h-5 text-[#FF6B2C]" /> Foody
             </p>
             <p className="text-sm mt-1.5 text-gray-500 max-w-xs leading-relaxed">
               {t('tagline')}
