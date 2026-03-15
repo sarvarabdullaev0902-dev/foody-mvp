@@ -7,7 +7,8 @@ import { useRouter } from '@/i18n/navigation';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ListingCard from '@/components/listings/ListingCard';
-import { DEMO_LISTINGS } from '@/lib/demo-listings';
+import { useListings } from '@/lib/listings-context';
+import { useParams } from 'next/navigation';
 import { useCart } from '@/lib/cart-context';
 import { useToast } from '@/components/ui/useToast';
 import Toast from '@/components/ui/Toast';
@@ -88,6 +89,9 @@ export default function ListingDetailPage() {
 
   const locale = useLocale();
   const router = useRouter();
+  const params = useParams();
+  const { listings: allListings } = useListings();
+  const listingId = Number(params?.id) || 1;
   const [qty, setQty] = useState(1);
   const { addToCart } = useCart();
   const { visible: toastVisible, show: showToast } = useToast();
@@ -100,15 +104,13 @@ export default function ListingDetailPage() {
     }
   }
 
-  // Use listing id=1 as demo
-  const listing = DEMO_LISTINGS.find((l) => l.id === 1) ?? DEMO_LISTINGS[0];
+  const listing = allListings.find((l) => l.id === listingId) ?? allListings[0];
   const detail = LISTING_DETAILS[listing.id] ?? DEFAULT_DETAIL;
   const savings = listing.originalPrice - listing.discountedPrice;
 
-  // Related: same category, different id
-  const related = DEMO_LISTINGS.filter(
-    (l) => l.category === listing.category && l.id !== listing.id
-  ).slice(0, 3);
+  const related = allListings
+    .filter((l) => l.category === listing.category && l.id !== listing.id && l.status !== 'paused')
+    .slice(0, 3);
 
 
   return (

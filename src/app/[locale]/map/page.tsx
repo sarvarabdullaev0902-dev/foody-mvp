@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import type { MapSupplier } from '@/components/map/LeafletMap';
+import { useListings } from '@/lib/listings-context';
 
 const LeafletMap = dynamic(() => import('@/components/map/LeafletMap'), { ssr: false });
 
@@ -35,7 +36,25 @@ export default function MapPage() {
   const [selected, setSelected] = useState<MapSupplier | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filtered = MAP_SUPPLIERS.filter((s) => {
+  const { listings: contextListings } = useListings();
+
+  // Merge static MAP_SUPPLIERS with newly added listings that have lat/lng
+  const dynamicSuppliers: MapSupplier[] = contextListings
+    .filter((l) => l.status !== 'paused' && l.isNew && l.lat != null && l.lng != null)
+    .map((l) => ({
+      id:       l.id + 1000, // offset to avoid id collision with MAP_SUPPLIERS
+      name:     l.title,
+      category: l.category,
+      deals:    1,
+      distance: '—',
+      area:     l.area ?? 'Toshkent',
+      lat:      l.lat!,
+      lng:      l.lng!,
+    }));
+
+  const allSuppliers = [...MAP_SUPPLIERS, ...dynamicSuppliers];
+
+  const filtered = allSuppliers.filter((s) => {
     if (!searchQuery) return true;
     const q = searchQuery.toLowerCase();
     return s.name.toLowerCase().includes(q) || s.area.toLowerCase().includes(q);
@@ -67,7 +86,7 @@ export default function MapPage() {
             />
           </div>
           <span className="text-sm text-gray-500 hidden sm:block">
-            {t('supplier_count', { current: filtered.length, total: MAP_SUPPLIERS.length })}
+            {t('supplier_count', { current: filtered.length, total: allSuppliers.length })}
           </span>
         </div>
 
@@ -79,7 +98,7 @@ export default function MapPage() {
           {/* Map area */}
           <div className="relative flex-1 overflow-hidden">
             <LeafletMap
-              suppliers={MAP_SUPPLIERS}
+              suppliers={allSuppliers}
               filteredIds={filteredIds}
               selected={selected}
               onSelect={toggleSelect}

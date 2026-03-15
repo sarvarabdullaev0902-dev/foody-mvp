@@ -9,7 +9,7 @@ import Footer from '@/components/layout/Footer';
 import ListingCard from '@/components/listings/ListingCard';
 import PageTransition from '@/components/ui/PageTransition';
 import SkeletonCard from '@/components/ui/SkeletonCard';
-import { DEMO_LISTINGS } from '@/lib/demo-listings';
+import { useListings } from '@/lib/listings-context';
 
 const CATEGORIES = [
   { key: 'restaurant', icon: '🍽️' },
@@ -39,6 +39,7 @@ export default function BrowsePage() {
   const [view, setView] = useState<ViewMode>('grid');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const { listings: allListings } = useListings();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
@@ -46,7 +47,8 @@ export default function BrowsePage() {
   }, []);
 
   const filtered = useMemo(() => {
-    let result = [...DEMO_LISTINGS];
+    // Only show active listings; new listings come first (they're prepended in context)
+    let result = allListings.filter((l) => l.status !== 'paused');
 
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -280,13 +282,27 @@ export default function BrowsePage() {
           ) : view === 'grid' ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {paginated.map((item, i) => (
-                <ListingCard key={item.id} listing={item} view="grid" index={i} />
+                <div key={item.id} className="relative">
+                  {item.isNew && (
+                    <span className="absolute top-3 left-3 z-20 bg-[#E8594F] text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow pointer-events-none">
+                      ✨ Yangi!
+                    </span>
+                  )}
+                  <ListingCard listing={item} view="grid" index={i} />
+                </div>
               ))}
             </div>
           ) : (
             <div className="flex flex-col gap-4">
               {paginated.map((item, i) => (
-                <ListingCard key={item.id} listing={item} view="list" index={i} />
+                <div key={item.id} className="relative">
+                  {item.isNew && (
+                    <span className="absolute top-3 left-3 z-20 bg-[#E8594F] text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow pointer-events-none">
+                      ✨ Yangi!
+                    </span>
+                  )}
+                  <ListingCard listing={item} view="list" index={i} />
+                </div>
               ))}
             </div>
           )}

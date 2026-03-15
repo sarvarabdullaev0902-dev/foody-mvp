@@ -11,7 +11,7 @@ import PageTransition from '@/components/ui/PageTransition';
 import CountUp from '@/components/ui/CountUp';
 import SkeletonCard from '@/components/ui/SkeletonCard';
 import { MagnetizeCategory } from '@/components/ui/magnetize-category';
-import { DEMO_LISTINGS } from '@/lib/demo-listings';
+import { useListings } from '@/lib/listings-context';
 
 const CATEGORIES = [
   { key: 'restaurant', Icon: UtensilsCrossed },
@@ -22,7 +22,6 @@ const CATEGORIES = [
   { key: 'store',      Icon: Store },
 ] as const;
 
-const FEATURED = DEMO_LISTINGS.slice(0, 6);
 
 
 const fadeUp = {
@@ -41,6 +40,8 @@ export default function HomePage() {
 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const { listings: allListings } = useListings();
+  const featured = allListings.filter((l) => l.status !== 'paused').slice(0, 6);
 
   const heroRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
@@ -52,8 +53,8 @@ export default function HomePage() {
   }, []);
 
   const listings = activeCategory
-    ? FEATURED.filter((l) => l.category === activeCategory)
-    : FEATURED;
+    ? featured.filter((l) => l.category === activeCategory)
+    : featured;
 
   function handleBrowseClick(e: React.MouseEvent<HTMLAnchorElement>) {
     const rect = e.currentTarget.getBoundingClientRect();

@@ -13,4 +13,12 @@ export type Listing = {
   expiresInHours: number;
   pickup: string;
   descriptions: LocalizedText;
+  // Supplier-managed fields
+  isNew?: boolean;
+  status?: 'active' | 'paused';
+  qty?: number;
+  created?: string;
+  area?: string;
+  lat?: number;
+  lng?: number;
 };
