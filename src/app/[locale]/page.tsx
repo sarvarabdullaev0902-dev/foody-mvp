@@ -185,13 +185,13 @@ export default function HomePage() {
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
           variants={fadeUp}
-          className="py-10 px-4 bg-white border-b border-slate-100"
+          className="py-20 px-4 bg-white border-b border-slate-100"
         >
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-lg font-semibold text-slate-700 mb-5 text-center">
+            <h2 className="text-lg font-semibold text-slate-700 mb-8 text-center">
               {t('categories_title')}
             </h2>
-            <div className="flex gap-1 overflow-x-auto pb-2 justify-start md:justify-center scrollbar-none py-2">
+            <div className="flex gap-3 overflow-x-auto pb-16 justify-start md:justify-center scrollbar-none pt-16">
               {CATEGORIES.map(({ key, Icon }, i) => {
                 const isActive = activeCategory === key;
                 return (
