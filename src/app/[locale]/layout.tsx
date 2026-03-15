@@ -16,8 +16,10 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <ScrollProgress />
-      <FloatingFoodIcons />
-      {children}
+      <div className="relative">
+        <FloatingFoodIcons />
+        {children}
+      </div>
     </NextIntlClientProvider>
   );
 }

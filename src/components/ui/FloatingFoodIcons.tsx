@@ -24,7 +24,7 @@ const ICONS = [
 
 export default function FloatingFoodIcons() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
+    <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-[1] overflow-hidden">
       {ICONS.map(({ emoji, top, left, right, anim, dur, delay, size, opacity }) => (
         <div
           key={`${emoji}-${top}`}
