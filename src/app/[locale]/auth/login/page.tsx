@@ -28,7 +28,7 @@ export default function LoginPage() {
   };
 
   const inputCls =
-    'w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition';
+    'w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E8594F] focus:border-transparent transition';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FAD6CC] via-white to-[#F5ECDE] flex items-center justify-center p-4">
@@ -113,14 +113,14 @@ export default function LoginPage() {
             )}
 
             <div className="text-right -mt-1">
-              <Link href="/auth/forgot" className="text-sm text-emerald-600 hover:underline font-medium">
+              <Link href="/auth/forgot" className="text-sm text-[#E8594F] hover:underline font-medium">
                 {t('forgot_password')}
               </Link>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold py-3 rounded-xl transition-colors shadow-sm"
+              className="w-full bg-[#E8594F] hover:bg-[#D14840] active:bg-[#C03C35] text-white font-bold py-3 rounded-xl transition-colors shadow-sm"
             >
               {t('login_btn')}
             </button>
@@ -129,7 +129,7 @@ export default function LoginPage() {
           {/* Register link */}
           <p className="text-center text-sm text-slate-500 mt-6">
             {t('no_account')}{' '}
-            <Link href="/auth/register" className="text-emerald-600 font-semibold hover:underline">
+            <Link href="/auth/register" className="text-[#E8594F] font-semibold hover:underline">
               {t('register_link')}
             </Link>
           </p>

@@ -18,7 +18,7 @@ export default function RegisterPage() {
   });
 
   const inputCls =
-    'w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition';
+    'w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E8594F] focus:border-transparent transition';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#FAD6CC] via-white to-[#F5ECDE] flex items-center justify-center p-4">
@@ -95,7 +95,7 @@ export default function RegisterPage() {
 
             <button
               type="submit"
-              className="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold py-3 rounded-xl transition-colors shadow-sm mt-1"
+              className="w-full bg-[#E8594F] hover:bg-[#D14840] active:bg-[#C03C35] text-white font-bold py-3 rounded-xl transition-colors shadow-sm mt-1"
             >
               {t('register_btn')}
             </button>
@@ -104,7 +104,7 @@ export default function RegisterPage() {
           {/* Login link */}
           <p className="text-center text-sm text-slate-500 mt-6">
             {t('have_account')}{' '}
-            <Link href="/auth/login" className="text-emerald-600 font-semibold hover:underline">
+            <Link href="/auth/login" className="text-[#E8594F] font-semibold hover:underline">
               {t('login_link')}
             </Link>
           </p>

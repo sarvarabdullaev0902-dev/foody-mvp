@@ -32,10 +32,10 @@ export default function AboutPage() {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-20 px-6">
+        <section className="bg-[#E8594F] text-white py-20 px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex p-4 rounded-2xl bg-white/10 mb-6">
-              <Leaf className="w-8 h-8 text-emerald-200" />
+            <div className="inline-flex p-4 rounded-2xl bg-white/15 mb-6">
+              <Leaf className="w-8 h-8 text-white/90" />
             </div>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">
               {t('hero_title')}
