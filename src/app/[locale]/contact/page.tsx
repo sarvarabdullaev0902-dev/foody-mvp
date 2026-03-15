@@ -233,7 +233,7 @@ export default function ContactPage() {
               </div>
               <div className="flex-1 min-h-[300px]">
                 <iframe
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=69.22%2C41.28%2C69.26%2C41.31&layer=mapnik&marker=41.2969%2C69.2401"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=69.300%2C41.295%2C69.340%2C41.325&layer=mapnik&marker=41.3100%2C69.3200"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: 300 }}
