@@ -317,7 +317,9 @@
     "download_title": "Download the App",
     "download_subtitle": "Coming soon for iOS and Android",
     "download_app_store": "App Store",
-    "download_google_play": "Google Play"
+    "download_google_play": "Google Play",
+    "scroll_line1": "With the Foody Moody app",
+    "scroll_line2": "Save on food!"
   },
   "business": {
     "hero_title": "Grow Your Business with Foody Moody",
@@ -340,6 +342,8 @@
     "how3_desc": "Customers reserve, you confirm",
     "how4_title": "Hand over the product",
     "how4_desc": "Give the customer their order using their pickup code",
+    "scroll_line1": "Supplier Dashboard",
+    "scroll_line2": "Simple and intuitive!",
     "pricing_title": "Pricing",
     "pricing_free": "Free for now!",
     "pricing_note": "The platform is completely free today. In the future, Foody Moody will take a small commission per order.",

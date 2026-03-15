@@ -317,7 +317,9 @@
     "download_title": "Скачайте приложение",
     "download_subtitle": "Скоро доступно для iOS и Android",
     "download_app_store": "App Store",
-    "download_google_play": "Google Play"
+    "download_google_play": "Google Play",
+    "scroll_line1": "С приложением Foody Moody",
+    "scroll_line2": "Экономьте на еде!"
   },
   "business": {
     "hero_title": "Развивайте бизнес с Foody Moody",
@@ -340,6 +342,8 @@
     "how3_desc": "Клиенты бронируют, вы подтверждаете",
     "how4_title": "Передайте товар",
     "how4_desc": "Выдайте товар клиенту по его коду",
+    "scroll_line1": "Панель управления",
+    "scroll_line2": "Просто и удобно!",
     "pricing_title": "Тарифы",
     "pricing_free": "Сейчас бесплатно!",
     "pricing_note": "Платформа полностью бесплатна. В будущем Foody Moody будет взимать небольшую комиссию с каждого заказа.",

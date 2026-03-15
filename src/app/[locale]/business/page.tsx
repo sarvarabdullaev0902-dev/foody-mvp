@@ -6,6 +6,7 @@ import { Trash2, TrendingUp, Users, LayoutDashboard, UserPlus, PackagePlus, Clip
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import PageTransition from '@/components/ui/PageTransition';
+import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 
 export default function BusinessPage() {
   const t = useTranslations('business');
@@ -75,6 +76,29 @@ export default function BusinessPage() {
             </div>
           </div>
         </section>
+
+        {/* Dashboard Container Scroll */}
+        <div className="bg-[#F5ECDE]">
+          <ContainerScroll
+            titleComponent={
+              <div>
+                <p className="text-base sm:text-lg font-medium text-[#E8594F] mb-2">
+                  {t('scroll_line1')}
+                </p>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#1E1E1E] leading-tight">
+                  {t('scroll_line2')}
+                </h2>
+              </div>
+            }
+          >
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&h=720&fit=crop"
+              alt="Supplier dashboard"
+              className="w-full h-full object-cover object-top"
+              draggable={false}
+            />
+          </ContainerScroll>
+        </div>
 
         {/* How it works */}
         <section className="py-20 px-6 bg-[#F5ECDE]">

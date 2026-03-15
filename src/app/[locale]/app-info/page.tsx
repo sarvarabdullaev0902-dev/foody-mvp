@@ -6,6 +6,7 @@ import { MapPin, ShoppingBag, Smile, PiggyBank, Leaf, Store, Apple } from 'lucid
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import PageTransition from '@/components/ui/PageTransition';
+import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 
 export default function AppInfoPage() {
   const t = useTranslations('app_info');
@@ -25,21 +26,27 @@ export default function AppInfoPage() {
   return (
     <PageTransition>
       <Navbar />
-      <main>
-        {/* Hero */}
-        <section className="bg-gradient-to-br from-emerald-600 to-emerald-800 text-white py-20 px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
-              Foody Moody App
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">
-              {t('hero_title')}
-            </h1>
-            <p className="text-lg text-emerald-100 max-w-xl mx-auto">
-              {t('hero_subtitle')}
-            </p>
-          </div>
-        </section>
+      <main className="bg-[#F5ECDE]">
+        {/* Container Scroll Hero */}
+        <ContainerScroll
+          titleComponent={
+            <div>
+              <p className="text-base sm:text-lg font-medium text-[#E8594F] mb-2">
+                {t('scroll_line1')}
+              </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#1E1E1E] leading-tight">
+                {t('scroll_line2')}
+              </h1>
+            </div>
+          }
+        >
+          <img
+            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1400&h=720&fit=crop"
+            alt="Foody Moody app"
+            className="w-full h-full object-cover object-top"
+            draggable={false}
+          />
+        </ContainerScroll>
 
         {/* 3-step process */}
         <section className="py-20 px-6 bg-white">
