@@ -78,7 +78,7 @@ export default function Footer() {
           {/* Col 1 – Brand */}
           <div>
             <p className="text-white font-bold text-xl flex items-center gap-2 mb-3">
-              <Leaf className="w-5 h-5 text-[#E8594F]" /> Foody
+              <Leaf className="w-5 h-5 text-[#E8594F]" /> Foody Moody
             </p>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
               {t('tagline')}
@@ -158,7 +158,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-gray-800 pt-5 text-center text-xs text-gray-600">
-          © {new Date().getFullYear()} Foody. {t('rights')}
+          © {new Date().getFullYear()} Foody Moody. {t('rights')}
           <p className="mt-1.5 text-[11px] text-gray-700">
             {t('founders')}
           </p>

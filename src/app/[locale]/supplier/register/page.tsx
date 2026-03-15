@@ -46,7 +46,7 @@ export default function SupplierRegisterPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2 text-[#E8594F] font-bold text-2xl">
             <Leaf className="w-7 h-7" />
-            <span>Foody</span>
+            <span>Foody Moody</span>
           </Link>
           <div className="mt-4 flex items-center justify-center gap-2">
             <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#FAD6CC] border border-[#F9C0B8]">

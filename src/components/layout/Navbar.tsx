@@ -79,7 +79,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-[#E8594F] text-lg shrink-0">
           <Leaf className="w-5 h-5" />
-          <span className="tracking-tight">Foody</span>
+          <span className="tracking-tight">Foody Moody</span>
         </Link>
 
         {/* Desktop nav links */}

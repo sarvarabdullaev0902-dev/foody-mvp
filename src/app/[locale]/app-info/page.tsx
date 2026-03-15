@@ -30,7 +30,7 @@ export default function AppInfoPage() {
         <section className="bg-gradient-to-br from-emerald-600 to-emerald-800 text-white py-20 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
-              Foody App
+              Foody Moody App
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">
               {t('hero_title')}

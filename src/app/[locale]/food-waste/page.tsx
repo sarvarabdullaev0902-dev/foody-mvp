@@ -84,7 +84,7 @@ export default function FoodWastePage() {
           </div>
         </section>
 
-        {/* How Foody helps */}
+        {/* How Foody Moody helps */}
         <section className="py-20 px-6 bg-[#FAD6CC]">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex p-4 rounded-2xl bg-[#F9C0B8] mb-6">

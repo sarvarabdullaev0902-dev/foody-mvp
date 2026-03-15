@@ -238,7 +238,7 @@ export default function ContactPage() {
                   height="100%"
                   style={{ border: 0, minHeight: 300 }}
                   loading="lazy"
-                  title="Foody location"
+                  title="Foody Moody location"
                 />
               </div>
             </motion.div>

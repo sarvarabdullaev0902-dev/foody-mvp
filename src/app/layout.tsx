@@ -17,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Foody',
+  title: 'Foody Moody',
   description: 'Chegirmali mahsulotlar — bir joyda!',
 };
 

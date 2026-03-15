@@ -37,7 +37,7 @@ export default function BusinessPage() {
           />
           <div className="relative max-w-3xl mx-auto text-center">
             <span className="inline-block bg-white/20 border border-white/30 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
-              Foody Business
+              Foody Moody Business
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">
               {t('hero_title')}

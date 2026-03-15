@@ -47,7 +47,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="px-5 py-5 border-b border-slate-800/60">
           <Link href="/" className="flex items-center gap-2 text-emerald-400 font-bold text-lg">
             <Leaf className="w-5 h-5" />
-            <span>Foody</span>
+            <span>Foody Moody</span>
           </Link>
           <p className="text-[11px] text-slate-500 mt-0.5 font-medium uppercase tracking-wider">
             {t('supplier_portal')}
@@ -124,7 +124,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </button>
           <Link href="/" className="flex items-center gap-1.5 text-emerald-600 font-bold text-base">
             <Leaf className="w-4 h-4" />
-            Foody
+            Foody Moody
           </Link>
           <LanguageSwitcher />
         </header>

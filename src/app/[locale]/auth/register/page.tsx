@@ -27,7 +27,7 @@ export default function RegisterPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2 text-[#E8594F] font-bold text-2xl">
             <Leaf className="w-7 h-7" />
-            <span>Foody</span>
+            <span>Foody Moody</span>
           </Link>
           <h1 className="mt-3 text-2xl font-bold text-slate-800">{t('register_title')}</h1>
         </div>
