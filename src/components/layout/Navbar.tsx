@@ -55,6 +55,7 @@ export default function Navbar() {
     { href: '/business' as const, label: t('business') },
     { href: '/about' as const, label: t('about') },
     { href: '/food-waste' as const, label: t('food_waste') },
+    { href: '/contact' as const, label: t('contact') },
   ];
 
   return (
