@@ -10,6 +10,7 @@ import ListingCard from '@/components/listings/ListingCard';
 import PageTransition from '@/components/ui/PageTransition';
 import CountUp from '@/components/ui/CountUp';
 import SkeletonCard from '@/components/ui/SkeletonCard';
+import { MagnetizeCategory } from '@/components/ui/magnetize-category';
 import { DEMO_LISTINGS } from '@/lib/demo-listings';
 
 const CATEGORIES = [
@@ -190,29 +191,27 @@ export default function HomePage() {
             <h2 className="text-lg font-semibold text-slate-700 mb-5 text-center">
               {t('categories_title')}
             </h2>
-            <div className="flex gap-3 overflow-x-auto pb-1 justify-start md:justify-center scrollbar-none">
+            <div className="flex gap-1 overflow-x-auto pb-2 justify-start md:justify-center scrollbar-none py-2">
               {CATEGORIES.map(({ key, Icon }, i) => {
                 const isActive = activeCategory === key;
                 return (
-                  <motion.button
+                  <motion.div
                     key={key}
                     custom={i}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeUp}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.96 }}
-                    onClick={() => setActiveCategory(isActive ? null : key)}
-                    className={`flex flex-col items-center gap-2 min-w-[88px] px-4 py-3 rounded-2xl border-2 transition-all shrink-0 ${
-                      isActive
-                        ? 'border-emerald-500 bg-emerald-50 text-emerald-700 shadow-sm'
-                        : 'border-slate-200 bg-white text-slate-500 hover:border-emerald-300 hover:text-emerald-600'
-                    }`}
                   >
-                    <Icon className="w-6 h-6" />
-                    <span className="text-xs font-semibold whitespace-nowrap">{tCat(key)}</span>
-                  </motion.button>
+                    <MagnetizeCategory
+                      categoryKey={key}
+                      isActive={isActive}
+                      onClick={() => setActiveCategory(isActive ? null : key)}
+                    >
+                      <Icon className="w-6 h-6" />
+                      <span className="text-xs font-semibold whitespace-nowrap">{tCat(key)}</span>
+                    </MagnetizeCategory>
+                  </motion.div>
                 );
               })}
             </div>
