@@ -37,12 +37,12 @@ interface ParticleConfig {
 }
 
 const PARTICLES: ParticleConfig[] = [
-  { angle: 0 * (Math.PI / 3), radius: 76, size: 17, bobAmp: 6, bobDur: 3.8, bobDel: 0.0 },
-  { angle: 1 * (Math.PI / 3), radius: 80, size: 16, bobAmp: 7, bobDur: 4.5, bobDel: 0.6 },
-  { angle: 2 * (Math.PI / 3), radius: 74, size: 18, bobAmp: 5, bobDur: 3.2, bobDel: 1.2 },
-  { angle: 3 * (Math.PI / 3), radius: 76, size: 17, bobAmp: 8, bobDur: 4.8, bobDel: 0.3 },
-  { angle: 4 * (Math.PI / 3), radius: 80, size: 16, bobAmp: 6, bobDur: 3.5, bobDel: 1.8 },
-  { angle: 5 * (Math.PI / 3), radius: 74, size: 18, bobAmp: 7, bobDur: 4.2, bobDel: 0.9 },
+  { angle: 0 * (Math.PI / 3), radius: 58, size: 17, bobAmp: 6, bobDur: 3.8, bobDel: 0.0 },
+  { angle: 1 * (Math.PI / 3), radius: 60, size: 16, bobAmp: 7, bobDur: 4.5, bobDel: 0.6 },
+  { angle: 2 * (Math.PI / 3), radius: 56, size: 18, bobAmp: 5, bobDur: 3.2, bobDel: 1.2 },
+  { angle: 3 * (Math.PI / 3), radius: 58, size: 17, bobAmp: 8, bobDur: 4.8, bobDel: 0.3 },
+  { angle: 4 * (Math.PI / 3), radius: 60, size: 16, bobAmp: 6, bobDur: 3.5, bobDel: 1.8 },
+  { angle: 5 * (Math.PI / 3), radius: 56, size: 18, bobAmp: 7, bobDur: 4.2, bobDel: 0.9 },
 ];
 
 // ─── Single particle ──────────────────────────────────────────────────────────
