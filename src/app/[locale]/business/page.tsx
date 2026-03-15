@@ -80,6 +80,7 @@ export default function BusinessPage() {
         {/* Dashboard Container Scroll */}
         <div className="bg-[#F5ECDE]">
           <ContainerScroll
+            cardBg="#F5ECDE"
             titleComponent={
               <div>
                 <p className="text-base sm:text-lg font-semibold text-[#4B5563] mb-2 tracking-wide">
@@ -92,7 +93,7 @@ export default function BusinessPage() {
             }
           >
             <img
-              src="/business-hero.png"
+              src="/images/dashboard-mockup.png"
               alt="Supplier dashboard"
               className="w-full h-full object-cover object-center"
               draggable={false}

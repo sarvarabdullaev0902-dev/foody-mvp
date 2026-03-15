@@ -7,16 +7,19 @@ interface ContainerScrollProps {
   titleComponent: React.ReactNode;
   children: React.ReactNode;
   containerHeight?: string;
+  cardBg?: string;
 }
 
 function CardRotate({
   children,
   rotate,
   scale,
+  cardBg = '#1a1a1a',
 }: {
   children: React.ReactNode;
   rotate: MotionValue<number>;
   scale: MotionValue<number>;
+  cardBg?: string;
 }) {
   return (
     <motion.div
@@ -25,8 +28,9 @@ function CardRotate({
         scale,
         transformPerspective: 1200,
         transformOrigin: 'center top',
+        backgroundColor: cardBg,
       }}
-      className="mx-auto w-full max-w-5xl h-[26rem] sm:h-[34rem] md:h-[42rem] rounded-[30px] border-2 border-[#6C6C6C] overflow-hidden shadow-2xl bg-[#1a1a1a]"
+      className="mx-auto w-full max-w-5xl h-[26rem] sm:h-[34rem] md:h-[42rem] rounded-[30px] border-2 border-[#6C6C6C] overflow-hidden shadow-2xl"
     >
       {children}
     </motion.div>
@@ -37,6 +41,7 @@ export function ContainerScroll({
   titleComponent,
   children,
   containerHeight = 'h-[60rem] md:h-[70rem]',
+  cardBg,
 }: ContainerScrollProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -71,7 +76,7 @@ export function ContainerScroll({
         </motion.div>
 
         {/* Card */}
-        <CardRotate rotate={rotate} scale={scale}>
+        <CardRotate rotate={rotate} scale={scale} cardBg={cardBg}>
           {children}
         </CardRotate>
       </div>
