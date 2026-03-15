@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import ScrollProgress from '@/components/ui/ScrollProgress';
+import FloatingFoodIcons from '@/components/ui/FloatingFoodIcons';
 
 export default async function LocaleLayout({
   children,
@@ -15,6 +16,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <ScrollProgress />
+      <FloatingFoodIcons />
       {children}
     </NextIntlClientProvider>
   );

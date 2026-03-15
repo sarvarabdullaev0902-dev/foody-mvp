@@ -23,14 +23,6 @@ const CATEGORIES = [
 
 const FEATURED = DEMO_LISTINGS.slice(0, 6);
 
-const FLOATING_ICONS = [
-  { emoji: '🥐', top: '12%',  left: '7%',   anim: 'float-a', duration: '4s',   delay: '0s',   opacity: 0.22 },
-  { emoji: '🍕', top: '18%',  right: '9%',  anim: 'float-b', duration: '5.5s', delay: '0.6s', opacity: 0.18 },
-  { emoji: '🥗', top: '62%',  left: '4%',   anim: 'float-c', duration: '6s',   delay: '1s',   opacity: 0.20 },
-  { emoji: '☕', top: '68%',  right: '7%',  anim: 'float-a', duration: '3.8s', delay: '0.9s', opacity: 0.22 },
-  { emoji: '🌮', top: '38%',  left: '2%',   anim: 'float-b', duration: '5s',   delay: '1.6s', opacity: 0.16 },
-  { emoji: '🍜', top: '44%',  right: '2%',  anim: 'float-c', duration: '4.5s', delay: '2.1s', opacity: 0.18 },
-];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -120,20 +112,6 @@ export default function HomePage() {
             transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
           />
 
-          {/* Floating food icons */}
-          {FLOATING_ICONS.map(({ emoji, top, left, right, anim, duration, delay, opacity }) => (
-            <div
-              key={emoji}
-              className="absolute pointer-events-none select-none text-4xl"
-              style={{
-                top, left, right,
-                opacity,
-                animation: `${anim} ${duration} ease-in-out ${delay} infinite`,
-              }}
-            >
-              {emoji}
-            </div>
-          ))}
 
           <div className="relative max-w-4xl mx-auto px-4 py-24 md:py-32 text-center">
             <motion.span
