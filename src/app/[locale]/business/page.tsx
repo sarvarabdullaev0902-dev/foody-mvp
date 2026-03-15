@@ -92,9 +92,9 @@ export default function BusinessPage() {
             }
           >
             <img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&h=720&fit=crop"
+              src="/business-hero.png"
               alt="Supplier dashboard"
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-center"
               draggable={false}
             />
           </ContainerScroll>
