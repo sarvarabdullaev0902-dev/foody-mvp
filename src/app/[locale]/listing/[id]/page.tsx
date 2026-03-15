@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from '@/i18n/navigation';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -10,6 +11,8 @@ import { DEMO_LISTINGS } from '@/lib/demo-listings';
 import { useCart } from '@/lib/cart-context';
 import { useToast } from '@/components/ui/useToast';
 import Toast from '@/components/ui/Toast';
+
+const ListingMap = dynamic(() => import('@/components/map/ListingMap'), { ssr: false });
 
 // Extended detail data keyed by listing id
 const LISTING_DETAILS: Record<number, {
@@ -107,9 +110,6 @@ export default function ListingDetailPage() {
     (l) => l.category === listing.category && l.id !== listing.id
   ).slice(0, 3);
 
-  // OSM iframe bbox centered on supplier
-  const delta = 0.015;
-  const osmBbox = `${detail.lon - delta}%2C${detail.lat - delta * 0.6}%2C${detail.lon + delta}%2C${detail.lat + delta * 0.6}`;
 
   return (
     <div className="min-h-screen bg-[#F5ECDE]">
@@ -211,22 +211,8 @@ export default function ListingDetailPage() {
               <div className="px-5 pt-5 pb-3">
                 <h2 className="font-bold text-gray-900 text-sm uppercase tracking-wide">{t('map_preview')}</h2>
               </div>
-              <div className="h-48 relative">
-                <iframe
-                  src={`https://www.openstreetmap.org/export/embed.html?bbox=${osmBbox}&layer=mapnik`}
-                  className="absolute inset-0 w-full h-full border-0"
-                  style={{ pointerEvents: 'none' }}
-                  title="Supplier location"
-                />
-                {/* Center pin */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="flex flex-col items-center -translate-y-3">
-                    <div className="w-9 h-9 bg-[#E8594F] rounded-full border-3 border-white shadow-xl flex items-center justify-center text-white text-base">
-                      {CATEGORY_ICONS[listing.category]}
-                    </div>
-                    <div className="w-2 h-2 bg-[#E8594F] rotate-45 -mt-1" />
-                  </div>
-                </div>
+              <div className="h-48">
+                <ListingMap lat={detail.lat} lng={detail.lon} category={listing.category} />
               </div>
             </div>
           </div>
