@@ -9,25 +9,26 @@ import Footer from '@/components/layout/Footer';
 import PageTransition from '@/components/ui/PageTransition';
 import CountUp from '@/components/ui/CountUp';
 
-// Confetti dots for section 3 (happy customer) panel
+// Confetti dots for section 3 (impact) panel
 const CONFETTI = [
   { x: -85, y: -55, c: '#E8594F', s: 9 },
   { x: 85, y: -65, c: '#F4845F', s: 11 },
   { x: -80, y: 25, c: '#FAD6CC', s: 7 },
-  { x: 85, y: 35, c: '#10B981', s: 9 },
-  { x: -45, y: 85, c: '#F59E0B', s: 8 },
-  { x: 65, y: 80, c: '#8B5CF6', s: 10 },
+  { x: 85, y: 35, c: '#E8594F', s: 9 },
+  { x: -45, y: 85, c: '#F4845F', s: 8 },
+  { x: 65, y: 80, c: '#FAD6CC', s: 10 },
   { x: 10, y: -90, c: '#E8594F', s: 7 },
-  { x: -35, y: -85, c: '#10B981', s: 8 },
+  { x: -35, y: -85, c: '#F9C0B8', s: 8 },
 ];
 
+// Panel gradient backgrounds — all using brand palette
 const PANEL_BG = [
-  'from-emerald-100 to-emerald-50 border-emerald-200',
-  'from-amber-100 to-amber-50 border-amber-200',
-  'from-[#FAD6CC] to-[#F9C0B8] border-[#F9C0B8]',
-  'from-emerald-100 to-emerald-50 border-emerald-200',
-  'from-[#F5ECDE] to-[#FAD6CC] border-[#F9C0B8]',
-  'from-violet-100 to-violet-50 border-violet-200',
+  'from-emerald-100 to-emerald-50 border-emerald-200',   // 0 Fresh
+  'from-amber-100 to-amber-50 border-amber-200',          // 1 Expiring
+  'from-[#FAD6CC] to-[#F9C0B8] border-[#F9C0B8]',        // 2 Rescued
+  'from-emerald-100 to-emerald-50 border-emerald-200',   // 3 Impact
+  'from-[#F5ECDE] to-[#FAD6CC] border-[#F9C0B8]',        // 4 Team
+  'from-[#FAD6CC] to-[#F9C0B8] border-[#E8594F]/30',     // 5 Future (brand, no violet)
 ];
 
 const DOT_ACTIVE = [
@@ -36,19 +37,21 @@ const DOT_ACTIVE = [
   'bg-[#E8594F]',
   'bg-emerald-500',
   'bg-[#E8594F]',
-  'bg-violet-600',
+  'bg-[#E8594F]',  // was violet, now brand red
 ];
 
-function FoodPanel({ section }: { section: number }) {
+type TFunc = ReturnType<typeof useTranslations>;
+
+function FoodPanel({ section, t }: { section: number; t: TFunc }) {
   return (
     <motion.div
       initial={{ y: -60, rotate: -360, opacity: 0, scale: 0.7 }}
       animate={{ y: 0, rotate: 0, opacity: 1, scale: 1, transition: { type: 'spring', damping: 20, stiffness: 180 } }}
       exit={{ y: 60, rotate: 360, opacity: 0, scale: 0.7, transition: { duration: 0.22, ease: 'easeIn' } }}
-      className={`relative w-60 h-60 xl:w-68 xl:h-68 rounded-3xl bg-gradient-to-br ${PANEL_BG[section]} border-2 flex flex-col items-center justify-center shadow-2xl overflow-visible`}
+      className={`relative rounded-3xl bg-gradient-to-br ${PANEL_BG[section]} border-2 flex flex-col items-center justify-center shadow-2xl overflow-visible`}
       style={{ width: 240, height: 240 }}
     >
-      {/* Section 0 — Fresh croissant floating */}
+      {/* 0 — Fresh croissant floating */}
       {section === 0 && (
         <motion.div
           animate={{ y: [-8, 8, -8] }}
@@ -59,7 +62,7 @@ function FoodPanel({ section }: { section: number }) {
         </motion.div>
       )}
 
-      {/* Section 1 — Expiring with clock badge + draining bar */}
+      {/* 1 — Expiring: clock badge + draining progress bar */}
       {section === 1 && (
         <div className="flex flex-col items-center gap-4">
           <div className="relative">
@@ -81,7 +84,7 @@ function FoodPanel({ section }: { section: number }) {
         </div>
       )}
 
-      {/* Section 2 — Rescued with -50% bounce badge + checkmark */}
+      {/* 2 — Rescued: -50% badge + checkmark */}
       {section === 2 && (
         <div className="relative flex items-center justify-center">
           <div className="text-8xl select-none">🥐</div>
@@ -103,7 +106,7 @@ function FoodPanel({ section }: { section: number }) {
         </div>
       )}
 
-      {/* Section 3 — Happy customer: plate with confetti burst */}
+      {/* 3 — Impact: plate + confetti burst */}
       {section === 3 && (
         <div className="relative flex flex-col items-center justify-center">
           {CONFETTI.map((dot, i) => (
@@ -120,7 +123,7 @@ function FoodPanel({ section }: { section: number }) {
         </div>
       )}
 
-      {/* Section 4 — Team: founder initials */}
+      {/* 4 — Team: founder initials */}
       {section === 4 && (
         <div className="flex flex-col items-center gap-5">
           <div className="flex gap-3">
@@ -140,7 +143,7 @@ function FoodPanel({ section }: { section: number }) {
         </div>
       )}
 
-      {/* Section 5 — Future: rocket + roadmap */}
+      {/* 5 — Future: rocket + roadmap (brand colors, no violet) */}
       {section === 5 && (
         <div className="flex flex-col items-center gap-3">
           <motion.div
@@ -151,19 +154,15 @@ function FoodPanel({ section }: { section: number }) {
             🚀
           </motion.div>
           <div className="flex flex-col items-start gap-1.5 mt-1">
-            {[
-              { city: 'Toshkent', active: true },
-              { city: "O'zbekiston", active: false },
-              { city: 'Markaziy Osiyo', active: false },
-            ].map(({ city, active }, i) => (
+            {[t('roadmap1'), t('roadmap2'), t('roadmap3')].map((city, i) => (
               <motion.div
-                key={city}
+                key={i}
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.15 }}
-                className={`flex items-center gap-1.5 text-xs font-semibold ${active ? 'text-violet-700' : 'text-violet-400'}`}
+                className={`flex items-center gap-1.5 text-xs font-semibold ${i === 0 ? 'text-[#E8594F]' : 'text-[#E8594F]/50'}`}
               >
-                <span className={`w-1.5 h-1.5 rounded-full ${active ? 'bg-violet-600' : 'bg-violet-300'}`} />
+                <span className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-[#E8594F]' : 'bg-[#F9C0B8]'}`} />
                 {city}
               </motion.div>
             ))}
@@ -174,16 +173,43 @@ function FoodPanel({ section }: { section: number }) {
   );
 }
 
+// Shared card wrapper for rounded floating sections
+function SectionCard({
+  divRef,
+  bg,
+  gradientStyle,
+  children,
+  className = '',
+}: {
+  divRef: React.RefObject<HTMLDivElement>;
+  bg?: string;
+  gradientStyle?: React.CSSProperties;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      ref={divRef}
+      className={`mx-4 md:mx-6 lg:mx-4 rounded-2xl shadow-md overflow-hidden scroll-mt-24 ${bg ?? ''} ${className}`}
+      style={gradientStyle}
+    >
+      <div className="min-h-[85vh] flex flex-col justify-center py-20 px-6 lg:pl-10 lg:pr-12">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function AboutPage() {
   const t = useTranslations('about');
   const [active, setActive] = useState(0);
 
-  const s0 = useRef<HTMLElement>(null);
-  const s1 = useRef<HTMLElement>(null);
-  const s2 = useRef<HTMLElement>(null);
-  const s3 = useRef<HTMLElement>(null);
-  const s4 = useRef<HTMLElement>(null);
-  const s5 = useRef<HTMLElement>(null);
+  const s0 = useRef<HTMLDivElement>(null);
+  const s1 = useRef<HTMLDivElement>(null);
+  const s2 = useRef<HTMLDivElement>(null);
+  const s3 = useRef<HTMLDivElement>(null);
+  const s4 = useRef<HTMLDivElement>(null);
+  const s5 = useRef<HTMLDivElement>(null);
 
   const v0 = useInView(s0, { amount: 0.3 });
   const v1 = useInView(s1, { amount: 0.3 });
@@ -210,126 +236,80 @@ export default function AboutPage() {
     { end: 50000, suffix: '+', decimals: 0, label: t('impact4_label') },
   ];
 
-  const sectionClass = 'min-h-[90vh] flex flex-col justify-center py-28 px-6 lg:pl-10 lg:pr-20 scroll-mt-24';
+  const fadeIn = (delay = 0) => ({
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.5, delay },
+    viewport: { once: true },
+  });
 
   return (
     <PageTransition>
       <Navbar />
-      <main>
+      {/* Cream page background — sections float as rounded cards on top */}
+      <main className="bg-[#F5ECDE] pt-4 pb-10">
         <div className="relative">
           <div className="lg:max-w-6xl lg:mx-auto">
             <div className="lg:flex">
 
-              {/* ── Left column: stacked sections ── */}
-              <div className="flex-1 min-w-0">
+              {/* ── Left column: rounded section cards ── */}
+              <div className="flex-1 min-w-0 space-y-4">
 
                 {/* Section 0: Mission / Fresh food */}
-                <section ref={s0} className={`${sectionClass} bg-white`}>
+                <SectionCard divRef={s0} bg="bg-white">
                   <div className="lg:hidden text-6xl mb-8 select-none">🥐</div>
-                  <motion.span
-                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }} viewport={{ once: true }}
-                    className="inline-block text-xs font-bold text-emerald-600 uppercase tracking-widest mb-4 bg-emerald-50 px-3 py-1 rounded-full w-fit"
-                  >
+                  <motion.span {...fadeIn(0)} className="inline-block text-xs font-bold text-emerald-600 uppercase tracking-widest mb-4 bg-emerald-50 px-3 py-1 rounded-full w-fit">
                     {t('sec1_eyebrow')}
                   </motion.span>
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }}
-                    className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-6 leading-tight"
-                  >
+                  <motion.h2 {...fadeIn(0.1)} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-6 leading-tight">
                     {t('mission_title')}
                   </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}
-                    className="text-slate-600 text-lg leading-relaxed max-w-lg"
-                  >
+                  <motion.p {...fadeIn(0.2)} className="text-slate-600 text-lg leading-relaxed max-w-lg">
                     {t('mission_text')}
                   </motion.p>
-                </section>
+                </SectionCard>
 
                 {/* Section 1: The Problem / Expiring */}
-                <section ref={s1} className={`${sectionClass} bg-amber-50`}>
+                <SectionCard divRef={s1} bg="bg-amber-50">
                   <div className="lg:hidden text-6xl mb-8 select-none">⏰</div>
-                  <motion.span
-                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }} viewport={{ once: true }}
-                    className="inline-block text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 bg-amber-100 px-3 py-1 rounded-full w-fit"
-                  >
+                  <motion.span {...fadeIn(0)} className="inline-block text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 bg-amber-100 px-3 py-1 rounded-full w-fit">
                     {t('sec2_eyebrow')}
                   </motion.span>
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }}
-                    className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-6 leading-tight"
-                  >
+                  <motion.h2 {...fadeIn(0.1)} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-6 leading-tight">
                     {t('sec2_title')}
                   </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}
-                    className="text-slate-600 text-lg leading-relaxed max-w-lg"
-                  >
+                  <motion.p {...fadeIn(0.2)} className="text-slate-600 text-lg leading-relaxed max-w-lg">
                     {t('sec2_body')}
                   </motion.p>
-                </section>
+                </SectionCard>
 
                 {/* Section 2: The Solution / Story */}
-                <section ref={s2} className={`${sectionClass} bg-[#FAD6CC]`}>
+                <SectionCard divRef={s2} bg="bg-[#FAD6CC]">
                   <div className="lg:hidden text-6xl mb-8 select-none">🏷️</div>
-                  <motion.span
-                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }} viewport={{ once: true }}
-                    className="inline-block text-xs font-bold text-[#E8594F] uppercase tracking-widest mb-4 bg-white/60 px-3 py-1 rounded-full w-fit"
-                  >
+                  <motion.span {...fadeIn(0)} className="inline-block text-xs font-bold text-[#E8594F] uppercase tracking-widest mb-4 bg-white/60 px-3 py-1 rounded-full w-fit">
                     {t('sec3_eyebrow')}
                   </motion.span>
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }}
-                    className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-6 leading-tight"
-                  >
+                  <motion.h2 {...fadeIn(0.1)} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-6 leading-tight">
                     {t('story_title')}
                   </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}
-                    className="text-slate-700 text-lg leading-relaxed max-w-lg"
-                  >
+                  <motion.p {...fadeIn(0.2)} className="text-slate-700 text-lg leading-relaxed max-w-lg">
                     {t('story_text')}
                   </motion.p>
-                </section>
+                </SectionCard>
 
                 {/* Section 3: Impact / Happy customer */}
-                <section ref={s3} className={`${sectionClass} bg-white`}>
+                <SectionCard divRef={s3} bg="bg-white">
                   <div className="lg:hidden text-6xl mb-8 select-none">🍽️</div>
-                  <motion.span
-                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }} viewport={{ once: true }}
-                    className="inline-block text-xs font-bold text-emerald-600 uppercase tracking-widest mb-4 bg-emerald-50 px-3 py-1 rounded-full w-fit"
-                  >
+                  <motion.span {...fadeIn(0)} className="inline-block text-xs font-bold text-emerald-600 uppercase tracking-widest mb-4 bg-emerald-50 px-3 py-1 rounded-full w-fit">
                     {t('impact_title')}
                   </motion.span>
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }}
-                    className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-6 leading-tight"
-                  >
+                  <motion.h2 {...fadeIn(0.1)} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-6 leading-tight">
                     {t('sec4_title')}
                   </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}
-                    className="text-slate-600 text-lg leading-relaxed max-w-lg mb-10"
-                  >
+                  <motion.p {...fadeIn(0.2)} className="text-slate-600 text-lg leading-relaxed max-w-lg mb-10">
                     {t('sec4_body')}
                   </motion.p>
-                  <motion.div
-                    initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }} viewport={{ once: true }}
-                    className="grid grid-cols-2 gap-4 max-w-sm"
-                  >
+                  <motion.div {...fadeIn(0.3)} className="grid grid-cols-2 gap-4 max-w-sm">
                     {impactStats.map(({ end, suffix, decimals, label }) => (
                       <div key={label} className="bg-emerald-50 rounded-2xl p-4">
                         <p className="text-2xl font-extrabold text-[#E8594F]">
@@ -339,23 +319,15 @@ export default function AboutPage() {
                       </div>
                     ))}
                   </motion.div>
-                </section>
+                </SectionCard>
 
                 {/* Section 4: Team */}
-                <section ref={s4} className={`${sectionClass} bg-[#F5ECDE]`}>
+                <SectionCard divRef={s4} bg="bg-[#F5ECDE]">
                   <div className="lg:hidden text-6xl mb-8 select-none">👥</div>
-                  <motion.span
-                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }} viewport={{ once: true }}
-                    className="inline-block text-xs font-bold text-[#E8594F] uppercase tracking-widest mb-4 bg-white/70 px-3 py-1 rounded-full w-fit"
-                  >
+                  <motion.span {...fadeIn(0)} className="inline-block text-xs font-bold text-[#E8594F] uppercase tracking-widest mb-4 bg-white/70 px-3 py-1 rounded-full w-fit">
                     {t('sec5_eyebrow')}
                   </motion.span>
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }}
-                    className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-10 leading-tight"
-                  >
+                  <motion.h2 {...fadeIn(0.1)} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-10 leading-tight">
                     {t('team_title')}
                   </motion.h2>
                   <div className="flex flex-col gap-4 max-w-md">
@@ -379,45 +351,29 @@ export default function AboutPage() {
                       </motion.div>
                     ))}
                   </div>
-                </section>
+                </SectionCard>
 
-                {/* Section 5: Vision + CTA / Future */}
-                <section
-                  ref={s5}
-                  className={`min-h-screen flex flex-col justify-center py-28 px-6 lg:pl-10 lg:pr-20 text-white scroll-mt-24`}
-                  style={{ background: 'linear-gradient(135deg, #E8594F 0%, #F4845F 50%, #D14840 100%)' }}
+                {/* Section 5: Vision + CTA — red gradient, rounded card */}
+                <SectionCard
+                  divRef={s5}
+                  gradientStyle={{ background: 'linear-gradient(135deg, #E8594F 0%, #F4845F 50%, #D14840 100%)' }}
+                  className="text-white"
                 >
                   <div className="lg:hidden text-6xl mb-8 select-none">🚀</div>
-                  <motion.span
-                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }} viewport={{ once: true }}
-                    className="inline-block text-xs font-bold text-white/70 uppercase tracking-widest mb-4 bg-white/20 border border-white/20 px-3 py-1 rounded-full w-fit"
-                  >
+                  <motion.span {...fadeIn(0)} className="inline-block text-xs font-bold text-white/70 uppercase tracking-widest mb-4 bg-white/20 border border-white/20 px-3 py-1 rounded-full w-fit">
                     {t('sec6_eyebrow')}
                   </motion.span>
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }}
-                    className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 leading-tight"
-                  >
+                  <motion.h2 {...fadeIn(0.1)} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
                     {t('vision_title')}
                   </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}
-                    className="text-white/80 text-lg leading-relaxed max-w-lg mb-10"
-                  >
+                  <motion.p {...fadeIn(0.2)} className="text-white/80 text-lg leading-relaxed max-w-lg mb-10">
                     {t('vision_text')}
                   </motion.p>
 
-                  {/* Roadmap */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }} viewport={{ once: true }}
-                    className="flex items-end gap-3 mb-10 flex-wrap"
-                  >
+                  {/* Roadmap — Toshkent → Uzbekistan → Central Asia */}
+                  <motion.div {...fadeIn(0.3)} className="flex items-end gap-3 mb-10 flex-wrap">
                     {[t('roadmap1'), t('roadmap2'), t('roadmap3')].map((city, i) => (
-                      <div key={city} className="flex items-center gap-3">
+                      <div key={i} className="flex items-center gap-3">
                         <div className="flex flex-col items-center">
                           <div className={`w-3 h-3 rounded-full border-2 ${i === 0 ? 'bg-white border-white' : 'bg-transparent border-white/40'}`} />
                           <p className={`text-xs font-bold mt-1.5 ${i === 0 ? 'text-white' : 'text-white/50'}`}>{city}</p>
@@ -428,25 +384,15 @@ export default function AboutPage() {
                   </motion.div>
 
                   {/* CTA buttons */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }} viewport={{ once: true }}
-                    className="flex flex-col sm:flex-row gap-3"
-                  >
-                    <Link
-                      href="/browse"
-                      className="inline-block bg-white text-[#E8594F] font-bold px-7 py-3.5 rounded-2xl hover:bg-[#FAD6CC] transition-colors text-center shadow-lg"
-                    >
+                  <motion.div {...fadeIn(0.4)} className="flex flex-col sm:flex-row gap-3">
+                    <Link href="/browse" className="inline-block bg-white text-[#E8594F] font-bold px-7 py-3.5 rounded-2xl hover:bg-[#FAD6CC] transition-colors text-center shadow-lg">
                       {t('cta_customers')}
                     </Link>
-                    <Link
-                      href="/supplier/register"
-                      className="inline-block bg-[#D14840] hover:bg-[#C03C35] text-white font-bold px-7 py-3.5 rounded-2xl transition-colors text-center shadow-lg"
-                    >
+                    <Link href="/supplier/register" className="inline-block bg-[#D14840] hover:bg-[#C03C35] text-white font-bold px-7 py-3.5 rounded-2xl transition-colors text-center shadow-lg">
                       {t('cta_suppliers')}
                     </Link>
                   </motion.div>
-                </section>
+                </SectionCard>
 
               </div>
 
@@ -458,9 +404,7 @@ export default function AboutPage() {
                 >
                   {/* Vertical dashed timeline + dots */}
                   <div className="relative flex flex-col justify-center h-[65%]">
-                    {/* Dashed line */}
                     <div className="absolute left-1.5 top-0 bottom-0 border-l-2 border-dashed border-slate-300" />
-                    {/* Dots */}
                     <div className="flex flex-col justify-between h-full py-1">
                       {DOT_ACTIVE.map((activeColor, i) => (
                         <motion.button
@@ -476,10 +420,10 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  {/* Food panel */}
+                  {/* Food icon panel */}
                   <div className="flex-1 flex items-center justify-center">
                     <AnimatePresence mode="wait">
-                      <FoodPanel key={active} section={active} />
+                      <FoodPanel key={active} section={active} t={t} />
                     </AnimatePresence>
                   </div>
                 </div>
