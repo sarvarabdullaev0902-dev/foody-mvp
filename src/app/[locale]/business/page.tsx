@@ -82,10 +82,10 @@ export default function BusinessPage() {
           <ContainerScroll
             titleComponent={
               <div>
-                <p className="text-base sm:text-lg font-medium text-[#E8594F] mb-2">
+                <p className="text-base sm:text-lg font-semibold text-[#4B5563] mb-2 tracking-wide">
                   {t('scroll_line1')}
                 </p>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#1E1E1E] leading-tight">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#E8594F] leading-tight">
                   {t('scroll_line2')}
                 </h2>
               </div>
