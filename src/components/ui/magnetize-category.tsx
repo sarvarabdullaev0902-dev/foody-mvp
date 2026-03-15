@@ -3,60 +3,53 @@
 import React, { useState, useCallback, memo, useEffect } from 'react';
 import { motion, useSpring, useAnimationControls } from 'framer-motion';
 import {
-  UtensilsCrossed, ChefHat, Soup, Beef, Fish,
-  Croissant, CakeSlice, Cookie, Wheat, Sandwich,
-  ShoppingCart, Apple, Milk, Package, Carrot,
+  UtensilsCrossed, ChefHat, Soup, Beef, Fish, Sandwich,
+  Croissant, CakeSlice, Cookie, Wheat, Cake,
+  ShoppingCart, Apple, Milk, Package, Carrot, Box,
   Pill, Heart, Shield, Stethoscope, Thermometer,
-  Coffee, CupSoda, IceCream, Cake, GlassWater,
-  Store, Box, Tag,
+  Coffee, CupSoda, IceCream, GlassWater,
+  Store, Tag,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const IDLE_OPACITY = 0.15;
-const HOVER_OPACITY = 0.8;
-const PARTICLE_COUNT = 6;
+const IDLE_OPACITY  = 0.25;
+const HOVER_OPACITY = 0.9;
+const BRAND_COLOR   = '#E8594F';
 
-// Icons per category (6 unique per category)
 const CATEGORY_ICONS: Record<string, React.ElementType[]> = {
-  restaurant:  [UtensilsCrossed, ChefHat, Soup, Beef, Fish, UtensilsCrossed],
-  bakery:      [Croissant, CakeSlice, Cookie, Wheat, Sandwich, Croissant],
-  supermarket: [ShoppingCart, Apple, Milk, Package, Carrot, ShoppingCart],
-  pharmacy:    [Pill, Heart, Shield, Stethoscope, Thermometer, Pill],
-  cafe:        [Coffee, CupSoda, IceCream, Cake, GlassWater, Coffee],
-  store:       [Store, Package, Box, Tag, ShoppingCart, Store],
+  restaurant:  [UtensilsCrossed, ChefHat, Soup, Beef, Fish, Sandwich],
+  bakery:      [Croissant, CakeSlice, Cookie, Wheat, Sandwich, Cake],
+  supermarket: [ShoppingCart, Apple, Milk, Package, Carrot, Box],
+  pharmacy:    [Pill, Heart, Shield, Stethoscope, Thermometer, Package],
+  cafe:        [Coffee, CupSoda, IceCream, Cake, GlassWater, Croissant],
+  store:       [Store, Package, Box, Tag, ShoppingCart, Apple],
 };
 
-// Stable seeded pseudo-random — no jitter between renders
-function sr(seed: number) {
-  const x = Math.sin(seed + 1) * 10000;
-  return x - Math.floor(x);
-}
-
+// 6 evenly-spaced clock positions (0°, 60°, 120°, 180°, 240°, 300°)
+// Deterministic — no randomness, same layout every render.
 interface ParticleConfig {
-  angle:   number; // radians — evenly spread + small seed jitter
-  radius:  number; // 35–45px from button center
-  size:    number; // 10–12px
-  bobDur:  number; // 4–6s bobbing cycle
-  bobDel:  number; // stagger offset
+  angle:  number; // radians
+  radius: number; // px from button center
+  size:   number; // px
+  bobAmp: number; // vertical bob ±px
+  bobDur: number; // seconds
+  bobDel: number; // start delay seconds
 }
 
-function buildParticles(catKey: string): ParticleConfig[] {
-  return Array.from({ length: PARTICLE_COUNT }, (_, i) => {
-    const seed = catKey.charCodeAt(0) * 100 + i * 17;
-    const angle  = (i / PARTICLE_COUNT) * Math.PI * 2 + (sr(seed) - 0.5) * 0.4;
-    const radius = 35 + sr(seed + 1) * 10;             // 35–45 px
-    const size   = 10 + Math.round(sr(seed + 4) * 2);  // 10–12 px
-    const bobDur = 4 + sr(seed + 5) * 2;               // 4–6 s
-    const bobDel = sr(seed + 6) * 3;                   // 0–3 s stagger
-    return { angle, radius, size, bobDur, bobDel };
-  });
-}
+const PARTICLES: ParticleConfig[] = [
+  { angle: 0 * (Math.PI / 3), radius: 46, size: 17, bobAmp: 6, bobDur: 3.8, bobDel: 0.0 },
+  { angle: 1 * (Math.PI / 3), radius: 48, size: 16, bobAmp: 7, bobDur: 4.5, bobDel: 0.6 },
+  { angle: 2 * (Math.PI / 3), radius: 44, size: 18, bobAmp: 5, bobDur: 3.2, bobDel: 1.2 },
+  { angle: 3 * (Math.PI / 3), radius: 46, size: 17, bobAmp: 8, bobDur: 4.8, bobDel: 0.3 },
+  { angle: 4 * (Math.PI / 3), radius: 48, size: 16, bobAmp: 6, bobDur: 3.5, bobDel: 1.8 },
+  { angle: 5 * (Math.PI / 3), radius: 44, size: 18, bobAmp: 7, bobDur: 4.2, bobDel: 0.9 },
+];
 
 // ─── Single particle ──────────────────────────────────────────────────────────
 
 interface ParticleProps {
-  Icon: React.ElementType;
-  cfg:  ParticleConfig;
+  Icon:    React.ElementType;
+  cfg:     ParticleConfig;
   hovered: boolean;
 }
 
@@ -64,15 +57,15 @@ const Particle = memo(function Particle({ Icon, cfg, hovered }: ParticleProps) {
   const restX = Math.cos(cfg.angle) * cfg.radius;
   const restY = Math.sin(cfg.angle) * cfg.radius;
 
-  // x and opacity via springs; y handled by animation controls for bobbing
-  const x       = useSpring(restX, { stiffness: 100, damping: 15 });
-  const opacity = useSpring(IDLE_OPACITY, { stiffness: 80, damping: 20 });
+  // x + opacity via springs; y via animation controls (loop vs spring)
+  const x       = useSpring(restX, { stiffness: 120, damping: 14 });
+  const opacity = useSpring(IDLE_OPACITY, { stiffness: 80, damping: 18 });
   const ctrl    = useAnimationControls();
 
   // Start idle bob on mount
   useEffect(() => {
     ctrl.start({
-      y: [restY - 4, restY + 4],
+      y: [restY - cfg.bobAmp, restY + cfg.bobAmp],
       transition: {
         duration:   cfg.bobDur,
         delay:      cfg.bobDel,
@@ -96,7 +89,7 @@ const Particle = memo(function Particle({ Icon, cfg, hovered }: ParticleProps) {
       x.set(restX);
       opacity.set(IDLE_OPACITY);
       ctrl.start({
-        y: [restY - 4, restY + 4],
+        y: [restY - cfg.bobAmp, restY + cfg.bobAmp],
         transition: {
           duration:   cfg.bobDur,
           repeat:     Infinity,
@@ -105,7 +98,7 @@ const Particle = memo(function Particle({ Icon, cfg, hovered }: ParticleProps) {
         },
       });
     }
-  }, [hovered, restX, restY, x, opacity, ctrl, cfg.bobDur]);
+  }, [hovered, restX, restY, x, opacity, ctrl, cfg.bobAmp, cfg.bobDur]);
 
   return (
     <motion.div
@@ -114,14 +107,14 @@ const Particle = memo(function Particle({ Icon, cfg, hovered }: ParticleProps) {
       style={{
         x,
         opacity,
-        left: '50%',
-        top:  '50%',
+        left:       '50%',
+        top:        '50%',
         marginLeft: -cfg.size / 2,
         marginTop:  -cfg.size / 2,
       }}
     >
       <Icon
-        style={{ width: cfg.size, height: cfg.size, color: '#E8594F' }}
+        style={{ width: cfg.size, height: cfg.size, color: BRAND_COLOR }}
         strokeWidth={1.5}
       />
     </motion.div>
@@ -147,27 +140,22 @@ export const MagnetizeCategory = memo(function MagnetizeCategory({
 }: MagnetizeCategoryProps) {
   const [hovered, setHovered] = useState(false);
 
-  const particles = React.useMemo(() => buildParticles(categoryKey), [categoryKey]);
-  const icons     = CATEGORY_ICONS[categoryKey] ?? CATEGORY_ICONS.store;
-
+  const icons   = CATEGORY_ICONS[categoryKey] ?? CATEGORY_ICONS.store;
   const onEnter = useCallback(() => setHovered(true),  []);
   const onLeave = useCallback(() => setHovered(false), []);
 
   return (
-    // Outer wrapper sizes to the button; overflow is visible by default so
-    // particles that orbit outside the button boundary are still rendered.
+    // overflow visible (default) — particles orbit outside the button bounds
     <div className="relative inline-flex">
-      {/* Particles — absolute, pointer-events-none, overflow visible */}
-      {particles.map((cfg, i) => (
+      {PARTICLES.map((cfg, i) => (
         <Particle
           key={i}
-          Icon={icons[i % icons.length]}
+          Icon={icons[i]}
           cfg={cfg}
           hovered={hovered}
         />
       ))}
 
-      {/* Button — z-10 keeps it visually above the particles */}
       <motion.button
         onClick={onClick}
         onMouseEnter={onEnter}
