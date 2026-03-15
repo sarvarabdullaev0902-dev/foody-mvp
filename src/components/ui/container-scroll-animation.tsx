@@ -26,7 +26,7 @@ function CardRotate({
         transformPerspective: 1200,
         transformOrigin: 'center top',
       }}
-      className="mx-auto w-full max-w-5xl h-[26rem] sm:h-[34rem] md:h-[42rem] rounded-[30px] border-2 border-[#6C6C6C] overflow-hidden shadow-2xl"
+      className="mx-auto w-full max-w-5xl h-[26rem] sm:h-[34rem] md:h-[42rem] rounded-[30px] border-2 border-[#6C6C6C] overflow-hidden shadow-2xl bg-[#1a1a1a]"
     >
       {children}
     </motion.div>
