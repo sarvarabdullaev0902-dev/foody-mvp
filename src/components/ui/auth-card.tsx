@@ -59,7 +59,7 @@ export default function AuthCard({ children, maxWidth = 'max-w-md' }: AuthCardPr
       <div className="min-h-screen relative flex items-start sm:items-center justify-center px-4 py-10 overflow-x-hidden">
 
         {/* Static page background — no animation, no cost */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FAD6CC]/70 via-[#F5ECDE] to-white/90 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FAD6CC]/70 via-[#F5ECDE] to-[#FAD6CC]/30 pointer-events-none" />
 
         {/* Glow blobs — CSS animations (compositor thread), reduced blur, pointer-events-none */}
         <div

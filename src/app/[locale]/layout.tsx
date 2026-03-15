@@ -18,7 +18,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <ListingsProvider>
         <ScrollProgress />
-        <div className="relative">
+        <div className="relative overflow-x-hidden">
           <FloatingFoodIcons />
           {children}
         </div>
