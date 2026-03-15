@@ -44,7 +44,8 @@ export default function AppInfoPage() {
             <img
               src="/grocery-hero.jpg"
               alt="Foody Moody app"
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-contain"
+              style={{ backgroundColor: '#F0E6D3' }}
               draggable={false}
             />
           </ContainerScroll>
