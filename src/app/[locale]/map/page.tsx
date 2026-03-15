@@ -15,7 +15,7 @@ const CATEGORY_COLORS: Record<string, { bg: string; border: string; text: string
 
 const MAP_SUPPLIERS = [
   { id: 1, name: 'Coffee House',   category: 'cafe',        deals: 6,  distance: '0.3', area: 'Yunusobod',     x: 50, y: 44 },
-  { id: 2, name: 'Salom Bakery',   category: 'bakery',      deals: 5,  distance: '0.5', area: 'Chilonzor',     x: 33, y: 37 },
+  { id: 2, name: 'Salom Bakery',   category: 'bakery',      deals: 5,  distance: '0.5', area: 'Yashnobod',     x: 33, y: 37 },
   { id: 3, name: 'La Piazza',      category: 'restaurant',  deals: 3,  distance: '0.8', area: 'Mirzo Ulugbek', x: 63, y: 55 },
   { id: 4, name: 'Smart Market',   category: 'supermarket', deals: 9,  distance: '0.9', area: 'Shayxontohur',  x: 26, y: 62 },
   { id: 5, name: 'Green Market',   category: 'supermarket', deals: 8,  distance: '1.2', area: 'Yakkasaroy',    x: 72, y: 32 },
