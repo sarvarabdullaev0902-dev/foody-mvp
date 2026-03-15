@@ -373,7 +373,21 @@
     "impact3_value": "150+",
     "impact3_label": "Partner businesses",
     "impact4_value": "50,000+",
-    "impact4_label": "Happy customers"
+    "impact4_label": "Happy customers",
+    "sec1_eyebrow": "Why does this matter?",
+    "sec2_eyebrow": "The Problem",
+    "sec2_title": "Millions of products are wasted every day",
+    "sec2_body": "In Uzbekistan, bakeries, restaurants and supermarkets throw away products with expiring dates every single day. This is not just an economic loss — it is a serious environmental issue.",
+    "sec3_eyebrow": "The Solution",
+    "sec4_title": "Every order makes a difference",
+    "sec4_body": "Through Foody Moody, thousands of families have saved money, hundreds of businesses have earned extra income, and countless products have been rescued from waste.",
+    "sec5_eyebrow": "Who we are",
+    "sec6_eyebrow": "The Future",
+    "roadmap1": "Tashkent",
+    "roadmap2": "Uzbekistan",
+    "roadmap3": "Central Asia",
+    "cta_customers": "Start as a customer",
+    "cta_suppliers": "Add your business"
   },
   "contact": {
     "hero_title": "Get in Touch",

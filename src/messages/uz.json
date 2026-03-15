@@ -373,7 +373,21 @@
     "impact3_value": "150+",
     "impact3_label": "Hamkor bizneslar",
     "impact4_value": "50 000+",
-    "impact4_label": "Mamnun mijozlar"
+    "impact4_label": "Mamnun mijozlar",
+    "sec1_eyebrow": "Nega bunga ehtiyoj bor?",
+    "sec2_eyebrow": "Muammo",
+    "sec2_title": "Har kuni millionlab mahsulot yo'q bo'ladi",
+    "sec2_body": "O'zbekistonda nonvoyxonalar, restoranlar va supermarketlarda har kuni muddati o'tib ketadigan mahsulotlar axlatga tashlanadi. Bu nafaqat iqtisodiy zarar, balki katta ekologik muammodir.",
+    "sec3_eyebrow": "Yechim",
+    "sec4_title": "Har bir buyurtma muhim",
+    "sec4_body": "Foody Moody orqali minglab oilalar tejamkorlik qildi, yuzlab bizneslar qo'shimcha daromad oldi va ko'plab mahsulotlar isrofdan qutuldi.",
+    "sec5_eyebrow": "Biz kim?",
+    "sec6_eyebrow": "Kelajak",
+    "roadmap1": "Toshkent",
+    "roadmap2": "O'zbekiston",
+    "roadmap3": "Markaziy Osiyo",
+    "cta_customers": "Mijoz sifatida boshlang",
+    "cta_suppliers": "Biznesni qo'shing"
   },
   "contact": {
     "hero_title": "Biz bilan bog'laning",

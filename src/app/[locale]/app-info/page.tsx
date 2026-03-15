@@ -42,7 +42,7 @@ export default function AppInfoPage() {
             }
           >
             <img
-              src="https://images.unsplash.com/photo-1526367790999-0150786686a2?w=1400&h=720&fit=crop"
+              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&h=720&fit=crop"
               alt="Foody Moody app"
               className="w-full h-full object-cover object-top"
               draggable={false}
