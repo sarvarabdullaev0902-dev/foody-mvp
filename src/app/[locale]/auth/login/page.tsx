@@ -29,7 +29,7 @@ export default function LoginPage() {
   };
 
   const inputCls =
-    'w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E8594F] focus:border-transparent transition-colors';
+    'w-full px-4 py-3 rounded-xl border border-slate-200/80 bg-white/70 backdrop-blur-sm text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E8594F] focus:border-transparent transition-colors';
 
   return (
     <AuthCard>
