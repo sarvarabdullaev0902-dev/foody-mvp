@@ -95,7 +95,8 @@ export default function BusinessPage() {
             <img
               src="/images/dashboard-mockup.png"
               alt="Supplier dashboard"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-contain"
+              style={{ backgroundColor: '#F5ECDE' }}
               draggable={false}
             />
           </ContainerScroll>
