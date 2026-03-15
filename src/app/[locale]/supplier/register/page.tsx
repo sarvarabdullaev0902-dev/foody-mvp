@@ -38,7 +38,7 @@ export default function SupplierRegisterPage() {
   });
 
   const inputCls =
-    'w-full px-4 py-3 rounded-xl border border-slate-200/80 bg-white/70 backdrop-blur-sm text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E8594F] focus:border-transparent transition';
+    'w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#E8594F] focus:border-transparent transition-colors';
 
   return (
     <AuthCard maxWidth="max-w-lg">
@@ -82,7 +82,7 @@ export default function SupplierRegisterPage() {
         <select
           value={form.category}
           onChange={(e) => setForm({ ...form, category: e.target.value })}
-          className="w-full px-4 py-3 rounded-xl border border-slate-200/80 bg-white/70 backdrop-blur-sm text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#E8594F] focus:border-transparent transition appearance-none"
+          className="w-full px-4 py-3 rounded-xl border border-slate-200/80 bg-white text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#E8594F] focus:border-transparent transition appearance-none"
         >
           <option value="" disabled>
             {t('select_category')}
@@ -110,14 +110,14 @@ export default function SupplierRegisterPage() {
               type="time"
               value={form.hoursFrom}
               onChange={(e) => setForm({ ...form, hoursFrom: e.target.value })}
-              className="flex-1 px-3 py-3 rounded-xl border border-slate-200/80 bg-white/70 backdrop-blur-sm text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#E8594F] transition"
+              className="flex-1 px-3 py-3 rounded-xl border border-slate-200/80 bg-white text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#E8594F] transition"
             />
             <span className="text-slate-400 text-sm">—</span>
             <input
               type="time"
               value={form.hoursTo}
               onChange={(e) => setForm({ ...form, hoursTo: e.target.value })}
-              className="flex-1 px-3 py-3 rounded-xl border border-slate-200/80 bg-white/70 backdrop-blur-sm text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#E8594F] transition"
+              className="flex-1 px-3 py-3 rounded-xl border border-slate-200/80 bg-white text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#E8594F] transition"
             />
           </div>
         </div>
