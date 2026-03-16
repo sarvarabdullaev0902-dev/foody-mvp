@@ -69,7 +69,8 @@
     "no_results": "No deals match your filters",
     "clear_filters": "Clear filters",
     "prev": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "new_badge": "✨ New!"
   },
   "footer": {
     "tagline": "Quality products at affordable prices",
@@ -195,7 +196,12 @@
     "register_link": "Sign Up",
     "login_link": "My Store Login",
     "demo_hint": "Demo login: demo@foody.uz / demo123",
-    "error_invalid": "Incorrect email or password"
+    "error_invalid": "Incorrect email or password",
+    "biznes_badge": "BUSINESS",
+    "back_to_site": "← Back to main site",
+    "section_business": "Business information",
+    "section_contact": "Contact information",
+    "section_security": "Security"
   },
   "supplier_dashboard": {
     "nav": {
@@ -258,7 +264,16 @@
       "publish": "Publish Listing",
       "section_basic": "Basic info",
       "section_pricing": "Pricing & quantity",
-      "section_schedule": "Schedule"
+      "section_schedule": "Schedule",
+      "error_required": "Required field",
+      "error_enter_price": "Enter price",
+      "error_discount_price": "Discounted price must be less than original price",
+      "title_placeholder": "e.g. Assorted Pastry Box",
+      "desc_placeholder": "Tell about the product...",
+      "area_label": "Area (for map display)",
+      "submitting": "Loading...",
+      "toast_success": "✅ Offer successfully posted!",
+      "supplier_name_default": "My Store"
     },
     "listings": {
       "title": "My Listings",

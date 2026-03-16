@@ -285,7 +285,7 @@ export default function BrowsePage() {
                 <div key={item.id} className="relative">
                   {item.isNew && (
                     <span className="absolute top-3 left-3 z-20 bg-[#E8594F] text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow pointer-events-none">
-                      ✨ Yangi!
+                      {t('new_badge')}
                     </span>
                   )}
                   <ListingCard listing={item} view="grid" index={i} />
@@ -298,7 +298,7 @@ export default function BrowsePage() {
                 <div key={item.id} className="relative">
                   {item.isNew && (
                     <span className="absolute top-3 left-3 z-20 bg-[#E8594F] text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow pointer-events-none">
-                      ✨ Yangi!
+                      {t('new_badge')}
                     </span>
                   )}
                   <ListingCard listing={item} view="list" index={i} />

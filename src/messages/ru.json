@@ -69,7 +69,8 @@
     "no_results": "Нет предложений по вашим фильтрам",
     "clear_filters": "Сбросить фильтры",
     "prev": "Назад",
-    "next": "Вперёд"
+    "next": "Вперёд",
+    "new_badge": "✨ Новинка!"
   },
   "footer": {
     "tagline": "Качественные продукты по доступным ценам",
@@ -195,7 +196,12 @@
     "register_link": "Зарегистрироваться",
     "login_link": "Войти в магазин",
     "demo_hint": "Демо вход: demo@foody.uz / demo123",
-    "error_invalid": "Неверный email или пароль"
+    "error_invalid": "Неверный email или пароль",
+    "biznes_badge": "БИЗНЕС",
+    "back_to_site": "← На главный сайт",
+    "section_business": "Бизнес-информация",
+    "section_contact": "Контактная информация",
+    "section_security": "Безопасность"
   },
   "supplier_dashboard": {
     "nav": {
@@ -258,7 +264,16 @@
       "publish": "Опубликовать",
       "section_basic": "Основная информация",
       "section_pricing": "Цена и количество",
-      "section_schedule": "Расписание"
+      "section_schedule": "Расписание",
+      "error_required": "Обязательное поле",
+      "error_enter_price": "Введите цену",
+      "error_discount_price": "Цена со скидкой должна быть меньше оригинальной",
+      "title_placeholder": "Например: Assorted Pastry Box",
+      "desc_placeholder": "Расскажите о товаре...",
+      "area_label": "Район (для карты)",
+      "submitting": "Загрузка...",
+      "toast_success": "✅ Предложение успешно опубликовано!",
+      "supplier_name_default": "Мой магазин"
     },
     "listings": {
       "title": "Мои предложения",

@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Plus, Package, TrendingUp, ShoppingBag, Leaf } from 'lucide-react';
 
@@ -26,6 +26,11 @@ const STATUS_CLS: Record<string, string> = {
 export default function DashboardHome() {
   const t = useTranslations('supplier_dashboard');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
+  const todayStr = new Intl.DateTimeFormat(
+    locale === 'ru' ? 'ru-RU' : locale === 'uz' ? 'uz-UZ' : 'en-US',
+    { day: 'numeric', month: 'long', year: 'numeric' },
+  ).format(new Date());
 
   const stats = [
     { key: 'active_listings', value: '8', icon: Package, light: 'bg-emerald-50 text-emerald-600' },
@@ -42,7 +47,7 @@ export default function DashboardHome() {
           <h1 className="text-2xl font-bold text-slate-900">
             {t('home.welcome')}, Salom Bakery 👋
           </h1>
-          <p className="text-sm text-slate-500 mt-0.5">14-Mart, 2026</p>
+          <p className="text-sm text-slate-500 mt-0.5">{todayStr}</p>
         </div>
         <Link
           href="/supplier/dashboard/add-listing"

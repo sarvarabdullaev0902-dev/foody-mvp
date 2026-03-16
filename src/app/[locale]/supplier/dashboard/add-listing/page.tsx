@@ -49,11 +49,11 @@ export default function AddListingPage() {
 
   function validate(): boolean {
     const newErrors: Partial<Record<keyof AddListingForm, string>> = {};
-    if (!form.title.trim()) newErrors.title = 'Majburiy maydon';
-    if (!form.category) newErrors.category = 'Majburiy maydon';
-    if (!form.originalPrice || orig <= 0) newErrors.originalPrice = 'Narxni kiriting';
-    if (!form.discountedPrice || disc <= 0) newErrors.discountedPrice = 'Narxni kiriting';
-    if (disc >= orig) newErrors.discountedPrice = 'Chegirma narxi asl narxdan kam bo\'lishi kerak';
+    if (!form.title.trim()) newErrors.title = t('error_required');
+    if (!form.category) newErrors.category = t('error_required');
+    if (!form.originalPrice || orig <= 0) newErrors.originalPrice = t('error_enter_price');
+    if (!form.discountedPrice || disc <= 0) newErrors.discountedPrice = t('error_enter_price');
+    if (disc >= orig) newErrors.discountedPrice = t('error_discount_price');
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }
@@ -62,7 +62,7 @@ export default function AddListingPage() {
     e.preventDefault();
     if (!validate()) return;
     setSubmitting(true);
-    addListing(form, "Mening Do'konim");
+    addListing(form, t('supplier_name_default'));
     showToast();
     setTimeout(() => router.push('/supplier/dashboard/listings'), 1400);
   }
@@ -75,7 +75,7 @@ export default function AddListingPage() {
 
   return (
     <div className="max-w-5xl space-y-6">
-      <Toast message="✅ Taklif muvaffaqiyatli joylandi!" visible={toastVisible} />
+      <Toast message={t('toast_success')} visible={toastVisible} />
 
       {/* Header */}
       <div className="flex items-center gap-3">
@@ -105,7 +105,7 @@ export default function AddListingPage() {
                   type="text"
                   value={form.title}
                   onChange={set('title')}
-                  placeholder="e.g. Assorted Pastry Box"
+                  placeholder={t('title_placeholder')}
                   className={inputCls('title')}
                 />
                 {errors.title && <p className="text-xs text-red-500 mt-1">{errors.title}</p>}
@@ -116,7 +116,7 @@ export default function AddListingPage() {
                 <textarea
                   value={form.description}
                   onChange={(e) => setForm((prev) => ({ ...prev, description: e.target.value }))}
-                  placeholder="Mahsulot haqida ma'lumot bering..."
+                  placeholder={t('desc_placeholder')}
                   rows={3}
                   className={`${inputCls()} resize-none`}
                 />
@@ -137,7 +137,7 @@ export default function AddListingPage() {
               <div>
                 <label className={labelCls}>
                   <MapPin className="w-3.5 h-3.5 inline mr-1" />
-                  Hudud (xaritada ko&apos;rinish uchun)
+                  {t('area_label')}
                 </label>
                 <select value={form.area} onChange={set('area')} className={inputCls()}>
                   {AREAS.map((a) => (
@@ -262,7 +262,7 @@ export default function AddListingPage() {
               disabled={submitting}
               className="w-full bg-[#E8594F] hover:bg-[#D14840] disabled:opacity-60 text-white font-bold py-4 rounded-2xl transition-colors shadow-sm text-sm"
             >
-              {submitting ? 'Yuklanmoqda...' : t('publish')}
+              {submitting ? t('submitting') : t('publish')}
             </button>
           </div>
 

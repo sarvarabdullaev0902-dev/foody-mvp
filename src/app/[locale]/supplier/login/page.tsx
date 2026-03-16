@@ -37,7 +37,7 @@ export default function SupplierLoginPage() {
             <Store className="w-5 h-5 text-[#E8594F]" />
           </span>
           <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#E8594F] text-white text-xs font-extrabold tracking-widest uppercase shadow-sm">
-            BIZNES
+            {t('biznes_badge')}
           </span>
         </div>
         <div className="text-center">
@@ -106,7 +106,7 @@ export default function SupplierLoginPage() {
       {/* Back to customer site */}
       <p className="text-center mt-4">
         <Link href="/" className="text-sm text-slate-400 hover:text-[#E8594F] transition-colors">
-          ← Asosiy saytga qaytish
+          {t('back_to_site')}
         </Link>
       </p>
     </AuthCard>

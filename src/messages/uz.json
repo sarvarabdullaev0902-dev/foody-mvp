@@ -69,7 +69,8 @@
     "no_results": "Filtrlarga mos taklif topilmadi",
     "clear_filters": "Filtrlarni tozalash",
     "prev": "Oldingi",
-    "next": "Keyingi"
+    "next": "Keyingi",
+    "new_badge": "✨ Yangi!"
   },
   "footer": {
     "tagline": "Sifatli mahsulotlar, arzon narxlarda",
@@ -195,7 +196,12 @@
     "register_link": "Ro'yxatdan o'tish",
     "login_link": "Do'konimga kirish",
     "demo_hint": "Demo kirish: demo@foody.uz / demo123",
-    "error_invalid": "Email yoki parol noto'g'ri"
+    "error_invalid": "Email yoki parol noto'g'ri",
+    "biznes_badge": "BIZNES",
+    "back_to_site": "← Asosiy saytga qaytish",
+    "section_business": "Biznes ma'lumotlari",
+    "section_contact": "Aloqa ma'lumotlari",
+    "section_security": "Xavfsizlik"
   },
   "supplier_dashboard": {
     "nav": {
@@ -258,7 +264,16 @@
       "publish": "Taklifni joylash",
       "section_basic": "Asosiy ma'lumotlar",
       "section_pricing": "Narx va miqdor",
-      "section_schedule": "Jadval"
+      "section_schedule": "Jadval",
+      "error_required": "Majburiy maydon",
+      "error_enter_price": "Narxni kiriting",
+      "error_discount_price": "Chegirma narxi asl narxdan kam bo'lishi kerak",
+      "title_placeholder": "Masalan: Assorted Pastry Box",
+      "desc_placeholder": "Mahsulot haqida ma'lumot bering...",
+      "area_label": "Hudud (xaritada ko'rinish uchun)",
+      "submitting": "Yuklanmoqda...",
+      "toast_success": "✅ Taklif muvaffaqiyatli joylandi!",
+      "supplier_name_default": "Mening Do'konim"
     },
     "listings": {
       "title": "Mening takliflarim",
