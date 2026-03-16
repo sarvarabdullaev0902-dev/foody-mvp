@@ -30,105 +30,68 @@ function SectionWrapper({ children, className = '' }: { children: React.ReactNod
   );
 }
 
-// ─── CRACKING GLOBE ────────────────────────────────────────────────────────────
-function CrackingGlobe({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
-  const crack1 = useTransform(scrollYProgress, [0.08, 0.32], [0, 1]);
-  const crack2 = useTransform(scrollYProgress, [0.22, 0.46], [0, 1]);
-  const crack3 = useTransform(scrollYProgress, [0.38, 0.60], [0, 1]);
-  const crackOv = useTransform(scrollYProgress, [0.1, 0.48, 0.74], [0, 0.55, 0]);
-  const healGlow = useTransform(scrollYProgress, [0.70, 0.90], [0, 1]);
-  const globeScl = useTransform(scrollYProgress, [0, 0.48, 0.74, 1], [1, 0.93, 0.97, 1.05]);
+// ─── SCROLL RING — clean minimal progress ring ────────────────────────────────
+function ScrollRing({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
+  const r = 82;
+  const circumference = 2 * Math.PI * r; // ≈ 515
+
+  // Arc fills from empty to full as page scrolls 0 → 72%
+  const dashOffset = useTransform(scrollYProgress, [0, 0.72], [circumference, 0]);
+  // Arc transitions white → green at the healing / "Foody Moody helps" phase
+  const arcColor = useTransform(
+    scrollYProgress,
+    [0.68, 0.84],
+    ['rgba(255,255,255,0.92)', 'rgba(52,211,153,0.95)'],
+  );
+  // Green outer glow fades in at healing phase
+  const glowOpacity = useTransform(scrollYProgress, [0.74, 0.92], [0, 1]);
 
   return (
-    <motion.div className="relative w-52 h-52 sm:w-56 sm:h-56 mx-auto" style={{ scale: globeScl }}>
-      <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-2xl">
-        <defs>
-          <radialGradient id="gBase" cx="38%" cy="32%" r="65%">
-            <stop offset="0%" stopColor="#72D9A0" />
-            <stop offset="45%" stopColor="#3A9FD8" />
-            <stop offset="100%" stopColor="#1B5FA8" />
-          </radialGradient>
-          <radialGradient id="gCrack" cx="50%" cy="50%" r="56%">
-            <stop offset="0%" stopColor="#E8594F" stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#D14840" stopOpacity="0" />
-          </radialGradient>
-          <radialGradient id="gHeal" cx="45%" cy="38%" r="62%">
-            <stop offset="0%" stopColor="#72D9A0" stopOpacity="0.75" />
-            <stop offset="65%" stopColor="#3A9FD8" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="#72D9A0" stopOpacity="0" />
-          </radialGradient>
-          <filter id="fGlow" x="-25%" y="-25%" width="150%" height="150%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <clipPath id="cGlobe"><circle cx="100" cy="100" r="87" /></clipPath>
-        </defs>
+    <div className="relative w-48 h-48 sm:w-52 sm:h-52 flex items-center justify-center">
+      {/* Frosted glass disc */}
+      <div
+        className="absolute inset-0 rounded-full"
+        style={{ backgroundColor: 'rgba(255,255,255,0.07)' }}
+      />
 
-        {/* Base globe */}
-        <circle cx="100" cy="100" r="87" fill="url(#gBase)" />
-
-        {/* Simplified continents */}
-        <g clipPath="url(#cGlobe)" opacity="0.38">
-          <ellipse cx="130" cy="68" rx="26" ry="19" fill="#2e7d32" />
-          <ellipse cx="112" cy="88" rx="16" ry="13" fill="#2e7d32" />
-          <ellipse cx="72" cy="73" rx="13" ry="22" fill="#2e7d32" />
-          <ellipse cx="70" cy="118" rx="15" ry="23" fill="#2e7d32" />
-          <ellipse cx="148" cy="108" rx="10" ry="14" fill="#2e7d32" />
-        </g>
-
-        {/* Lat/lon grid lines */}
-        <g clipPath="url(#cGlobe)" stroke="white" strokeWidth="0.7" fill="none" opacity="0.12">
-          <ellipse cx="100" cy="100" rx="87" ry="28" />
-          <ellipse cx="100" cy="100" rx="87" ry="58" />
-          <line x1="100" y1="13" x2="100" y2="187" />
-          <line x1="26" y1="42" x2="174" y2="158" />
-          <line x1="26" y1="158" x2="174" y2="42" />
-        </g>
-
-        {/* Border ring */}
-        <circle cx="100" cy="100" r="87" fill="none" stroke="rgba(255,255,255,0.28)" strokeWidth="1.5" />
-
-        {/* Red crack overlay */}
-        <motion.circle cx="100" cy="100" r="87" fill="url(#gCrack)" style={{ opacity: crackOv }} />
-
-        {/* Crack line 1 (vertical, main) */}
-        <motion.path
-          d="M 82 30 Q 86 55 78 75 Q 70 95 78 118 Q 86 138 80 160"
-          stroke="#7B0000" strokeWidth="3" fill="none" strokeLinecap="round"
-          style={{ pathLength: crack1, opacity: crackOv }}
+      {/* Ring SVG — rotated so arc starts at 12 o'clock */}
+      <svg
+        viewBox="0 0 200 200"
+        className="absolute inset-0 w-full h-full"
+        style={{ transform: 'rotate(-90deg)' }}
+      >
+        {/* Track ring */}
+        <circle
+          cx="100" cy="100" r={r}
+          fill="none"
+          stroke="rgba(255,255,255,0.18)"
+          strokeWidth="3"
         />
-        {/* Crack 1 — branch */}
-        <motion.path
-          d="M 78 75 Q 64 84 55 79"
-          stroke="#7B0000" strokeWidth="2" fill="none" strokeLinecap="round"
-          style={{ pathLength: crack1, opacity: crackOv }}
+        {/* Animated progress arc */}
+        <motion.circle
+          cx="100" cy="100" r={r}
+          fill="none"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          style={{ strokeDashoffset: dashOffset, stroke: arcColor }}
         />
-        {/* Crack line 2 (right side) */}
-        <motion.path
-          d="M 122 42 Q 132 62 124 82 Q 116 102 120 126"
-          stroke="#990000" strokeWidth="2.5" fill="none" strokeLinecap="round"
-          style={{ pathLength: crack2, opacity: crackOv }}
-        />
-        {/* Crack line 3 (horizontal) */}
-        <motion.path
-          d="M 48 102 Q 72 97 100 100 Q 128 103 155 96"
-          stroke="#7B0000" strokeWidth="1.8" fill="none" strokeLinecap="round"
-          style={{ pathLength: crack3, opacity: crackOv }}
-        />
-
-        {/* Heal glow overlay */}
-        <motion.circle cx="100" cy="100" r="87" fill="url(#gHeal)" style={{ opacity: healGlow }} filter="url(#fGlow)" />
       </svg>
 
-      {/* Outer green glow ring (healed state) */}
+      {/* Center: globe icon + label */}
+      <div className="relative z-10 flex flex-col items-center gap-2 text-center pointer-events-none">
+        <Globe className="w-11 h-11 text-white" strokeWidth={1.25} />
+        <span className="text-white/55 text-[10px] font-semibold tracking-[0.1em] uppercase leading-tight">
+          food wasted<br />globally
+        </span>
+      </div>
+
+      {/* Green heal glow */}
       <motion.div
-        className="absolute inset-[-8px] rounded-full pointer-events-none"
-        style={{ opacity: healGlow, boxShadow: '0 0 35px 8px rgba(114,217,160,0.55)' }}
+        className="absolute inset-0 rounded-full pointer-events-none"
+        style={{ opacity: glowOpacity, boxShadow: '0 0 55px 18px rgba(52,211,153,0.45)' }}
       />
-    </motion.div>
+    </div>
   );
 }
 
@@ -244,9 +207,9 @@ export default function FoodWastePage() {
                 </motion.div>
               </div>
 
-              {/* Globe */}
+              {/* Scroll ring */}
               <motion.div {...fadeUp(0.2)} className="shrink-0">
-                <CrackingGlobe scrollYProgress={scrollYProgress} />
+                <ScrollRing scrollYProgress={scrollYProgress} />
               </motion.div>
             </div>
           </section>
