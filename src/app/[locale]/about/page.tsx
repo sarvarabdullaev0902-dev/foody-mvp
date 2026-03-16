@@ -193,7 +193,7 @@ function SectionCard({
       className={`mx-4 md:mx-6 lg:mx-4 rounded-2xl shadow-md overflow-hidden scroll-mt-24 ${bg ?? ''} ${className}`}
       style={gradientStyle}
     >
-      <div className="min-h-[85vh] flex flex-col justify-center py-20 px-6 lg:pl-10 lg:pr-12">
+      <div className="min-h-screen flex flex-col justify-center py-20 px-6 lg:pl-10 lg:pr-12">
         {children}
       </div>
     </div>
