@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { motion, useScroll, useTransform, useInView, MotionValue } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import {
   Globe, TrendingDown, Flame, DollarSign, Users,
   UtensilsCrossed, Droplets, Trees, Factory,
@@ -30,67 +30,49 @@ function SectionWrapper({ children, className = '' }: { children: React.ReactNod
   );
 }
 
-// ─── SCROLL RING — clean minimal progress ring ────────────────────────────────
-function ScrollRing({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
-  const r = 82;
-  const circumference = 2 * Math.PI * r; // ≈ 515
+// ─── WASTE RING — 30% progress ring above global stats ───────────────────────
+function WasteRing() {
+  const t = useTranslations('food_waste');
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: '-60px' });
 
-  // Arc fills from empty to full as page scrolls 0 → 72%
-  const dashOffset = useTransform(scrollYProgress, [0, 0.72], [circumference, 0]);
-  // Arc transitions white → green at the healing / "Foody Moody helps" phase
-  const arcColor = useTransform(
-    scrollYProgress,
-    [0.68, 0.84],
-    ['rgba(255,255,255,0.92)', 'rgba(52,211,153,0.95)'],
-  );
-  // Green outer glow fades in at healing phase
-  const glowOpacity = useTransform(scrollYProgress, [0.74, 0.92], [0, 1]);
+  const r = 90;
+  const circumference = 2 * Math.PI * r; // ≈ 565
+  const targetOffset = circumference * (1 - 0.30); // 30% fill
 
   return (
-    <div className="relative w-48 h-48 sm:w-52 sm:h-52 flex items-center justify-center">
-      {/* Frosted glass disc */}
-      <div
-        className="absolute inset-0 rounded-full"
-        style={{ backgroundColor: 'rgba(255,255,255,0.07)' }}
-      />
-
-      {/* Ring SVG — rotated so arc starts at 12 o'clock */}
-      <svg
-        viewBox="0 0 200 200"
-        className="absolute inset-0 w-full h-full"
-        style={{ transform: 'rotate(-90deg)' }}
-      >
-        {/* Track ring */}
-        <circle
-          cx="100" cy="100" r={r}
-          fill="none"
-          stroke="rgba(255,255,255,0.18)"
-          strokeWidth="3"
-        />
-        {/* Animated progress arc */}
-        <motion.circle
-          cx="100" cy="100" r={r}
-          fill="none"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeDasharray={circumference}
-          style={{ strokeDashoffset: dashOffset, stroke: arcColor }}
-        />
-      </svg>
-
-      {/* Center: globe icon + label */}
-      <div className="relative z-10 flex flex-col items-center gap-2 text-center pointer-events-none">
-        <Globe className="w-11 h-11 text-white" strokeWidth={1.25} />
-        <span className="text-white/55 text-[10px] font-semibold tracking-[0.1em] uppercase leading-tight">
-          food wasted<br />globally
-        </span>
+    <div ref={ref} className="flex flex-col items-center gap-3 mb-12">
+      <div className="relative w-[220px] h-[220px] flex items-center justify-center">
+        <svg
+          viewBox="0 0 220 220"
+          className="absolute inset-0 w-full h-full"
+          style={{ transform: 'rotate(-90deg)' }}
+        >
+          {/* Track: peach */}
+          <circle cx="110" cy="110" r={r} fill="none" stroke="#FAD6CC" strokeWidth="10" />
+          {/* Progress arc: animates from empty → 30% on scroll-into-view */}
+          <motion.circle
+            cx="110" cy="110" r={r}
+            fill="none"
+            stroke="#E8594F"
+            strokeWidth="10"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            animate={inView ? { strokeDashoffset: targetOffset } : { strokeDashoffset: circumference }}
+            transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          />
+        </svg>
+        {/* Center: percentage counter */}
+        <div className="relative z-10 text-center">
+          <p className="text-5xl font-extrabold text-[#1E1E1E] leading-none">
+            <CountUp end={30} suffix="%" />
+          </p>
+        </div>
       </div>
-
-      {/* Green heal glow */}
-      <motion.div
-        className="absolute inset-0 rounded-full pointer-events-none"
-        style={{ opacity: glowOpacity, boxShadow: '0 0 55px 18px rgba(52,211,153,0.45)' }}
-      />
+      <p className="text-sm font-medium text-slate-500 text-center max-w-[200px] leading-snug">
+        {t('global_ring_label')}
+      </p>
     </div>
   );
 }
@@ -169,47 +151,37 @@ function TypewriterText({ text, className = '' }: { text: string; className?: st
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function FoodWastePage() {
   const t = useTranslations('food_waste');
-  const mainRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: mainRef });
 
   return (
     <PageTransition>
       <Navbar />
-      <main ref={mainRef} className="bg-[#F5ECDE] pt-4 pb-10 space-y-6">
+      <main className="bg-[#F5ECDE] pt-4 pb-10 space-y-6">
 
-        {/* SECTION 1: HERO with cracking globe */}
+        {/* SECTION 1: HERO */}
         <SectionWrapper>
           <section
-            className="relative text-white py-20 px-6 overflow-hidden"
+            className="relative text-white py-24 px-6 overflow-hidden"
             style={{ background: 'linear-gradient(135deg, #E8594F 0%, #F4845F 50%, #D14840 100%)' }}
           >
             <div className="absolute inset-0 opacity-10" style={{
               backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)',
               backgroundSize: '60px 60px',
             }} />
-            <div className="relative max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-10">
-              {/* Text */}
-              <div className="flex-1 text-center lg:text-left">
-                <motion.span {...fadeUp(0)} className="inline-block bg-white/20 border border-white/30 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest">
-                  {t('hero_eyebrow')}
-                </motion.span>
-                <motion.h1 {...fadeUp(0.08)} className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-5">
-                  {t('hero_title')}
-                </motion.h1>
-                <motion.p {...fadeUp(0.16)} className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                  {t('hero_subtitle')}
-                </motion.p>
-                <motion.div {...fadeUp(0.28)} className="mt-8 flex justify-center lg:justify-start">
-                  <div className="flex flex-col items-center gap-1 text-white/50">
-                    <ChevronRight className="w-4 h-4 rotate-90" />
-                    <ChevronRight className="w-4 h-4 rotate-90 -mt-2" />
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Scroll ring */}
-              <motion.div {...fadeUp(0.2)} className="shrink-0">
-                <ScrollRing scrollYProgress={scrollYProgress} />
+            <div className="relative max-w-3xl mx-auto text-center">
+              <motion.span {...fadeUp(0)} className="inline-block bg-white/20 border border-white/30 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest">
+                {t('hero_eyebrow')}
+              </motion.span>
+              <motion.h1 {...fadeUp(0.08)} className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-5">
+                {t('hero_title')}
+              </motion.h1>
+              <motion.p {...fadeUp(0.16)} className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed">
+                {t('hero_subtitle')}
+              </motion.p>
+              <motion.div {...fadeUp(0.28)} className="mt-8 flex justify-center">
+                <div className="flex flex-col items-center gap-1 text-white/50">
+                  <ChevronRight className="w-4 h-4 rotate-90" />
+                  <ChevronRight className="w-4 h-4 rotate-90 -mt-2" />
+                </div>
               </motion.div>
             </div>
           </section>
@@ -219,7 +191,7 @@ export default function FoodWastePage() {
         <SectionWrapper className="bg-white">
           <section className="py-16 px-6">
             <div className="max-w-5xl mx-auto">
-              <motion.div {...fadeUp(0)} className="text-center mb-12">
+              <motion.div {...fadeUp(0)} className="text-center mb-8">
                 <span className="inline-block text-xs font-bold text-[#E8594F] uppercase tracking-widest mb-3 bg-[#FAD6CC]/60 px-3 py-1 rounded-full">
                   {t('global_eyebrow')}
                 </span>
@@ -227,6 +199,12 @@ export default function FoodWastePage() {
                   {t('global_title')}
                 </h2>
               </motion.div>
+
+              {/* 30% waste ring */}
+              <motion.div {...fadeUp(0.06)} className="flex justify-center">
+                <WasteRing />
+              </motion.div>
+
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
                 {([
                   { icon: Globe,           countup: true,  end: 1.3, suffix: 'B t', decimals: 1, display: '',      label: 'g_stat1_label', color: 'bg-amber-50 text-amber-600' },
