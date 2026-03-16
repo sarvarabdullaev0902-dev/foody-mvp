@@ -30,6 +30,7 @@ export default function AppInfoPage() {
         {/* Container Scroll Hero — pt-6 adds breathing room below the navbar */}
         <div className="pt-6">
           <ContainerScroll
+            containerHeight="h-[50rem] md:h-[52rem]"
             titleComponent={
               <div>
                 <p className="text-base sm:text-lg font-semibold text-[#4B5563] mb-2 tracking-wide">
@@ -52,7 +53,7 @@ export default function AppInfoPage() {
         </div>
 
         {/* 3-step process — mt-8 adds clear visual separation after scroll section */}
-        <section className="py-20 px-6 bg-white mt-8">
+        <section className="py-20 px-6 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 text-center mb-14">
               {t('steps_title')}
@@ -73,7 +74,7 @@ export default function AppInfoPage() {
             </div>
             {/* Connector line (desktop only) */}
             <div className="hidden md:flex items-center justify-center -mt-[120px] mb-[60px] pointer-events-none">
-              <div className="w-full max-w-[420px] border-t-2 border-dashed border-emerald-200" />
+              <div className="w-[68%] border-t-2 border-dashed border-emerald-200" />
             </div>
           </div>
         </section>
@@ -113,7 +114,7 @@ export default function AppInfoPage() {
                 </svg>
                 {t('download_app_store')}
               </button>
-              <button className="flex items-center justify-center gap-3 bg-[#E8594F] hover:bg-[#D14840] text-white font-bold px-6 py-3.5 rounded-2xl transition-colors">
+              <button className="flex items-center justify-center gap-3 bg-white text-[#E8594F] font-bold px-6 py-3.5 rounded-2xl hover:bg-[#FAD6CC] transition-colors">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M3.18 23.76c.33.18.7.24 1.06.18l12.16-7.01-2.48-2.49-10.74 9.32zm-1.9-20.1C1.1 4 1 4.37 1 4.77v14.46c0 .4.1.77.28 1.1l.06.06 8.1-8.1v-.19L1.28 3.6l-.0-.06zm18.16 6.93-2.59-1.5-2.77 2.77 2.77 2.77 2.61-1.51c.74-.43.74-1.1-.02-1.53zM4.24.24C3.88.18 3.51.24 3.18.42L13.92 11.1l-2.48-2.49L4.24.24z"/>
                 </svg>
