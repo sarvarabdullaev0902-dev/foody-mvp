@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { useScroll, useTransform, motion, MotionValue } from 'framer-motion';
+import { useScroll, useTransform, useSpring, motion, MotionValue } from 'framer-motion';
 
 interface ContainerScrollProps {
   titleComponent: React.ReactNode;
@@ -58,10 +58,14 @@ export function ContainerScroll({
     target: containerRef,
   });
 
-  const rotate = useTransform(scrollYProgress, [0, 0.5], [20, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.88, 1]);
-  // Title drifts up as user scrolls — starts visible (translateY 0 → -60)
-  const translateY = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
+  const rotateRaw = useTransform(scrollYProgress, [0, 1], [20, 0]);
+  const scaleRaw = useTransform(scrollYProgress, [0, 1], [0.88, 1]);
+  const translateYRaw = useTransform(scrollYProgress, [0, 1], [0, -60]);
+
+  const springCfg = { stiffness: 60, damping: 20, mass: 0.8 };
+  const rotate = useSpring(rotateRaw, springCfg);
+  const scale = useSpring(scaleRaw, springCfg);
+  const translateY = useSpring(translateYRaw, springCfg);
 
   return (
     <div
