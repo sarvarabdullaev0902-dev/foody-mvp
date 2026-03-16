@@ -387,7 +387,8 @@
     "roadmap2": "Uzbekistan",
     "roadmap3": "Central Asia",
     "cta_customers": "Start as a customer",
-    "cta_suppliers": "Add your business"
+    "cta_suppliers": "Add your business",
+    "founders_label": "Founders"
   },
   "contact": {
     "hero_title": "Get in Touch",
@@ -495,6 +496,13 @@
     "cta_closing": "Every saved meal is a step for our planet.",
     "cta_customer": "Start as a customer",
     "cta_supplier": "Add your business",
-    "uz_chart_label": "Waste by restaurant size (tonnes / year)"
+    "uz_chart_label": "Waste by restaurant size (tonnes / year)",
+    "ca_country1": "Uzbekistan",
+    "ca_country2": "Kazakhstan",
+    "ca_country3": "Kyrgyzstan",
+    "ca_country4": "Tajikistan",
+    "ca_country5": "Turkmenistan",
+    "ca_country6": "Azerbaijan",
+    "ca_country7": "Turkey"
   }
 }

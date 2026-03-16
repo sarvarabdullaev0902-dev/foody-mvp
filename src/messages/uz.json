@@ -387,7 +387,8 @@
     "roadmap2": "O'zbekiston",
     "roadmap3": "Markaziy Osiyo",
     "cta_customers": "Mijoz sifatida boshlang",
-    "cta_suppliers": "Biznesni qo'shing"
+    "cta_suppliers": "Biznesni qo'shing",
+    "founders_label": "Asoschilari"
   },
   "contact": {
     "hero_title": "Biz bilan bog'laning",
@@ -495,6 +496,13 @@
     "cta_closing": "Har bir tejangan ovqat — sayyoramiz uchun qadam.",
     "cta_customer": "Iste'molchi sifatida boshlash",
     "cta_supplier": "Biznesingizni qo'shing",
-    "uz_chart_label": "Restoran hajmi bo'yicha isrof (tonna / yil)"
+    "uz_chart_label": "Restoran hajmi bo'yicha isrof (tonna / yil)",
+    "ca_country1": "O'zbekiston",
+    "ca_country2": "Qozog'iston",
+    "ca_country3": "Qirg'iziston",
+    "ca_country4": "Tojikiston",
+    "ca_country5": "Turkmaniston",
+    "ca_country6": "Ozarbayjon",
+    "ca_country7": "Turkiya"
   }
 }

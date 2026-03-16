@@ -201,9 +201,9 @@ export default function FoodWastePage() {
               <motion.div {...fadeUp(0.06)} className="mb-10">
                 <p className="text-sm font-semibold text-slate-500 text-center mb-4">{t('ca_fao_label')}</p>
                 <div className="flex flex-wrap justify-center gap-3">
-                  {(['Uzbekistan','Kazakhstan','Kyrgyzstan','Tajikistan','Turkmenistan','Azerbaijan','Turkey'] as const).map((c, i) => (
-                    <span key={c} className={`px-4 py-2 rounded-full text-sm font-bold border-2 ${i === 0 ? 'bg-[#E8594F] text-white border-[#E8594F]' : 'bg-slate-50 text-slate-600 border-slate-200'}`}>
-                      {c}
+                  {(['ca_country1','ca_country2','ca_country3','ca_country4','ca_country5','ca_country6','ca_country7'] as const).map((key, i) => (
+                    <span key={key} className={`px-4 py-2 rounded-full text-sm font-bold border-2 ${i === 0 ? 'bg-[#E8594F] text-white border-[#E8594F]' : 'bg-slate-50 text-slate-600 border-slate-200'}`}>
+                      {t(key)}
                     </span>
                   ))}
                 </div>

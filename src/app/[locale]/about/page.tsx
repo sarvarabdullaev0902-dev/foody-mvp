@@ -138,7 +138,7 @@ function FoodPanel({ section, t }: { section: number; t: TFunc }) {
           </div>
           <div className="text-center">
             <p className="text-[#E8594F] font-extrabold text-sm">Foody Moody</p>
-            <p className="text-slate-500 text-xs">Founders</p>
+            <p className="text-slate-500 text-xs">{t('founders_label')}</p>
           </div>
         </div>
       )}
