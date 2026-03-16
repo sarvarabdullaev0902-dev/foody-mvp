@@ -8,6 +8,12 @@ interface ContainerScrollProps {
   children: React.ReactNode;
   containerHeight?: string;
   cardBg?: string;
+  /** Height of the sticky inner panel. Defaults to calc(100vh - 6rem).
+   *  For compact layouts pass e.g. "calc(100% - 20px)" so it stays
+   *  within the container height and the sticky behaviour still works. */
+  stickyHeight?: string;
+  /** Tailwind height classes for the card frame. Defaults to the full-size variant. */
+  cardHeight?: string;
 }
 
 function CardRotate({
@@ -15,11 +21,13 @@ function CardRotate({
   rotate,
   scale,
   cardBg = '#1a1a1a',
+  cardHeight = 'h-[26rem] sm:h-[34rem] md:h-[42rem]',
 }: {
   children: React.ReactNode;
   rotate: MotionValue<number>;
   scale: MotionValue<number>;
   cardBg?: string;
+  cardHeight?: string;
 }) {
   return (
     <motion.div
@@ -30,7 +38,7 @@ function CardRotate({
         transformOrigin: 'center top',
         backgroundColor: cardBg,
       }}
-      className="mx-auto w-full max-w-5xl h-[26rem] sm:h-[34rem] md:h-[42rem] rounded-[30px] border-2 border-[#6C6C6C] overflow-hidden shadow-2xl"
+      className={`mx-auto w-full max-w-5xl ${cardHeight} rounded-[30px] border-2 border-[#6C6C6C] overflow-hidden shadow-2xl`}
     >
       {children}
     </motion.div>
@@ -42,6 +50,8 @@ export function ContainerScroll({
   children,
   containerHeight = 'h-[60rem] md:h-[70rem]',
   cardBg,
+  stickyHeight = 'calc(100vh - 6rem)',
+  cardHeight,
 }: ContainerScrollProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -58,14 +68,9 @@ export function ContainerScroll({
       ref={containerRef}
       className={`relative ${containerHeight} flex items-start justify-center`}
     >
-      {/*
-        sticky top-24 keeps the panel below the navbar (h-8 + h-16 = 96px = 6rem).
-        h-[calc(100vh-6rem)] fills the remaining viewport height.
-        overflow-hidden clips the tilted card edges without cutting the title.
-      */}
       <div
         className="sticky top-24 w-full flex flex-col items-center justify-start pt-8 md:pt-12 px-4 overflow-hidden"
-        style={{ height: 'calc(100vh - 6rem)' }}
+        style={{ height: stickyHeight }}
       >
         {/* Title — always visible; drifts up on scroll */}
         <motion.div
@@ -76,7 +81,7 @@ export function ContainerScroll({
         </motion.div>
 
         {/* Card */}
-        <CardRotate rotate={rotate} scale={scale} cardBg={cardBg}>
+        <CardRotate rotate={rotate} scale={scale} cardBg={cardBg} cardHeight={cardHeight}>
           {children}
         </CardRotate>
       </div>

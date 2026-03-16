@@ -30,7 +30,9 @@ export default function AppInfoPage() {
         {/* Container Scroll Hero — pt-6 adds breathing room below the navbar */}
         <div className="pt-6">
           <ContainerScroll
-            containerHeight="h-[52rem]"
+            containerHeight="h-[35rem] md:h-[45rem]"
+            stickyHeight="calc(100% - 20px)"
+            cardHeight="h-[24rem] md:h-[32rem]"
             titleComponent={
               <div>
                 <p className="text-base sm:text-lg font-semibold text-[#4B5563] mb-2 tracking-wide">
