@@ -30,7 +30,7 @@ export default function AppInfoPage() {
         {/* Container Scroll Hero — pt-6 adds breathing room below the navbar */}
         <div className="pt-6">
           <ContainerScroll
-            containerHeight="h-[50rem] md:h-[52rem]"
+            containerHeight="h-[52rem]"
             titleComponent={
               <div>
                 <p className="text-base sm:text-lg font-semibold text-[#4B5563] mb-2 tracking-wide">
@@ -52,8 +52,8 @@ export default function AppInfoPage() {
           </ContainerScroll>
         </div>
 
-        {/* 3-step process — mt-8 adds clear visual separation after scroll section */}
-        <section className="py-20 px-6 bg-white">
+        {/* 3-step process */}
+        <section className="pt-10 pb-20 px-6 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 text-center mb-14">
               {t('steps_title')}
