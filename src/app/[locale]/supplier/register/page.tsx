@@ -11,7 +11,6 @@ const CATEGORIES = [
   { value: 'restaurant', label: 'Restoran' },
   { value: 'bakery', label: 'Nonvoyxona' },
   { value: 'supermarket', label: 'Supermarket' },
-  { value: 'pharmacy', label: 'Dorixona' },
   { value: 'cafe', label: 'Kafe' },
   { value: 'store', label: "Do'kon" },
   { value: 'other', label: 'Boshqa' },

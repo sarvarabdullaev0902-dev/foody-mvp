@@ -8,7 +8,7 @@ import { useListings, AREA_COORDS, type AddListingForm } from '@/lib/listings-co
 import Toast from '@/components/ui/Toast';
 import { useToast } from '@/components/ui/useToast';
 
-const CATEGORIES = ['restaurant', 'bakery', 'supermarket', 'pharmacy', 'cafe', 'store', 'other'] as const;
+const CATEGORIES = ['restaurant', 'bakery', 'supermarket', 'cafe', 'store', 'other'] as const;
 const AREAS = Object.keys(AREA_COORDS);
 
 export default function AddListingPage() {

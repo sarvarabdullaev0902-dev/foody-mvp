@@ -6,7 +6,6 @@ import {
   UtensilsCrossed, ChefHat, Soup, Beef, Fish, Sandwich,
   Croissant, CakeSlice, Cookie, Wheat, Cake,
   ShoppingCart, Apple, Milk, Package, Carrot, Box,
-  Pill, Heart, Shield, Stethoscope, Thermometer,
   Coffee, CupSoda, IceCream, GlassWater,
   Store, Tag,
 } from 'lucide-react';
@@ -20,7 +19,6 @@ const CATEGORY_ICONS: Record<string, React.ElementType[]> = {
   restaurant:  [UtensilsCrossed, ChefHat, Soup, Beef, Fish, Sandwich],
   bakery:      [Croissant, CakeSlice, Cookie, Wheat, Sandwich, Cake],
   supermarket: [ShoppingCart, Apple, Milk, Package, Carrot, Box],
-  pharmacy:    [Pill, Heart, Shield, Stethoscope, Thermometer, Package],
   cafe:        [Coffee, CupSoda, IceCream, Cake, GlassWater, Croissant],
   store:       [Store, Package, Box, Tag, ShoppingCart, Apple],
 };

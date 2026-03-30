@@ -62,7 +62,7 @@ const DEFAULT_DETAIL = {
 
 const CATEGORY_ICONS: Record<string, string> = {
   restaurant: '🍽️', bakery: '🥐', supermarket: '🛒',
-  pharmacy: '💊', cafe: '☕', store: '🏪',
+  cafe: '☕', store: '🏪',
 };
 
 function StarRating({ rating }: { rating: number }) {

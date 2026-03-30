@@ -29,7 +29,6 @@ const CAT_COLORS: Record<string, { bg: string; icon: string }> = {
   bakery:      { bg: '#eab308', icon: '🥐' },
   restaurant:  { bg: '#ef4444', icon: '🍽️' },
   supermarket: { bg: '#3b82f6', icon: '🛒' },
-  pharmacy:    { bg: '#22c55e', icon: '💊' },
 };
 
 function buildIcon(category: string, deals: number, selected: boolean) {

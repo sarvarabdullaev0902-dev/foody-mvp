@@ -15,7 +15,6 @@ const CATEGORIES = [
   { key: 'restaurant', icon: '🍽️' },
   { key: 'bakery', icon: '🥐' },
   { key: 'supermarket', icon: '🛒' },
-  { key: 'pharmacy', icon: '💊' },
   { key: 'cafe', icon: '☕' },
   { key: 'store', icon: '🏪' },
 ] as const;

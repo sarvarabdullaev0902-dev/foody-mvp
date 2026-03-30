@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { UtensilsCrossed, Croissant, ShoppingCart, Pill, Coffee, Store, MapPin, TrendingDown, Leaf } from 'lucide-react';
+import { UtensilsCrossed, Croissant, ShoppingCart, Coffee, Store, MapPin, TrendingDown, Leaf } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ListingCard from '@/components/listings/ListingCard';
@@ -17,7 +17,6 @@ const CATEGORIES = [
   { key: 'restaurant', Icon: UtensilsCrossed },
   { key: 'bakery',     Icon: Croissant },
   { key: 'supermarket',Icon: ShoppingCart },
-  { key: 'pharmacy',   Icon: Pill },
   { key: 'cafe',       Icon: Coffee },
   { key: 'store',      Icon: Store },
 ] as const;

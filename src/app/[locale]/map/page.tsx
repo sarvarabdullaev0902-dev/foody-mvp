@@ -15,7 +15,6 @@ const CATEGORY_COLORS: Record<string, { bg: string; text: string; icon: string }
   bakery:      { bg: 'bg-yellow-500', text: 'text-yellow-700', icon: '🥐' },
   restaurant:  { bg: 'bg-red-500',    text: 'text-red-700',    icon: '🍽️' },
   supermarket: { bg: 'bg-blue-500',   text: 'text-blue-700',   icon: '🛒' },
-  pharmacy:    { bg: 'bg-green-500',  text: 'text-green-700',  icon: '💊' },
 };
 
 const MAP_SUPPLIERS: MapSupplier[] = [
@@ -26,7 +25,6 @@ const MAP_SUPPLIERS: MapSupplier[] = [
   { id: 5, name: 'Green Market',   category: 'supermarket', deals: 8,  distance: '1.2', area: 'Yakkasaroy',    lat: 41.278, lng: 69.295 },
   { id: 6, name: 'Magnit UZ',      category: 'supermarket', deals: 12, distance: '1.5', area: 'Uchtepa',       lat: 41.265, lng: 69.258 },
   { id: 7, name: 'Tandoor House',  category: 'restaurant',  deals: 2,  distance: '1.8', area: 'Olmazor',       lat: 41.322, lng: 69.218 },
-  { id: 8, name: 'Shifo Dorixona', category: 'pharmacy',    deals: 4,  distance: '2.1', area: 'Bektemir',      lat: 41.258, lng: 69.348 },
 ];
 
 export default function MapPage() {
