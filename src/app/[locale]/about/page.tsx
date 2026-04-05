@@ -127,14 +127,9 @@ function FoodPanel({ section, t }: { section: number; t: TFunc }) {
       {section === 4 && (
         <div className="flex flex-col items-center gap-5">
           <div className="flex gap-3">
-            {['MS', 'SA'].map((init) => (
-              <div
-                key={init}
-                className="w-16 h-16 rounded-2xl bg-[#E8594F] text-white font-extrabold text-xl flex items-center justify-center shadow-lg"
-              >
-                {init}
-              </div>
-            ))}
+            <div className="w-16 h-16 rounded-2xl bg-[#E8594F] text-white font-extrabold text-xl flex items-center justify-center shadow-lg">
+              SA
+            </div>
           </div>
           <div className="text-center">
             <p className="text-[#E8594F] font-extrabold text-sm">Foody Moody</p>
@@ -332,8 +327,7 @@ export default function AboutPage() {
                   </motion.h2>
                   <div className="flex flex-col gap-4 max-w-md">
                     {[
-                      { name: t('founder1_name'), role: t('founder1_role'), initials: 'MS' },
-                      { name: t('founder2_name'), role: t('founder2_role'), initials: 'SA' },
+                      { name: t('founder1_name'), role: t('founder1_role'), initials: 'SA' },
                     ].map(({ name, role, initials }, i) => (
                       <motion.div
                         key={name}

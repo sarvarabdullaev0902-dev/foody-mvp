@@ -83,7 +83,7 @@
     "address": "Tashkent, Yashnobod",
     "working_hours": "Mon–Fri: 9:00–18:00",
     "rights": "All rights reserved",
-    "founders": "Founder: Makhliyo Shodieva | Co-Founder: Sarvar Abdullaev"
+    "founders": "Founder: Sarvar Abdullaev"
   },
   "listing_detail": {
     "expires_in": "Expires in",
@@ -375,10 +375,8 @@
     "vision_title": "Our Vision",
     "vision_text": "In the future, Foody Moody plans to expand across all of Uzbekistan and then into other Central Asian countries, significantly reducing food waste across the region.",
     "team_title": "Team",
-    "founder1_name": "Makhliyo Shodieva",
+    "founder1_name": "Sarvar Abdullaev",
     "founder1_role": "Founder & CEO",
-    "founder2_name": "Sarvar Abdullaev",
-    "founder2_role": "Co-Founder & CTO",
     "impact_title": "Our Impact",
     "impact1_value": "10,000+",
     "impact1_label": "Meals saved",
