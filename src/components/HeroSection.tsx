@@ -192,15 +192,17 @@ export default function HeroSection({ t, tMap, tCat }: HeroSectionProps) {
             {/* Scroll-driven outer wrapper */}
             <motion.div
               style={{
-                y:      springY,
-                rotate: isMobile ? 0 : springRotate,
-                scale:  springScale,
+                y:          springY,
+                rotate:     isMobile ? 0 : springRotate,
+                scale:      springScale,
+                background: 'transparent',
               }}
             >
               {/* Idle float inner wrapper */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                style={{ background: 'transparent' }}
               >
                 <Image
                   src="/foody-bag.png"
@@ -208,6 +210,7 @@ export default function HeroSection({ t, tMap, tCat }: HeroSectionProps) {
                   width={420}
                   height={480}
                   priority
+                  placeholder="empty"
                   className="w-[280px] md:w-[420px] h-auto object-contain drop-shadow-2xl"
                 />
               </motion.div>
