@@ -1,7 +1,6 @@
 'use client';
 
-import { motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
@@ -19,7 +18,7 @@ const slideUp = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
@@ -28,7 +27,7 @@ const rightPanel = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] },
+    transition: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
@@ -37,7 +36,7 @@ const badgePop = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { type: 'spring' as const, stiffness: 380, damping: 18, delay: 0.7 },
+    transition: { type: 'spring' as const, stiffness: 380, damping: 18, delay: 0.8 },
   },
 };
 
@@ -51,7 +50,7 @@ const chipFade = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
@@ -59,197 +58,207 @@ const chipFade = {
 
 function BaguetteSVG() {
   return (
-    <svg width="38" height="110" viewBox="0 0 38 110" fill="none">
-      <ellipse cx="19" cy="55" rx="8" ry="52" fill="#D4A35A" />
-      <ellipse cx="19" cy="55" rx="6" ry="50" fill="#E8BC72" />
-      {[14, 26, 38, 50, 62, 74, 86].map((y) => (
-        <line key={y} x1="12" y1={y} x2="26" y2={y + 4} stroke="#C8943A" strokeWidth="1.2" strokeLinecap="round" />
+    <svg width="34" height="118" viewBox="0 0 34 118" fill="none">
+      {/* Body */}
+      <path d="M17 4 C10 6 7 18 7 38 C7 62 8 90 13 110 C14 114 16 116 17 116 C18 116 20 114 21 110 C26 90 27 62 27 38 C27 18 24 6 17 4Z" fill="#D4954A" />
+      {/* Highlight left side */}
+      <path d="M17 4 C12 8 10 20 10 38 C10 55 11 78 14 98 C14 98 12 70 13 40 C14 20 15 8 17 4Z" fill="#E8B060" />
+      {/* Score marks (diagonal slashes) */}
+      {[18, 30, 42, 54, 66, 78, 90].map((y) => (
+        <path key={y} d={`M10 ${y} Q17 ${y - 3} 24 ${y}`} stroke="#B07030" strokeWidth="1.4" strokeLinecap="round" fill="none" />
       ))}
-      <ellipse cx="19" cy="9" rx="5.5" ry="7" fill="#C8943A" />
-      <ellipse cx="19" cy="101" rx="5.5" ry="7" fill="#C8943A" />
+      {/* Tip ends */}
+      <ellipse cx="17" cy="6"   rx="4.5" ry="5.5" fill="#BF7E30" />
+      <ellipse cx="17" cy="112" rx="4.5" ry="5.5" fill="#BF7E30" />
     </svg>
   );
 }
 
 function BroccoliSVG() {
   return (
-    <svg width="52" height="72" viewBox="0 0 52 72" fill="none">
-      <rect x="22" y="38" width="8" height="34" rx="4" fill="#5D8A3C" />
-      <rect x="24" y="42" width="4" height="20" rx="2" fill="#4A7030" />
-      <circle cx="26" cy="28" r="18" fill="#5CAD3A" />
-      <circle cx="14" cy="34" r="12" fill="#5CAD3A" />
-      <circle cx="38" cy="34" r="12" fill="#5CAD3A" />
-      <circle cx="26" cy="18" r="10" fill="#6DC44A" />
-      <circle cx="16" cy="26" r="8" fill="#6DC44A" />
-      <circle cx="36" cy="26" r="8" fill="#6DC44A" />
-      <circle cx="26" cy="28" r="5" fill="#7ED654" />
-      <circle cx="16" cy="34" r="4" fill="#7ED654" />
-      <circle cx="36" cy="34" r="4" fill="#7ED654" />
+    <svg width="54" height="68" viewBox="0 0 54 68" fill="none">
+      {/* Stem */}
+      <rect x="23" y="40" width="8" height="26" rx="4" fill="#4A7A2E" />
+      <rect x="25" y="44" width="4" height="18" rx="2" fill="#3D6626" />
+      {/* Florets — back row */}
+      <circle cx="14" cy="36" r="11" fill="#4E9A30" />
+      <circle cx="40" cy="36" r="11" fill="#4E9A30" />
+      <circle cx="27" cy="30" r="14" fill="#52A432" />
+      {/* Florets — front highlights */}
+      <circle cx="13" cy="33" r="8"  fill="#62BE40" />
+      <circle cx="41" cy="33" r="8"  fill="#62BE40" />
+      <circle cx="27" cy="26" r="11" fill="#68C845" />
+      {/* Top bumps */}
+      <circle cx="20" cy="22" r="6"  fill="#74D450" />
+      <circle cx="34" cy="22" r="6"  fill="#74D450" />
+      <circle cx="27" cy="18" r="7"  fill="#7EDE58" />
     </svg>
   );
 }
 
 function AppleSVG() {
   return (
-    <svg width="52" height="60" viewBox="0 0 52 60" fill="none">
-      <path d="M26 10 C10 10 6 24 6 34 C6 48 14 58 22 58 C24 58 25 57 26 57 C27 57 28 58 30 58 C38 58 46 48 46 34 C46 24 42 10 26 10Z" fill="#D93C3C" />
-      <path d="M26 10 C18 10 8 18 8 32 C8 32 14 28 20 32 C20 32 16 16 26 10Z" fill="#E85555" />
-      <path d="M22 8 C22 4 26 2 26 2 C26 2 30 4 30 8" stroke="#5D8A3C" strokeWidth="2" strokeLinecap="round" fill="none" />
-      <path d="M26 2 C26 2 32 0 34 4" stroke="#5D8A3C" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-      <ellipse cx="18" cy="26" rx="5" ry="7" fill="#E86666" opacity="0.5" />
+    <svg width="50" height="56" viewBox="0 0 50 56" fill="none">
+      {/* Body */}
+      <path d="M25 9 C10 9 5 22 5 33 C5 46 13 55 21 55 C23 55 24 54 25 54 C26 54 27 55 29 55 C37 55 45 46 45 33 C45 22 40 9 25 9Z" fill="#C83030" />
+      {/* Left highlight */}
+      <path d="M25 9 C16 9 7 18 7 31 C9 28 15 27 18 31 C18 31 14 16 25 9Z" fill="#E04848" />
+      {/* Shine */}
+      <ellipse cx="17" cy="22" rx="4" ry="6" fill="#E86060" opacity="0.45" />
+      {/* Center divot */}
+      <path d="M22 9 C22 6 25 4 25 4 C25 4 28 6 28 9" stroke="#4A7A2E" strokeWidth="2" strokeLinecap="round" fill="none" />
+      {/* Leaf */}
+      <path d="M25 4 C25 4 30 2 32 6 C30 5 27 5 25 4Z" fill="#4A7A2E" />
     </svg>
   );
 }
 
 function CarrotSVG() {
   return (
-    <svg width="32" height="78" viewBox="0 0 32 78" fill="none">
-      <path d="M16 4 C8 8 4 22 6 40 C8 56 14 72 16 74 C18 72 24 56 26 40 C28 22 24 8 16 4Z" fill="#F07A28" />
-      <path d="M16 4 C12 8 10 20 11 36 C11 36 14 28 16 4Z" fill="#F8A050" />
-      {[18, 30, 42].map((y) => (
-        <line key={y} x1="8" y1={y} x2="14" y2={y - 2} stroke="#D86020" strokeWidth="1" strokeLinecap="round" />
+    <svg width="30" height="82" viewBox="0 0 30 82" fill="none">
+      {/* Body */}
+      <path d="M15 2 C8 6 4 20 5 38 C6 54 11 70 15 76 C19 70 24 54 25 38 C26 20 22 6 15 2Z" fill="#F07220" />
+      {/* Left highlight */}
+      <path d="M15 2 C10 6 8 18 9 34 C9 34 11 22 15 2Z" fill="#F89848" />
+      {/* Horizontal texture lines */}
+      {[16, 26, 38, 50].map((y) => (
+        <path key={y} d={`M7 ${y} Q15 ${y - 2} 23 ${y}`} stroke="#D05C10" strokeWidth="0.9" strokeLinecap="round" fill="none" />
       ))}
-      <path d="M10 6 C6 0 2 2 4 6" stroke="#5D8A3C" strokeWidth="2" strokeLinecap="round" fill="none" />
-      <path d="M16 4 C16 0 14 -2 12 0" stroke="#5D8A3C" strokeWidth="2" strokeLinecap="round" fill="none" />
-      <path d="M22 6 C26 0 30 2 28 6" stroke="#5D8A3C" strokeWidth="2" strokeLinecap="round" fill="none" />
+      {/* Green tops */}
+      <path d="M11 4 C7 -2 3 0 5 5"   stroke="#4A7A2E" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M15 2 C15 -2 13 -4 11 -2" stroke="#4A7A2E" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M19 4 C23 -2 27 0 25 5"  stroke="#4A7A2E" strokeWidth="2.5" strokeLinecap="round" fill="none" />
     </svg>
   );
 }
 
 function JuiceCartonSVG() {
   return (
-    <svg width="46" height="68" viewBox="0 0 46 68" fill="none">
-      <rect x="4" y="14" width="38" height="52" rx="4" fill="#FFF8EE" />
-      <rect x="4" y="14" width="38" height="52" rx="4" fill="url(#juiceGrad)" />
-      <rect x="4" y="38" width="38" height="28" rx="0" fill="#F07A28" opacity="0.15" />
-      <rect x="4" y="38" width="38" height="6" fill="#E05A28" opacity="0.7" />
-      <path d="M10 4 L8 14 L38 14 L36 4 Q34 2 23 2 Q12 2 10 4Z" fill="#FFF0DC" />
-      <path d="M16 4 L15 14 L31 14 L30 4Z" fill="#FFE4C0" />
-      <circle cx="23" cy="46" r="10" fill="#F07A28" opacity="0.6" />
-      <circle cx="23" cy="46" r="7" fill="#F07A28" opacity="0.8" />
-      <text x="23" y="50" textAnchor="middle" fontSize="7" fill="white" fontWeight="bold">100%</text>
-      <text x="23" y="28" textAnchor="middle" fontSize="5.5" fill="#E05A28" fontWeight="bold">JUICE</text>
+    <svg width="44" height="70" viewBox="0 0 44 70" fill="none">
       <defs>
-        <linearGradient id="juiceGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#FFF8EE" />
-          <stop offset="100%" stopColor="#FFE8CC" />
+        <linearGradient id="cartonGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#FFF4E0" />
+          <stop offset="100%" stopColor="#FFEAC8" />
         </linearGradient>
       </defs>
+      {/* Body */}
+      <rect x="4" y="16" width="36" height="50" rx="3" fill="url(#cartonGrad)" />
+      {/* Orange stripe band */}
+      <rect x="4" y="40" width="36" height="5"  fill="#E05A28" opacity="0.8" />
+      <rect x="4" y="45" width="36" height="21" rx="0" fill="#F07838" opacity="0.12" />
+      {/* Gable top */}
+      <path d="M8 4 L6 16 L38 16 L36 4 Q34 2 22 2 Q10 2 8 4Z" fill="#FFF0D8" />
+      <path d="M15 4 L14 16 L30 16 L29 4Z" fill="#FFE4BC" />
+      {/* Fold line at gable */}
+      <line x1="6" y1="16" x2="38" y2="16" stroke="#E8C890" strokeWidth="0.8" />
+      {/* Orange circle logo */}
+      <circle cx="22" cy="30" r="10" fill="#F07838" opacity="0.25" />
+      <circle cx="22" cy="30" r="7"  fill="#F07838" opacity="0.5"  />
+      {/* Text labels */}
+      <text x="22" y="34" textAnchor="middle" fontSize="6.5" fill="white" fontWeight="800">100%</text>
+      <text x="22" y="14" textAnchor="middle" fontSize="5"   fill="#D05A18" fontWeight="700" letterSpacing="0.5">JUICE</text>
     </svg>
   );
 }
 
-// ─── The Bag ──────────────────────────────────────────────────────────────────
+// ─── Grocery Bag (paper bag style) ───────────────────────────────────────────
 
 function GroceryBag() {
   return (
-    <svg
-      width="240"
-      height="290"
-      viewBox="0 0 240 290"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="drop-shadow-2xl"
-    >
+    <svg width="240" height="290" viewBox="0 0 240 290" fill="none" className="drop-shadow-2xl">
       <defs>
         <linearGradient id="bagBody" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#E8643A" />
-          <stop offset="55%" stopColor="#E05A28" />
-          <stop offset="100%" stopColor="#B84820" />
+          <stop offset="0%"   stopColor="#EE6E3C" />
+          <stop offset="52%"  stopColor="#E05A28" />
+          <stop offset="100%" stopColor="#B04018" />
         </linearGradient>
-        <linearGradient id="bagTop" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#C8501C" />
-          <stop offset="100%" stopColor="#E05A28" />
+        <linearGradient id="bagFold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stopColor="#C84E1E" />
+          <stop offset="100%" stopColor="#D85828" />
         </linearGradient>
-        <linearGradient id="innerShadow" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(0,0,0,0.35)" />
-          <stop offset="100%" stopColor="rgba(0,0,0,0)" />
+        <linearGradient id="depthShadow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stopColor="rgba(0,0,0,0.38)" />
+          <stop offset="100%" stopColor="rgba(0,0,0,0)"     />
         </linearGradient>
-        <clipPath id="bagClip">
-          <path d="M28 72 Q28 66 34 66 L206 66 Q212 66 212 72 L224 268 Q224 278 214 278 L26 278 Q16 278 16 268 Z" />
+        <clipPath id="bagBodyClip">
+          <path d="M30 70 L210 70 L222 272 Q222 280 212 280 L28 280 Q18 280 18 272 Z" />
         </clipPath>
       </defs>
 
-      {/* Bag body */}
+      {/* ── Main body ── */}
       <path
-        d="M28 72 Q28 66 34 66 L206 66 Q212 66 212 72 L224 268 Q224 278 214 278 L26 278 Q16 278 16 268 Z"
+        d="M30 70 L210 70 L222 272 Q222 280 212 280 L28 280 Q18 280 18 272 Z"
         fill="url(#bagBody)"
       />
 
-      {/* Right-side depth shadow */}
+      {/* Right depth panel */}
       <path
-        d="M190 66 L206 66 Q212 66 212 72 L224 268 Q224 278 214 278 L198 278 L186 268 Z"
-        fill="#A03C16"
-        opacity="0.5"
+        d="M192 70 L210 70 L222 272 Q222 280 212 280 L196 280 L184 272 Z"
+        fill="#983410"
+        opacity="0.55"
       />
 
-      {/* Center-left crease */}
-      <line x1="88" y1="66" x2="82" y2="278" stroke="#C04B1E" strokeWidth="2" opacity="0.6" />
-      <line x1="92" y1="66" x2="86" y2="278" stroke="#F07848" strokeWidth="1" opacity="0.3" />
-
-      {/* Top fold — the folded-over rim */}
-      <path
-        d="M28 66 Q34 60 50 62 L70 64 Q90 68 120 68 Q150 68 170 64 L190 62 Q206 60 212 66 L206 72 Q200 70 180 68 L160 66 Q140 66 120 66 Q100 66 80 66 L60 68 Q40 70 34 72 Z"
-        fill="url(#bagTop)"
-      />
-
-      {/* Fold highlight */}
-      <path
-        d="M34 62 Q80 56 120 57 Q160 56 206 62"
-        stroke="#F07848"
-        strokeWidth="1.5"
-        fill="none"
-        opacity="0.5"
-      />
+      {/* Left crease — shadow side */}
+      <line x1="90" y1="70" x2="84" y2="280" stroke="#983820" strokeWidth="2.5" opacity="0.55" />
+      {/* Left crease — highlight side */}
+      <line x1="93" y1="70" x2="87" y2="280" stroke="#F07840" strokeWidth="1.2" opacity="0.35" />
 
       {/* Inner shadow at opening */}
-      <rect x="16" y="66" width="208" height="28" fill="url(#innerShadow)" clipPath="url(#bagClip)" />
+      <rect x="18" y="70" width="204" height="30" fill="url(#depthShadow)" clipPath="url(#bagBodyClip)" />
 
+      {/* ── Top rim / folded opening ── */}
+      {/* The folded-over paper rim — slightly darker band */}
+      <path
+        d="M30 70 Q36 62 54 63 L80 65 Q100 67 120 67 Q140 67 160 65 L186 63 Q204 62 210 70 L204 76 Q190 72 168 70 L144 68 Q132 68 120 68 Q108 68 96 68 L72 70 Q50 72 36 76 Z"
+        fill="url(#bagFold)"
+      />
+      {/* Rim highlight line — suggests the folded paper edge */}
+      <path
+        d="M36 63 Q80 57 120 58 Q160 57 204 63"
+        stroke="#F07840"
+        strokeWidth="1.4"
+        fill="none"
+        opacity="0.45"
+      />
+      {/* Subtle second fold shadow for depth */}
+      <path
+        d="M38 65 Q80 60 120 61 Q160 60 202 65"
+        stroke="#9A3A18"
+        strokeWidth="0.8"
+        fill="none"
+        opacity="0.3"
+      />
+
+      {/* ── Twisted paper handles ── */}
       {/* Left handle */}
-      <path
-        d="M68 66 C60 38 60 22 80 20 C100 18 104 38 100 66"
-        stroke="#C04B1E"
-        strokeWidth="10"
-        strokeLinecap="round"
-        fill="none"
-      />
-      <path
-        d="M68 66 C60 38 60 22 80 20 C100 18 104 38 100 66"
-        stroke="#D45828"
-        strokeWidth="6"
-        strokeLinecap="round"
-        fill="none"
-      />
+      {/* Outer shadow rope */}
+      <path d="M66 70 C56 42 57 22 80 19 C103 16 109 40 104 70"
+            stroke="#8A2E0E" strokeWidth="13" strokeLinecap="round" fill="none" />
+      {/* Main handle rope color */}
+      <path d="M66 70 C56 42 57 22 80 19 C103 16 109 40 104 70"
+            stroke="#C84018" strokeWidth="9"  strokeLinecap="round" fill="none" />
+      {/* Twist strand A – weaves over */}
+      <path d="M63 64 C56 46 59 28 78 23 C92 19 103 28 105 46 C106 54 105 62 104 70"
+            stroke="#E86030" strokeWidth="3"  strokeLinecap="round" fill="none" opacity="0.55" />
+      {/* Twist strand B – highlight */}
+      <path d="M68 70 C60 48 62 30 80 26 C94 23 102 36 102 54 C102 62 103 66 104 70"
+            stroke="#F08858" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.4"  />
 
       {/* Right handle */}
-      <path
-        d="M140 66 C136 38 136 22 160 20 C180 18 184 38 176 66"
-        stroke="#C04B1E"
-        strokeWidth="10"
-        strokeLinecap="round"
-        fill="none"
-      />
-      <path
-        d="M140 66 C136 38 136 22 160 20 C180 18 184 38 176 66"
-        stroke="#D45828"
-        strokeWidth="6"
-        strokeLinecap="round"
-        fill="none"
-      />
+      <path d="M136 70 C131 40 132 20 158 17 C182 14 188 40 182 70"
+            stroke="#8A2E0E" strokeWidth="13" strokeLinecap="round" fill="none" />
+      <path d="M136 70 C131 40 132 20 158 17 C182 14 188 40 182 70"
+            stroke="#C84018" strokeWidth="9"  strokeLinecap="round" fill="none" />
+      <path d="M133 64 C129 46 133 28 154 23 C168 19 180 28 182 46 C183 54 182 62 182 70"
+            stroke="#E86030" strokeWidth="3"  strokeLinecap="round" fill="none" opacity="0.55" />
+      <path d="M138 70 C134 48 136 30 156 26 C170 23 179 36 180 54 C180 62 181 66 182 70"
+            stroke="#F08858" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.4"  />
 
-      {/* Bottom rounded corners visual cue */}
-      <path d="M16 240 Q16 278 26 278 L30 278 Q20 278 20 268 Z" fill="#A03C16" opacity="0.3" />
-      <path d="M224 240 Q224 278 214 278 L210 278 Q220 278 220 268 Z" fill="#A03C16" opacity="0.3" />
-
-      {/* Wordmark area near bottom */}
-      <g opacity="0.22">
-        {/* Leaf icon */}
-        <path
-          d="M80 248 C80 238 90 232 100 236 C90 236 86 242 86 248 C86 254 90 258 96 258 C102 258 106 254 106 248 C106 242 102 238 100 236 C110 238 112 248 108 256 C104 264 88 262 80 248Z"
-          fill="white"
-        />
-        {/* "foody moody" text */}
-        <text x="112" y="254" fontSize="12" fill="white" fontWeight="700" letterSpacing="0.5" fontFamily="system-ui">
+      {/* ── Wordmark near bottom ── */}
+      <g opacity="0.2">
+        <path d="M76 254 C76 244 86 238 96 242 C86 242 82 248 82 254 C82 260 86 264 92 264 C98 264 102 260 102 254 C102 248 98 244 96 242 C106 244 108 254 104 262 C100 270 84 268 76 254Z"
+              fill="white" />
+        <text x="108" y="260" fontSize="11.5" fill="white" fontWeight="700" letterSpacing="0.4" fontFamily="system-ui">
           foody moody
         </text>
       </g>
@@ -257,55 +266,49 @@ function GroceryBag() {
   );
 }
 
-// ─── Products sitting in the bag ─────────────────────────────────────────────
+// ─── Products inside the bag ──────────────────────────────────────────────────
 
 function BagWithProducts() {
-  // clip path matches the bag opening
-  const clipId = 'productsClip';
-
   return (
     <div className="relative w-[240px] h-[290px]">
-      {/* Products: positioned so bottom halves are hidden inside bag */}
-      {/* SVG layer for products - sits BEHIND the bag top */}
+      {/* Products layer — sits behind the bag */}
       <div className="absolute inset-0" style={{ zIndex: 1 }}>
         <svg width="240" height="290" viewBox="0 0 240 290" fill="none">
           <defs>
-            <clipPath id={clipId}>
-              {/* Only show items above the bag opening line (y≈66) */}
-              <rect x="0" y="0" width="240" height="76" />
+            {/* Only show items above the bag opening (y ≤ 78) */}
+            <clipPath id="itemsClip">
+              <rect x="0" y="-60" width="240" height="138" />
             </clipPath>
           </defs>
 
-          {/* Items placed so they sit "inside" — top portions visible above y=66 */}
-
-          {/* Baguette — left, diagonal, tallest */}
-          <g transform="translate(32, -38) rotate(8, 19, 55)" clipPath={`url(#${clipId})`}>
+          {/* Baguette — far left, tall diagonal, leans right ~12° */}
+          <g transform="translate(26,-22) rotate(12,17,59)" clipPath="url(#itemsClip)">
             <BaguetteSVG />
           </g>
 
-          {/* Broccoli — left-center */}
-          <g transform="translate(62, 2)" clipPath={`url(#${clipId})`}>
+          {/* Broccoli — left-center, straight up */}
+          <g transform="translate(62,8)" clipPath="url(#itemsClip)">
             <BroccoliSVG />
           </g>
 
-          {/* Apple — center */}
-          <g transform="translate(104, 18)" clipPath={`url(#${clipId})`}>
+          {/* Apple — center, only top ~40% visible */}
+          <g transform="translate(104,44)" clipPath="url(#itemsClip)">
             <AppleSVG />
           </g>
 
-          {/* Carrot — right-center, slight lean */}
-          <g transform="translate(150, -10) rotate(-6, 16, 39)" clipPath={`url(#${clipId})`}>
+          {/* Carrot — right-center, leans left ~8° */}
+          <g transform="translate(152,-14) rotate(-8,15,41)" clipPath="url(#itemsClip)">
             <CarrotSVG />
           </g>
 
           {/* Juice carton — far right */}
-          <g transform="translate(182, 4)" clipPath={`url(#${clipId})`}>
+          <g transform="translate(183,6)" clipPath="url(#itemsClip)">
             <JuiceCartonSVG />
           </g>
         </svg>
       </div>
 
-      {/* The bag itself sits on top, covering the lower halves of items */}
+      {/* Bag covers the lower halves of all items */}
       <div className="absolute inset-0" style={{ zIndex: 2 }}>
         <GroceryBag />
       </div>
@@ -313,37 +316,64 @@ function BagWithProducts() {
   );
 }
 
-// ─── Floating background food SVGs ───────────────────────────────────────────
+// ─── Floating background decorations ─────────────────────────────────────────
 
-function FloatingLeaf({ x, y, delay, size = 28 }: { x: number; y: number; delay: number; size?: number }) {
+function FloatingLeaf({ x, y, delay, size = 30 }: { x: number; y: number; delay: number; size?: number }) {
   return (
     <motion.div
       className="absolute pointer-events-none hidden md:block"
       style={{ left: x, top: y }}
-      animate={{ y: [0, -14, 0] }}
-      transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay }}
+      animate={{ y: [0, -13, 0] }}
+      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay }}
     >
-      <svg width={size} height={size} viewBox="0 0 28 28" fill="none" opacity="0.18">
-        <path d="M14 2 C14 2 4 8 4 18 C4 24 8 26 14 26 C20 26 24 24 24 18 C24 8 14 2 14 2Z" fill="#E05A28" />
-        <line x1="14" y1="2" x2="14" y2="26" stroke="#C04B20" strokeWidth="1.5" />
-        <line x1="14" y1="10" x2="8" y2="14" stroke="#C04B20" strokeWidth="1" />
-        <line x1="14" y1="16" x2="20" y2="20" stroke="#C04B20" strokeWidth="1" />
+      <svg width={size} height={size} viewBox="0 0 30 32" fill="none" opacity="0.17">
+        {/* Leaf teardrop */}
+        <path d="M15 2 C8 6 4 14 4 20 C4 27 9 30 15 30 C21 30 26 27 26 20 C26 14 22 6 15 2Z" fill="#E05A28" />
+        {/* Center vein */}
+        <line x1="15" y1="4"  x2="15" y2="29" stroke="#B04018" strokeWidth="1.2" strokeLinecap="round" />
+        {/* Side veins */}
+        <line x1="15" y1="12" x2="9"  y2="17" stroke="#B04018" strokeWidth="0.8" strokeLinecap="round" />
+        <line x1="15" y1="18" x2="9"  y2="22" stroke="#B04018" strokeWidth="0.8" strokeLinecap="round" />
+        <line x1="15" y1="12" x2="21" y2="17" stroke="#B04018" strokeWidth="0.8" strokeLinecap="round" />
+        <line x1="15" y1="18" x2="21" y2="22" stroke="#B04018" strokeWidth="0.8" strokeLinecap="round" />
       </svg>
     </motion.div>
   );
 }
 
-function FloatingStar({ x, y, delay }: { x: number; y: number; delay: number }) {
+function FloatingSparkle({ x, y, delay }: { x: number; y: number; delay: number }) {
   return (
     <motion.div
       className="absolute pointer-events-none hidden md:block"
       style={{ left: x, top: y }}
-      animate={{ y: [0, -10, 0], rotate: [0, 15, 0] }}
-      transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay }}
+      animate={{ y: [0, -10, 0], rotate: [0, 20, 0] }}
+      transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut', delay }}
     >
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" opacity="0.14">
-        <circle cx="11" cy="11" r="9" stroke="#E05A28" strokeWidth="2" />
-        <path d="M11 4 L12.5 9 L18 9 L13.5 12 L15 17 L11 14 L7 17 L8.5 12 L4 9 L9.5 9 Z" fill="#E05A28" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" opacity="0.16">
+        {/* 4-point sparkle */}
+        <path d="M12 1 L13.5 10.5 L23 12 L13.5 13.5 L12 23 L10.5 13.5 L1 12 L10.5 10.5 Z" fill="#E05A28" />
+        {/* Small center dot */}
+        <circle cx="12" cy="12" r="2" fill="#FFD23F" />
+      </svg>
+    </motion.div>
+  );
+}
+
+function FloatingBagOutline({ x, y, delay }: { x: number; y: number; delay: number }) {
+  return (
+    <motion.div
+      className="absolute pointer-events-none hidden md:block"
+      style={{ left: x, top: y }}
+      animate={{ y: [0, -11, 0] }}
+      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay }}
+    >
+      <svg width="26" height="30" viewBox="0 0 26 30" fill="none" opacity="0.15">
+        {/* Bag outline */}
+        <path d="M3 8 L23 8 L25 26 Q25 28 23 28 L3 28 Q1 28 1 26 Z"
+              stroke="#E05A28" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+        {/* Handle */}
+        <path d="M8 8 C7 3 9 1 13 1 C17 1 19 3 18 8"
+              stroke="#E05A28" strokeWidth="1.5" fill="none" strokeLinecap="round" />
       </svg>
     </motion.div>
   );
@@ -357,28 +387,15 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ t, tMap }: HeroSectionProps) {
-  const badgeControls = useAnimation();
-
-  useEffect(() => {
-    // After pop-in, start the pulse loop
-    const timeout = setTimeout(() => {
-      badgeControls.start({
-        scale: [1, 1.06, 1],
-        transition: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
-      });
-    }, 1400);
-    return () => clearTimeout(timeout);
-  }, [badgeControls]);
-
   return (
     <section
       className="relative bg-[#FDF4F0] overflow-hidden"
       style={{ minHeight: 'clamp(580px, 90vh, 760px)' }}
     >
       {/* Floating background decorations */}
-      <FloatingLeaf  x={30}  y={60}  delay={0}    size={34} />
-      <FloatingStar  x={80}  y={20}  delay={1.2}  />
-      <FloatingLeaf  x={60}  y={180} delay={2.3}  size={22} />
+      <FloatingLeaf       x={28}  y={55}  delay={0}    size={32} />
+      <FloatingSparkle    x={82}  y={18}  delay={1.3}  />
+      <FloatingBagOutline x={55}  y={190} delay={2.5}  />
 
       <div className="relative max-w-6xl mx-auto px-5 sm:px-8 py-16 md:py-20 flex flex-col md:flex-row items-center gap-12 md:gap-8">
 
@@ -392,9 +409,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           {/* Eyebrow pill */}
           <motion.div variants={slideUp}>
             <span className="inline-flex items-center gap-2 bg-[#FADDCB] text-[#A83C0E] text-xs font-semibold px-4 py-2 rounded-full tracking-wide">
-              <span
-                className="w-2 h-2 rounded-full bg-[#E05A28] animate-pulse flex-shrink-0"
-              />
+              <span className="w-2 h-2 rounded-full bg-[#E05A28] animate-pulse flex-shrink-0" />
               Discounted food near you
             </span>
           </motion.div>
@@ -440,18 +455,16 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
             className="flex items-center gap-0 pt-2 flex-wrap sm:flex-nowrap"
           >
             {[
-              { value: '2,400+', label: 'DEALS SAVED' },
-              { value: '70%',    label: 'AVG. DISCOUNT' },
-              { value: '180kg',  label: 'FOOD RESCUED' },
+              { value: '2,400+', label: 'DEALS SAVED'    },
+              { value: '70%',    label: 'AVG. DISCOUNT'  },
+              { value: '180kg',  label: 'FOOD RESCUED'   },
             ].map(({ value, label }, i) => (
               <div key={label} className="flex items-center">
                 <div className={`flex flex-col gap-0.5 ${i === 0 ? 'pr-5' : 'px-5'}`}>
                   <span className="text-xl font-extrabold text-[#1A1209] leading-none">{value}</span>
                   <span className="text-[10px] font-semibold text-[#9B8276] tracking-widest uppercase leading-none mt-0.5">{label}</span>
                 </div>
-                {i < 2 && (
-                  <div className="w-px h-8 bg-[#DDD0CA] self-center flex-shrink-0" />
-                )}
+                {i < 2 && <div className="w-px h-8 bg-[#DDD0CA] self-center flex-shrink-0" />}
               </div>
             ))}
           </motion.div>
@@ -472,16 +485,16 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
 
           {/* Category chips — left of bag */}
           <motion.div
-            className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col gap-2.5 z-10 hidden sm:flex"
+            className="absolute top-1/2 -translate-y-1/2 flex flex-col gap-2.5 z-10 hidden sm:flex"
             style={{ left: '-8px' }}
             variants={chipStagger}
             initial="hidden"
             animate="visible"
           >
             {[
-              { label: 'Bakery',       dot: '#3B9A6E' },
-              { label: 'Restaurant',   dot: '#E05A28' },
-              { label: 'Supermarket',  dot: '#3B82F6' },
+              { label: 'Bakery',      dot: '#3B9A6E' },
+              { label: 'Restaurant',  dot: '#E05A28' },
+              { label: 'Supermarket', dot: '#3B82F6' },
             ].map(({ label, dot }) => (
               <motion.div
                 key={label}
@@ -494,30 +507,31 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
             ))}
           </motion.div>
 
-          {/* The bag with products */}
+          {/* Bag + badge */}
           <div className="relative z-10">
             <BagWithProducts />
 
-            {/* Discount badge */}
+            {/* Discount badge — spring pop on mount, then continuous pulse */}
             <motion.div
               className="absolute z-20"
-              style={{ top: '-18px', right: '-14px', rotate: '-12deg', transformOrigin: 'center' }}
+              style={{ top: '-20px', right: '-16px', rotate: '-12deg', transformOrigin: 'center' }}
               variants={badgePop}
               initial="hidden"
-              animate={badgeControls}
+              animate="visible"
             >
               <motion.div
                 animate={{ scale: [1, 1.06, 1] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-                className="w-[76px] h-[76px] rounded-full flex flex-col items-center justify-center shadow-lg"
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 1.6 }}
+                className="w-[78px] h-[78px] rounded-full flex flex-col items-center justify-center shadow-lg shadow-yellow-300/40"
                 style={{ background: '#FFD23F' }}
               >
-                <span className="text-xl font-extrabold text-[#7A3E00] leading-none">-70%</span>
+                <span className="text-[22px] font-extrabold text-[#7A3E00] leading-none">-70%</span>
                 <span className="text-[10px] font-semibold text-[#A05800] tracking-widest uppercase mt-0.5">today</span>
               </motion.div>
             </motion.div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );
