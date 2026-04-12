@@ -1,11 +1,12 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { UtensilsCrossed, Croissant, ShoppingCart, Coffee, Store, MapPin, TrendingDown, Leaf } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { UtensilsCrossed, Croissant, ShoppingCart, Coffee, Store, TrendingDown } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import HeroSection from '@/components/HeroSection';
 import ListingCard from '@/components/listings/ListingCard';
 import PageTransition from '@/components/ui/PageTransition';
 import CountUp from '@/components/ui/CountUp';
@@ -42,10 +43,6 @@ export default function HomePage() {
   const { listings: allListings } = useListings();
   const featured = allListings.filter((l) => l.status !== 'paused').slice(0, 6);
 
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollY } = useScroll();
-  const heroBgY = useTransform(scrollY, [0, 500], [0, 150]);
-
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
@@ -55,129 +52,13 @@ export default function HomePage() {
     ? featured.filter((l) => l.category === activeCategory)
     : featured;
 
-  function handleBrowseClick(e: React.MouseEvent<HTMLAnchorElement>) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const ripple = document.createElement('span');
-    Object.assign(ripple.style, {
-      position: 'absolute',
-      borderRadius: '50%',
-      pointerEvents: 'none',
-      background: 'rgba(255,255,255,0.35)',
-      transform: 'scale(0)',
-      animation: 'ripple 0.6s linear',
-      left: `${x - 20}px`,
-      top: `${y - 20}px`,
-      width: '40px',
-      height: '40px',
-    });
-    e.currentTarget.appendChild(ripple);
-    ripple.addEventListener('animationend', () => ripple.remove());
-  }
-
   return (
     <PageTransition>
       <div className="min-h-screen bg-[#F5ECDE]">
         <Navbar />
 
         {/* ── Hero ── */}
-        <section ref={heroRef} className="relative text-white overflow-hidden">
-          {/* Animated gradient background */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(135deg, #E8594F 0%, #F4845F 40%, #D14840 80%, #E8594F 100%)',
-              backgroundSize: '300% 300%',
-              animation: 'heroGradient 8s ease infinite',
-            }}
-          />
-          {/* Parallax food imagery */}
-          <motion.img
-            style={{ y: heroBgY }}
-            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&h=900&fit=crop"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay"
-          />
-          {/* Subtle radial overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.12),transparent_60%)]" />
-          {/* Floating decoration circles */}
-          <motion.div
-            className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-white/5 blur-3xl"
-            animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.6, 0.4] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute -bottom-16 -left-16 w-80 h-80 rounded-full bg-white/10 blur-2xl"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          />
-
-
-          <div className="relative max-w-4xl mx-auto px-4 py-24 md:py-32 text-center">
-            <motion.span
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-white/15 border border-white/25 text-emerald-50 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase"
-            >
-              <Leaf className="w-3.5 h-3.5" />
-              {t('tagline_badge')}
-            </motion.span>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl md:text-6xl font-extrabold leading-tight mb-5 tracking-tight"
-            >
-              {t('hero_title')}
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg md:text-xl text-emerald-100 mb-10 max-w-2xl mx-auto leading-relaxed"
-            >
-              {t('hero_subtitle')}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <motion.a
-                href="browse"
-                onClick={handleBrowseClick}
-                whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="relative overflow-hidden bg-white text-[#E8594F] font-bold px-8 py-4 rounded-full text-base shadow-lg hover:shadow-xl transition-shadow"
-              >
-                {t('browse_deals')} →
-              </motion.a>
-              <motion.a
-                href="/map"
-                whileHover={{ scale: 1.04, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-                className="border-2 border-white/50 text-white font-semibold px-8 py-4 rounded-full text-base flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
-              >
-                <MapPin className="w-4 h-4" />
-                {tMap('title')}
-              </motion.a>
-            </motion.div>
-          </div>
-
-          <style>{`
-            @keyframes heroGradient {
-              0%   { background-position: 0% 50%; }
-              50%  { background-position: 100% 50%; }
-              100% { background-position: 0% 50%; }
-            }
-          `}</style>
-        </section>
+        <HeroSection t={t} tMap={tMap} />
 
         {/* ── Category Filter ── */}
         <motion.section
