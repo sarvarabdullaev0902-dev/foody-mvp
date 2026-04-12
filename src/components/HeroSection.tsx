@@ -28,36 +28,15 @@ const rightPanel = {
   },
 };
 
-const badgePop = {
-  hidden: { opacity: 0, scale: 0.4 },
-  visible: {
-    opacity: 1, scale: 1,
-    transition: { type: 'spring' as const, stiffness: 380, damping: 18, delay: 0.8 },
-  },
-};
-
-const chipStagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 1.0 } },
-};
-
-const chipFade = {
-  hidden: { opacity: 0, x: 14 },
-  visible: {
-    opacity: 1, x: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
-  },
-};
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
 interface HeroSectionProps {
   t: (key: string) => string;
   tMap: (key: string) => string;
-  tCat: (key: string) => string;
 }
 
-export default function HeroSection({ t, tMap, tCat }: HeroSectionProps) {
+export default function HeroSection({ t, tMap }: HeroSectionProps) {
   // ── Mobile detection ──
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -156,86 +135,48 @@ export default function HeroSection({ t, tMap, tCat }: HeroSectionProps) {
 
         {/* ── Right column ── */}
         <motion.div
-          className="flex-1 relative flex items-center justify-center order-1 md:order-2 w-full"
+          className="flex-1 flex items-center justify-center order-1 md:order-2 w-full"
           variants={rightPanel}
           initial="hidden"
           animate="visible"
         >
-          {/* Category chips — left of bag */}
+          {/* Scroll-driven outer wrapper */}
           <motion.div
-            className="absolute top-1/2 -translate-y-1/2 flex flex-col gap-3 z-10 hidden sm:flex"
-            style={{ left: '-4px' }}
-            variants={chipStagger}
-            initial="hidden"
-            animate="visible"
+            style={{
+              y:               springY,
+              rotate:          isMobile ? 0 : springRotate,
+              scale:           springScale,
+              backgroundColor: 'rgba(0,0,0,0)',
+              isolation:       'isolate',
+            }}
           >
-            {[
-              { label: tCat('bakery'),      dot: '#3B9A6E' },
-              { label: tCat('restaurant'),  dot: '#E05A28' },
-              { label: tCat('supermarket'), dot: '#3B82F6' },
-            ].map(({ label, dot }) => (
-              <motion.div
-                key={label}
-                variants={chipFade}
-                className="flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-[#EDE0D8] rounded-full px-3 py-1.5 shadow-sm"
-              >
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: dot }} />
-                <span className="text-xs font-semibold text-[#4A3A34] whitespace-nowrap">{label}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Bag + badge */}
-          <div className="relative z-10 ml-0 sm:ml-6">
-
-            {/* Scroll-driven outer wrapper */}
+            {/* Idle float wrapper — bag + badge move together as one unit */}
             <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               style={{
-                y:               springY,
-                rotate:          isMobile ? 0 : springRotate,
-                scale:           springScale,
+                position:        'relative',
                 backgroundColor: 'rgba(0,0,0,0)',
-                isolation:       'isolate',
+                filter:          'drop-shadow(0 24px 48px rgba(0,0,0,0.16))',
               }}
             >
-              {/* Idle float inner wrapper — drop-shadow lives here so it
-                  respects the PNG transparency without a white compositing buffer */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                style={{
-                  backgroundColor: 'rgba(0,0,0,0)',
-                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.18))',
-                }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/foody-bag.png"
-                  alt="Foody Moody bag"
-                  className="w-[280px] md:w-[420px] h-auto object-contain"
-                />
-              </motion.div>
-            </motion.div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/foody-bag.png"
+                alt="Foody Moody bag"
+                className="w-[320px] md:w-[520px] h-auto object-contain"
+              />
 
-            {/* Discount badge — spring pop, then pulse loop */}
-            <motion.div
-              className="absolute z-20"
-              style={{ top: 20, right: -10, rotate: '-12deg', transformOrigin: 'center' }}
-              variants={badgePop}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.div
-                animate={{ scale: [1, 1.06, 1] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 1.6 }}
-                className="w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
-                style={{ background: '#FFD23F' }}
+              {/* Badge — anchored to bag, inherits all parent motion */}
+              <div
+                className="absolute z-20 w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
+                style={{ top: 20, right: -20, transform: 'rotate(-12deg)', background: '#FFD23F' }}
               >
                 <span className="text-[23px] font-extrabold text-[#7A3E00] leading-none">-70%</span>
                 <span className="text-[10px] font-semibold text-[#A05800] tracking-widest uppercase mt-0.5">{t('hero_badge_today')}</span>
-              </motion.div>
+              </div>
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
 
       </div>
