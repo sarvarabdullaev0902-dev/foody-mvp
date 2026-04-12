@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
@@ -37,32 +36,10 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ t, tMap }: HeroSectionProps) {
-  // ── Mobile detection ──
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
-  // ── Scroll-driven transforms ──
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollY } = useScroll();
-
-  const rawY      = useTransform(scrollY, [0, 300], [0, -30]);
-  const rawRotate = useTransform(scrollY, [0, 300], [0, 4]);
-  const rawScale  = useTransform(scrollY, [0, 300], [1, 1.04]);
-
-  const springY      = useSpring(rawY,      { stiffness: 90, damping: 28 });
-  const springRotate = useSpring(rawRotate, { stiffness: 70, damping: 22 });
-  const springScale  = useSpring(rawScale,  { stiffness: 70, damping: 22 });
+  const floatTransition = { duration: 4, repeat: Infinity, ease: 'easeInOut' as const };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative bg-[#FDF4F0] overflow-hidden min-h-screen flex items-center"
-    >
+    <section className="relative bg-[#FDF4F0] overflow-hidden min-h-screen flex items-center">
       <div className="relative w-full max-w-6xl mx-auto px-5 sm:px-8 py-20 md:py-0 flex flex-col md:flex-row items-center gap-14 md:gap-10">
 
         {/* ── Left column ── */}
@@ -140,41 +117,33 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           initial="hidden"
           animate="visible"
         >
-          {/* Scroll-driven outer wrapper */}
+          {/* Float unit — bag + badge rise and fall together */}
           <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={floatTransition}
             style={{
-              y:               springY,
-              rotate:          isMobile ? 0 : springRotate,
-              scale:           springScale,
+              position:        'relative',
+              display:         'inline-block',
               backgroundColor: 'rgba(0,0,0,0)',
-              isolation:       'isolate',
+              filter:          'drop-shadow(0 24px 48px rgba(0,0,0,0.16))',
             }}
           >
-            {/* Idle float wrapper — bag + badge move together as one unit */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              style={{
-                position:        'relative',
-                backgroundColor: 'rgba(0,0,0,0)',
-                filter:          'drop-shadow(0 24px 48px rgba(0,0,0,0.16))',
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/foody-bag.png"
-                alt="Foody Moody bag"
-                className="w-[320px] md:w-[520px] h-auto object-contain"
-              />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/foody-bag.png"
+              alt="Foody Moody bag"
+              className="w-[360px] md:w-[600px] h-auto object-contain"
+            />
 
-              {/* Badge — anchored to bag, inherits all parent motion */}
-              <div
-                className="absolute z-20 w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
-                style={{ top: 20, right: -20, transform: 'rotate(-12deg)', background: '#FFD23F' }}
-              >
-                <span className="text-[23px] font-extrabold text-[#7A3E00] leading-none">-70%</span>
-                <span className="text-[10px] font-semibold text-[#A05800] tracking-widest uppercase mt-0.5">{t('hero_badge_today')}</span>
-              </div>
+            {/* Badge — rocks while floating */}
+            <motion.div
+              className="absolute z-20 w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
+              style={{ top: 20, right: -20, background: '#FFD23F' }}
+              animate={{ rotate: [-12, -9, -12] }}
+              transition={floatTransition}
+            >
+              <span className="text-[23px] font-extrabold text-[#7A3E00] leading-none">-70%</span>
+              <span className="text-[10px] font-semibold text-[#A05800] tracking-widest uppercase mt-0.5">{t('hero_badge_today')}</span>
             </motion.div>
           </motion.div>
         </motion.div>
