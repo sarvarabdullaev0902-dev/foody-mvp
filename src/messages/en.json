@@ -45,7 +45,13 @@
     "stats_meals_saved": "meals saved",
     "stats_suppliers": "active suppliers",
     "stats_avg_discount": "average discount",
-    "no_results_category": "No deals in this category yet"
+    "no_results_category": "No deals in this category yet",
+    "hero_eyebrow": "Discounted food near you",
+    "hero_subtitle_v2": "Near-expiry deals from restaurants, bakeries and supermarkets. Up to 70% off, every day.",
+    "hero_stat_deals": "Deals saved",
+    "hero_stat_discount": "Avg. discount",
+    "hero_stat_rescued": "Food rescued",
+    "hero_badge_today": "Today"
   },
   "listing": {
     "expires_in": "Expires in",

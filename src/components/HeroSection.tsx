@@ -270,9 +270,10 @@ function ShoppingTrolley() {
 interface HeroSectionProps {
   t: (key: string) => string;
   tMap: (key: string) => string;
+  tCat: (key: string) => string;
 }
 
-export default function HeroSection({ t, tMap }: HeroSectionProps) {
+export default function HeroSection({ t, tMap, tCat }: HeroSectionProps) {
   return (
     <section className="relative bg-[#FDF4F0] overflow-hidden min-h-screen flex items-center">
 
@@ -289,7 +290,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           <motion.div variants={slideUp}>
             <span className="inline-flex items-center gap-2 bg-[#FADDCB] text-[#A83C0E] text-xs font-semibold px-4 py-2 rounded-full tracking-wide">
               <span className="w-2 h-2 rounded-full bg-[#E05A28] animate-pulse flex-shrink-0" />
-              Discounted food near you
+              {t('hero_eyebrow')}
             </span>
           </motion.div>
 
@@ -308,7 +309,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
             variants={slideUp}
             className="text-[18px] text-[#6B5748] leading-relaxed max-w-[360px]"
           >
-            Near-expiry deals from restaurants, bakeries and supermarkets. Up to 70% off, every day.
+            {t('hero_subtitle_v2')}
           </motion.p>
 
           {/* CTA buttons */}
@@ -331,9 +332,9 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           {/* Stats row */}
           <motion.div variants={slideUp} className="flex items-center gap-0 flex-wrap sm:flex-nowrap">
             {[
-              { value: '2,400+', label: 'DEALS SAVED'   },
-              { value: '70%',    label: 'AVG. DISCOUNT' },
-              { value: '180kg',  label: 'FOOD RESCUED'  },
+              { value: '2,400+', label: t('hero_stat_deals')    },
+              { value: '70%',    label: t('hero_stat_discount') },
+              { value: '180kg',  label: t('hero_stat_rescued')  },
             ].map(({ value, label }, i) => (
               <div key={label} className="flex items-center">
                 <div className={`flex flex-col gap-1 ${i === 0 ? 'pr-6' : 'px-6'}`}>
@@ -368,9 +369,9 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
             animate="visible"
           >
             {[
-              { label: 'Bakery',      dot: '#3B9A6E' },
-              { label: 'Restaurant',  dot: '#E05A28' },
-              { label: 'Supermarket', dot: '#3B82F6' },
+              { label: tCat('bakery'),      dot: '#3B9A6E' },
+              { label: tCat('restaurant'),  dot: '#E05A28' },
+              { label: tCat('supermarket'), dot: '#3B82F6' },
             ].map(({ label, dot }) => (
               <motion.div
                 key={label}
@@ -402,7 +403,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
                 style={{ background: '#FFD23F' }}
               >
                 <span className="text-[23px] font-extrabold text-[#7A3E00] leading-none">-70%</span>
-                <span className="text-[10px] font-semibold text-[#A05800] tracking-widest uppercase mt-0.5">today</span>
+                <span className="text-[10px] font-semibold text-[#A05800] tracking-widest uppercase mt-0.5">{t('hero_badge_today')}</span>
               </motion.div>
             </motion.div>
           </div>

@@ -58,7 +58,7 @@ export default function HomePage() {
         <Navbar />
 
         {/* ── Hero ── */}
-        <HeroSection t={t} tMap={tMap} />
+        <HeroSection t={t} tMap={tMap} tCat={tCat} />
 
         {/* ── Category Filter ── */}
         <motion.section

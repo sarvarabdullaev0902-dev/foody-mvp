@@ -45,7 +45,13 @@
     "stats_meals_saved": "блюд спасено",
     "stats_suppliers": "активных поставщиков",
     "stats_avg_discount": "средняя скидка",
-    "no_results_category": "В этой категории пока нет предложений"
+    "no_results_category": "В этой категории пока нет предложений",
+    "hero_eyebrow": "Скидки на еду рядом с вами",
+    "hero_subtitle_v2": "Товары с истекающим сроком из ресторанов, пекарен и супермаркетов. До 70% скидки каждый день.",
+    "hero_stat_deals": "Сделок сохранено",
+    "hero_stat_discount": "Средняя скидка",
+    "hero_stat_rescued": "Еды спасено",
+    "hero_badge_today": "Сегодня"
   },
   "listing": {
     "expires_in": "Годен до",

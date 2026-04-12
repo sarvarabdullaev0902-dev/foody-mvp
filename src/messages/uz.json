@@ -45,7 +45,13 @@
     "stats_meals_saved": "ovqat tejalgan",
     "stats_suppliers": "faol yetkazib beruvchi",
     "stats_avg_discount": "o'rtacha chegirma",
-    "no_results_category": "Bu toifada hali takliflar yo'q"
+    "no_results_category": "Bu toifada hali takliflar yo'q",
+    "hero_eyebrow": "Yaqiningizda chegirmali ovqatlar",
+    "hero_subtitle_v2": "Restoran, nonvoyxona va supermarketlardan muddati yaqinlashgan mahsulotlar. Har kuni 70% gacha chegirma.",
+    "hero_stat_deals": "Takliflar saqlangan",
+    "hero_stat_discount": "O'rtacha chegirma",
+    "hero_stat_rescued": "Oziq-ovqat qutqarilgan",
+    "hero_badge_today": "Bugun"
   },
   "listing": {
     "expires_in": "Muddati tugaydi",
