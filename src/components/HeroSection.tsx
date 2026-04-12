@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -192,26 +191,28 @@ export default function HeroSection({ t, tMap, tCat }: HeroSectionProps) {
             {/* Scroll-driven outer wrapper */}
             <motion.div
               style={{
-                y:          springY,
-                rotate:     isMobile ? 0 : springRotate,
-                scale:      springScale,
-                background: 'transparent',
+                y:               springY,
+                rotate:          isMobile ? 0 : springRotate,
+                scale:           springScale,
+                backgroundColor: 'rgba(0,0,0,0)',
+                isolation:       'isolate',
               }}
             >
-              {/* Idle float inner wrapper */}
+              {/* Idle float inner wrapper — drop-shadow lives here so it
+                  respects the PNG transparency without a white compositing buffer */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                style={{ background: 'transparent' }}
+                style={{
+                  backgroundColor: 'rgba(0,0,0,0)',
+                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.18))',
+                }}
               >
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/foody-bag.png"
                   alt="Foody Moody bag"
-                  width={420}
-                  height={480}
-                  priority
-                  placeholder="empty"
-                  className="w-[280px] md:w-[420px] h-auto object-contain drop-shadow-2xl"
+                  className="w-[280px] md:w-[420px] h-auto object-contain"
                 />
               </motion.div>
             </motion.div>
