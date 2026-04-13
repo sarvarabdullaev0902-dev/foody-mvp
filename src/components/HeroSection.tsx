@@ -45,7 +45,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
         minHeight:   '100vh',
         display:     'flex',
         alignItems:  'center',
-        background: 'radial-gradient(ellipse 800px 700px at -5% 5%, rgba(224,90,40,0.22) 0%, transparent 60%), radial-gradient(ellipse 700px 600px at 105% 95%, rgba(255,140,80,0.22) 0%, transparent 60%), #FDF4F0',
+        background: 'radial-gradient(ellipse 900px 800px at -5% 10%, rgba(224,90,40,0.40) 0%, transparent 55%), radial-gradient(ellipse 800px 700px at 108% 95%, rgba(255,120,60,0.38) 0%, transparent 55%), #FDF4F0',
       }}
     >
 
