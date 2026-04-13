@@ -88,7 +88,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
         />
       ))}
 
-      <div className="relative w-full max-w-6xl mx-auto px-5 sm:px-8 py-20 md:py-0 flex flex-col md:flex-row items-center gap-14 md:gap-10">
+      <div className="relative w-full max-w-6xl mx-auto px-5 sm:px-8 py-10 md:py-0 flex flex-col md:flex-row items-center gap-14 md:gap-10">
 
         {/* ── Left column ── */}
         <motion.div
@@ -183,10 +183,10 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
               style={{ width: '600px', height: '660px', maxWidth: 'none', objectFit: 'contain' }}
             />
 
-            {/* Badge — rocks while floating */}
+            {/* Badge — rocks while floating, anchored inside bag wrapper */}
             <motion.div
-              className="absolute z-20 w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
-              style={{ top: '30px', right: '-25px', background: '#FFD23F' }}
+              className="z-20 w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
+              style={{ position: 'absolute', top: '20px', right: '-30px', background: '#FFD23F' }}
               animate={{ rotate: [-12, -9, -12] }}
               transition={floatTransition}
             >
