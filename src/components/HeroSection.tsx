@@ -143,23 +143,23 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
               filter:          'drop-shadow(0 24px 48px rgba(0,0,0,0.16))',
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/foody-bag.png"
-              alt="Foody Moody bag"
-              style={{ width: '600px', height: '660px', maxWidth: 'none', objectFit: 'contain' }}
-            />
-
-            {/* Badge — rocks while floating, anchored inside bag wrapper */}
-            <motion.div
-              className="w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
-              style={{ position: 'absolute', top: '10px', right: '-35px', zIndex: 10, background: '#FFD23F' }}
-              animate={{ rotate: [-12, -9, -12] }}
-              transition={floatTransition}
-            >
-              <span className="text-[23px] font-extrabold text-[#7A3E00] leading-none">-70%</span>
-              <span className="text-[10px] font-semibold text-[#A05800] tracking-widest uppercase mt-0.5">{t('hero_badge_today')}</span>
-            </motion.div>
+            <div style={{ position: 'relative', display: 'inline-block' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/foody-bag.png"
+                alt="Foody Moody bag"
+                style={{ width: '600px', height: '660px', maxWidth: 'none', objectFit: 'contain' }}
+              />
+              <motion.div
+                className="w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
+                style={{ position: 'absolute', top: '10px', right: '-35px', zIndex: 10, background: '#FFD23F' }}
+                animate={{ rotate: [-12, -9, -12] }}
+                transition={floatTransition}
+              >
+                <span className="text-[23px] font-extrabold text-[#7A3E00] leading-none">-70%</span>
+                <span className="text-[10px] font-semibold text-[#A05800] tracking-widest uppercase mt-0.5">{t('hero_badge_today')}</span>
+              </motion.div>
+            </div>
           </motion.div>
         </motion.div>
 
