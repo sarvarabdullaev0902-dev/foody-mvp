@@ -28,6 +28,39 @@ const rightPanel = {
 };
 
 
+// ─── Background blobs ────────────────────────────────────────────────────────
+
+const BLOBS = [
+  // Large coral — top-right, slow scale breathe
+  {
+    color: '#E8594F', size: 700, opacity: 0.07,
+    style: { top: '-12%', right: '-8%' },
+    animate: { scale: [1, 1.09, 1] },
+    duration: 9,
+  },
+  // Peach — left edge, mid-height, drifts right + up
+  {
+    color: '#F4845F', size: 560, opacity: 0.06,
+    style: { top: '25%', left: '-12%' },
+    animate: { scale: [1, 1.06, 1], x: [0, 22, 0], y: [0, -14, 0] },
+    duration: 12,
+  },
+  // Warm peach — bottom-center, rises gently
+  {
+    color: '#FAD6CC', size: 500, opacity: 0.08,
+    style: { bottom: '0%', left: '30%' },
+    animate: { scale: [1, 1.07, 1], y: [0, -18, 0] },
+    duration: 10,
+  },
+  // Deep coral — top-left quadrant, slow drift
+  {
+    color: '#E05A28', size: 420, opacity: 0.05,
+    style: { top: '8%', left: '15%' },
+    animate: { scale: [1, 1.05, 1], x: [0, -16, 0], y: [0, 10, 0] },
+    duration: 14,
+  },
+];
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 interface HeroSectionProps {
@@ -40,6 +73,25 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
 
   return (
     <section className="relative bg-[#FDF4F0] overflow-hidden min-h-screen flex items-center">
+
+      {/* ── Background blobs ── */}
+      {BLOBS.map((blob, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width:  blob.size,
+            height: blob.size,
+            background: blob.color,
+            opacity: blob.opacity,
+            filter: 'blur(90px)',
+            ...blob.style,
+          }}
+          animate={blob.animate}
+          transition={{ duration: blob.duration, repeat: Infinity, ease: 'easeInOut', delay: i * 1.8 }}
+        />
+      ))}
+
       <div className="relative w-full max-w-6xl mx-auto px-5 sm:px-8 py-20 md:py-0 flex flex-col md:flex-row items-center gap-14 md:gap-10">
 
         {/* ── Left column ── */}
