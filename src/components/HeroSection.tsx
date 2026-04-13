@@ -40,12 +40,16 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
 
   return (
     <section
-      className="relative overflow-hidden min-h-screen flex items-center"
+      className="relative overflow-hidden"
       style={{
+        minHeight:   '100vh',
+        display:     'flex',
+        alignItems:  'center',
         background: `
           radial-gradient(ellipse 700px 600px at -10% -10%, rgba(224, 90, 40, 0.18) 0%, transparent 70%),
-          radial-gradient(ellipse 600px 500px at 110% 90%, rgba(255, 179, 138, 0.2) 0%, transparent 70%),
+          radial-gradient(ellipse 600px 500px at 110% 90%, rgba(255, 179, 138, 0.25) 0%, transparent 70%),
           radial-gradient(ellipse 400px 400px at 60% 110%, rgba(255, 218, 197, 0.15) 0%, transparent 70%),
+          radial-gradient(ellipse 500px 400px at 85% 20%, rgba(255, 200, 150, 0.12) 0%, transparent 70%),
           #FDF4F0
         `,
       }}
@@ -148,8 +152,8 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
 
             {/* Badge — rocks while floating, anchored inside bag wrapper */}
             <motion.div
-              className="z-20 w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
-              style={{ position: 'absolute', top: '20px', right: '-30px', background: '#FFD23F' }}
+              className="w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
+              style={{ position: 'absolute', top: '10px', right: '-35px', zIndex: 10, background: '#FFD23F' }}
               animate={{ rotate: [-12, -9, -12] }}
               transition={floatTransition}
             >
