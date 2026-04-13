@@ -28,32 +28,6 @@ const rightPanel = {
 };
 
 
-// ─── Background blobs ────────────────────────────────────────────────────────
-
-const BLOBS = [
-  {
-    color: '#E05A28', width: 700, height: 700, opacity: 0.12,
-    blur: 120,
-    style: { top: '-200px', left: '-200px' },
-    animate: { x: [0, 40, 0], y: [0, -30, 0] },
-    transition: { duration: 12, repeat: Infinity, ease: 'easeInOut' as const },
-  },
-  {
-    color: '#FFB38A', width: 600, height: 600, opacity: 0.15,
-    blur: 100,
-    style: { bottom: '-100px', right: '-150px' },
-    animate: { x: [0, -30, 0], y: [0, 40, 0] },
-    transition: { duration: 16, repeat: Infinity, ease: 'easeInOut' as const },
-  },
-  {
-    color: '#FFDAC5', width: 450, height: 450, opacity: 0.12,
-    blur: 90,
-    style: { top: '50%', left: '35%' },
-    animate: { x: [0, 25, 0], y: [0, -20, 0] },
-    transition: { duration: 10, repeat: Infinity, ease: 'easeInOut' as const },
-  },
-];
-
 // ─── Main component ───────────────────────────────────────────────────────────
 
 interface HeroSectionProps {
@@ -65,28 +39,17 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
   const floatTransition = { duration: 4, repeat: Infinity, ease: 'easeInOut' as const };
 
   return (
-    <section className="relative bg-[#FDF4F0] overflow-hidden min-h-screen flex items-center">
-
-      {/* ── Background blobs ── */}
-      {BLOBS.map((blob, i) => (
-        <motion.div
-          key={i}
-          style={{
-            position:      'absolute',
-            borderRadius:  '50%',
-            pointerEvents: 'none',
-            zIndex:        0,
-            width:         blob.width,
-            height:        blob.height,
-            background:    blob.color,
-            opacity:       blob.opacity,
-            filter:        `blur(${blob.blur}px)`,
-            ...blob.style,
-          }}
-          animate={blob.animate}
-          transition={blob.transition}
-        />
-      ))}
+    <section
+      className="relative overflow-hidden min-h-screen flex items-center"
+      style={{
+        background: `
+          radial-gradient(ellipse 700px 600px at -10% -10%, rgba(224, 90, 40, 0.18) 0%, transparent 70%),
+          radial-gradient(ellipse 600px 500px at 110% 90%, rgba(255, 179, 138, 0.2) 0%, transparent 70%),
+          radial-gradient(ellipse 400px 400px at 60% 110%, rgba(255, 218, 197, 0.15) 0%, transparent 70%),
+          #FDF4F0
+        `,
+      }}
+    >
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 py-10 md:py-0 flex flex-col md:flex-row items-center gap-14 md:gap-10">
 
