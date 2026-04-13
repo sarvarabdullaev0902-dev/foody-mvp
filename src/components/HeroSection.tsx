@@ -121,38 +121,52 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
 
         {/* ── Right column ── */}
         <motion.div
-          className="flex-1 flex items-center justify-center order-1 md:order-2 w-full"
+          className="flex-1 flex items-center justify-center order-1 md:order-2"
           variants={rightPanel}
           initial="hidden"
           animate="visible"
         >
-          {/* Float unit — bag + badge rise and fall together */}
+          {/* Single wrapper: float animation + relative anchor for badge */}
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={floatTransition}
-            style={{
-              position:        'relative',
-              display:         'inline-block',
-              backgroundColor: 'rgba(0,0,0,0)',
-              filter:          'drop-shadow(0 24px 48px rgba(0,0,0,0.16))',
-            }}
+            style={{ position: 'relative', width: '600px', flexShrink: 0 }}
           >
-            <div style={{ position: 'relative', display: 'inline-block' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/foody-bag.png"
-                alt="Foody Moody bag"
-                style={{ width: '600px', height: '660px', maxWidth: 'none', objectFit: 'contain' }}
-              />
-              <motion.div
-                className="w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
-                style={{ position: 'absolute', top: '10px', right: '-35px', zIndex: 10, background: '#FFD23F' }}
-                animate={{ rotate: [-12, -9, -12] }}
-                transition={floatTransition}
-              >
-                <span className="text-[23px] font-extrabold text-[#7A3E00] leading-none">-70%</span>
-                <span className="text-[10px] font-semibold text-[#A05800] tracking-widest uppercase mt-0.5">{t('hero_badge_today')}</span>
-              </motion.div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/foody-bag.png"
+              alt="Foody Moody bag"
+              style={{
+                width: '600px',
+                height: '660px',
+                maxWidth: 'none',
+                objectFit: 'contain',
+                display: 'block',
+                filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.16))',
+              }}
+            />
+
+            {/* Badge — absolute inside wrapper, no filter interference */}
+            <div
+              style={{
+                position:      'absolute',
+                top:           '10px',
+                right:         '-35px',
+                zIndex:        10,
+                width:         '84px',
+                height:        '84px',
+                borderRadius:  '50%',
+                background:    '#FFD23F',
+                display:       'flex',
+                flexDirection: 'column',
+                alignItems:    'center',
+                justifyContent:'center',
+                transform:     'rotate(-12deg)',
+                boxShadow:     '0 10px 30px rgba(253,211,63,0.35)',
+              }}
+            >
+              <span style={{ fontSize: '23px', fontWeight: 800, color: '#7A3E00', lineHeight: '1' }}>-70%</span>
+              <span style={{ fontSize: '10px', fontWeight: 600, color: '#A05800', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: '2px' }}>{t('hero_badge_today')}</span>
             </div>
           </motion.div>
         </motion.div>
