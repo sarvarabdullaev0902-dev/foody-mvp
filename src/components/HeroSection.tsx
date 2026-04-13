@@ -32,28 +32,25 @@ const rightPanel = {
 
 const BLOBS = [
   {
-    color: '#E05A28', width: 600, height: 600, opacity: 0.06,
-    style: { top: '-100px', left: '-150px' },
-    animate: { x: [0, 30, 0], y: [0, -20, 0] },
+    color: '#E05A28', width: 700, height: 700, opacity: 0.12,
+    blur: 120,
+    style: { top: '-200px', left: '-200px' },
+    animate: { x: [0, 40, 0], y: [0, -30, 0] },
     transition: { duration: 12, repeat: Infinity, ease: 'easeInOut' as const },
   },
   {
-    color: '#FFB38A', width: 500, height: 500, opacity: 0.08,
-    style: { top: '200px', right: '-100px' },
-    animate: { x: [0, -25, 0], y: [0, 30, 0] },
-    transition: { duration: 15, repeat: Infinity, ease: 'easeInOut' as const },
+    color: '#FFB38A', width: 600, height: 600, opacity: 0.15,
+    blur: 100,
+    style: { bottom: '-100px', right: '-150px' },
+    animate: { x: [0, -30, 0], y: [0, 40, 0] },
+    transition: { duration: 16, repeat: Infinity, ease: 'easeInOut' as const },
   },
   {
-    color: '#FFDAC5', width: 400, height: 400, opacity: 0.07,
-    style: { bottom: '-80px', left: '30%' },
-    animate: { x: [0, 20, 0], y: [0, -15, 0] },
+    color: '#FFDAC5', width: 450, height: 450, opacity: 0.12,
+    blur: 90,
+    style: { top: '50%', left: '35%' },
+    animate: { x: [0, 25, 0], y: [0, -20, 0] },
     transition: { duration: 10, repeat: Infinity, ease: 'easeInOut' as const },
-  },
-  {
-    color: '#E05A28', width: 350, height: 350, opacity: 0.05,
-    style: { top: '50px', left: '40%' },
-    animate: { x: [0, -15, 0], y: [0, 25, 0] },
-    transition: { duration: 18, repeat: Infinity, ease: 'easeInOut' as const },
   },
 ];
 
@@ -74,13 +71,16 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
       {BLOBS.map((blob, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full pointer-events-none"
           style={{
-            width:      blob.width,
-            height:     blob.height,
-            background: blob.color,
-            opacity:    blob.opacity,
-            filter:     'blur(80px)',
+            position:      'absolute',
+            borderRadius:  '50%',
+            pointerEvents: 'none',
+            zIndex:        0,
+            width:         blob.width,
+            height:        blob.height,
+            background:    blob.color,
+            opacity:       blob.opacity,
+            filter:        `blur(${blob.blur}px)`,
             ...blob.style,
           }}
           animate={blob.animate}
@@ -88,7 +88,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
         />
       ))}
 
-      <div className="relative w-full max-w-6xl mx-auto px-5 sm:px-8 py-10 md:py-0 flex flex-col md:flex-row items-center gap-14 md:gap-10">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 py-10 md:py-0 flex flex-col md:flex-row items-center gap-14 md:gap-10">
 
         {/* ── Left column ── */}
         <motion.div
