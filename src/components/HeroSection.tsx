@@ -31,33 +31,29 @@ const rightPanel = {
 // ─── Background blobs ────────────────────────────────────────────────────────
 
 const BLOBS = [
-  // Large coral — top-right, slow scale breathe
   {
-    color: '#E8594F', size: 700, opacity: 0.07,
-    style: { top: '-12%', right: '-8%' },
-    animate: { scale: [1, 1.09, 1] },
-    duration: 9,
+    color: '#E05A28', width: 600, height: 600, opacity: 0.06,
+    style: { top: '-100px', left: '-150px' },
+    animate: { x: [0, 30, 0], y: [0, -20, 0] },
+    transition: { duration: 12, repeat: Infinity, ease: 'easeInOut' as const },
   },
-  // Peach — left edge, mid-height, drifts right + up
   {
-    color: '#F4845F', size: 560, opacity: 0.06,
-    style: { top: '25%', left: '-12%' },
-    animate: { scale: [1, 1.06, 1], x: [0, 22, 0], y: [0, -14, 0] },
-    duration: 12,
+    color: '#FFB38A', width: 500, height: 500, opacity: 0.08,
+    style: { top: '200px', right: '-100px' },
+    animate: { x: [0, -25, 0], y: [0, 30, 0] },
+    transition: { duration: 15, repeat: Infinity, ease: 'easeInOut' as const },
   },
-  // Warm peach — bottom-center, rises gently
   {
-    color: '#FAD6CC', size: 500, opacity: 0.08,
-    style: { bottom: '0%', left: '30%' },
-    animate: { scale: [1, 1.07, 1], y: [0, -18, 0] },
-    duration: 10,
+    color: '#FFDAC5', width: 400, height: 400, opacity: 0.07,
+    style: { bottom: '-80px', left: '30%' },
+    animate: { x: [0, 20, 0], y: [0, -15, 0] },
+    transition: { duration: 10, repeat: Infinity, ease: 'easeInOut' as const },
   },
-  // Deep coral — top-left quadrant, slow drift
   {
-    color: '#E05A28', size: 420, opacity: 0.05,
-    style: { top: '8%', left: '15%' },
-    animate: { scale: [1, 1.05, 1], x: [0, -16, 0], y: [0, 10, 0] },
-    duration: 14,
+    color: '#E05A28', width: 350, height: 350, opacity: 0.05,
+    style: { top: '50px', left: '40%' },
+    animate: { x: [0, -15, 0], y: [0, 25, 0] },
+    transition: { duration: 18, repeat: Infinity, ease: 'easeInOut' as const },
   },
 ];
 
@@ -80,15 +76,15 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           key={i}
           className="absolute rounded-full pointer-events-none"
           style={{
-            width:  blob.size,
-            height: blob.size,
+            width:      blob.width,
+            height:     blob.height,
             background: blob.color,
-            opacity: blob.opacity,
-            filter: 'blur(90px)',
+            opacity:    blob.opacity,
+            filter:     'blur(80px)',
             ...blob.style,
           }}
           animate={blob.animate}
-          transition={{ duration: blob.duration, repeat: Infinity, ease: 'easeInOut', delay: i * 1.8 }}
+          transition={blob.transition}
         />
       ))}
 
@@ -171,7 +167,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
         >
           {/* Float unit — bag + badge rise and fall together */}
           <motion.div
-            animate={{ y: [0, -10, 0] }}
+            animate={{ y: [0, -12, 0] }}
             transition={floatTransition}
             style={{
               position:        'relative',
@@ -184,13 +180,13 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
             <img
               src="/foody-bag.png"
               alt="Foody Moody bag"
-              className="w-[360px] md:w-[600px] h-auto object-contain"
+              style={{ width: '600px', height: '660px', maxWidth: 'none', objectFit: 'contain' }}
             />
 
             {/* Badge — rocks while floating */}
             <motion.div
               className="absolute z-20 w-[84px] h-[84px] rounded-full flex flex-col items-center justify-center shadow-xl shadow-yellow-300/30"
-              style={{ top: 20, right: -20, background: '#FFD23F' }}
+              style={{ top: '30px', right: '-25px', background: '#FFD23F' }}
               animate={{ rotate: [-12, -9, -12] }}
               transition={floatTransition}
             >
