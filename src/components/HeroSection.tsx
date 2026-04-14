@@ -133,15 +133,15 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={floatTransition}
-            style={{ position: 'relative', width: '600px', flexShrink: 0 }}
+            style={{ position: 'relative', width: '480px', flexShrink: 0 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/foody-bag.png"
               alt="Foody Moody bag"
               style={{
-                width: '600px',
-                height: '580px',
+                width: '480px',
+                height: '530px',
                 maxWidth: 'none',
                 objectFit: 'contain',
                 display: 'block',
