@@ -40,17 +40,17 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
 
   return (
     <section
-      className="relative overflow-hidden"
+      className="relative"
       style={{
-        height:          '100vh',
-        display:         'flex',
-        alignItems:      'center',
-        overflow:        'hidden',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        overflow: 'hidden',
         background: 'radial-gradient(ellipse 900px 800px at -5% 10%, rgba(224,90,40,0.40) 0%, transparent 55%), radial-gradient(ellipse 800px 700px at 108% 95%, rgba(255,120,60,0.38) 0%, transparent 55%), #FDF4F0',
       }}
     >
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row gap-14 md:gap-10" style={{ alignItems: 'center', width: '100%' }}>
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row gap-14 md:gap-10" style={{ alignItems: 'center', width: '100%', height: '100%' }}>
 
         {/* ── Left column ── */}
         <motion.div
@@ -105,9 +105,9 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           {/* Stats row */}
           <motion.div variants={slideUp} className="flex items-center gap-0 flex-wrap sm:flex-nowrap">
             {[
-              { value: '2,400+', label: t('hero_stat_deals')    },
-              { value: '70%',    label: t('hero_stat_discount') },
-              { value: '180kg',  label: t('hero_stat_rescued')  },
+              { value: '2,400+', label: t('hero_stat_deals') },
+              { value: '70%', label: t('hero_stat_discount') },
+              { value: '180kg', label: t('hero_stat_rescued') },
             ].map(({ value, label }, i) => (
               <div key={label} className="flex items-center">
                 <div className={`flex flex-col gap-1 ${i === 0 ? 'pr-6' : 'px-6'}`}>
@@ -122,8 +122,8 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
 
         {/* ── Right column ── */}
         <motion.div
-          className="flex-1 flex items-center justify-center order-1 md:order-2"
-          style={{ alignItems: 'center', justifyContent: 'center' }}
+          className="flex items-center justify-center order-1 md:order-2"
+          style={{ width: '50%', alignItems: 'center' }}
           variants={rightPanel}
           initial="hidden"
           animate="visible"
@@ -132,7 +132,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={floatTransition}
-            style={{ position: 'relative', width: '100%', maxWidth: '520px', flexShrink: 0 }}
+            style={{ position: 'relative', width: '100%', maxWidth: '490px', flexShrink: 0 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -141,7 +141,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
               style={{
                 width: '100%',
                 height: 'auto',
-                maxWidth: '520px',
+                maxWidth: '490px',
                 display: 'block',
               }}
             />
@@ -149,20 +149,20 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
             {/* Badge — absolute inside wrapper, no filter interference */}
             <div
               style={{
-                position:      'absolute',
-                top:           '18%',
-                right:         '8%',
-                zIndex:        10,
-                width:         '84px',
-                height:        '84px',
-                borderRadius:  '50%',
-                background:    '#FFD23F',
-                display:       'flex',
+                position: 'absolute',
+                top: '18%',
+                right: '8%',
+                zIndex: 10,
+                width: '84px',
+                height: '84px',
+                borderRadius: '50%',
+                background: '#FFD23F',
+                display: 'flex',
                 flexDirection: 'column',
-                alignItems:    'center',
-                justifyContent:'center',
-                transform:     'rotate(-12deg)',
-                boxShadow:     '0 10px 30px rgba(253,211,63,0.35)',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transform: 'rotate(-12deg)',
+                boxShadow: '0 10px 30px rgba(253,211,63,0.35)',
               }}
             >
               <span style={{ fontSize: '23px', fontWeight: 800, color: '#7A3E00', lineHeight: '1' }}>-70%</span>
