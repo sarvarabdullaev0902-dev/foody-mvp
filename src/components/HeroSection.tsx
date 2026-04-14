@@ -133,7 +133,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={floatTransition}
-            style={{ position: 'relative', width: '600px', flexShrink: 0 }}
+            style={{ position: 'relative', width: '600px', flexShrink: 0, boxShadow: '0 24px 48px rgba(0,0,0,0.10)' }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -145,7 +145,6 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
                 maxWidth: 'none',
                 objectFit: 'contain',
                 display: 'block',
-                filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.16))',
               }}
             />
 
