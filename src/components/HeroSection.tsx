@@ -141,7 +141,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
               style={{
                 width: '100%',
                 height: 'auto',
-                maxWidth: '500px',
+                maxWidth: '520px',
                 display: 'block',
               }}
             />
