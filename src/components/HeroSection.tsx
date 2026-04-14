@@ -42,16 +42,16 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
     <section
       className="relative overflow-hidden"
       style={{
-        display:       'flex',
-        alignItems:    'center',
-        overflow:      'hidden',
-        paddingTop:    '20px',
-        paddingBottom: '20px',
+        height:          '100vh',
+        display:         'flex',
+        flexDirection:   'column',
+        justifyContent:  'center',
+        overflow:        'hidden',
         background: 'radial-gradient(ellipse 900px 800px at -5% 10%, rgba(224,90,40,0.40) 0%, transparent 55%), radial-gradient(ellipse 800px 700px at 108% 95%, rgba(255,120,60,0.38) 0%, transparent 55%), #FDF4F0',
       }}
     >
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row gap-14 md:gap-10" style={{ alignItems: 'center', paddingTop: '0', paddingBottom: '0' }}>
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row gap-14 md:gap-10" style={{ alignItems: 'center', width: '100%' }}>
 
         {/* ── Left column ── */}
         <motion.div
