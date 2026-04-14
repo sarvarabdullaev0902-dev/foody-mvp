@@ -124,7 +124,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
         {/* ── Right column ── */}
         <motion.div
           className="flex-1 flex items-center justify-center order-1 md:order-2"
-          style={{ alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}
+          style={{ alignItems: 'center', justifyContent: 'center' }}
           variants={rightPanel}
           initial="hidden"
           animate="visible"
@@ -133,7 +133,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={floatTransition}
-            style={{ position: 'relative', width: '600px', flexShrink: 0, boxShadow: '0 24px 48px rgba(0,0,0,0.10)' }}
+            style={{ position: 'relative', width: '600px', flexShrink: 0 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
