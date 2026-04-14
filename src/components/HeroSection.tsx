@@ -42,7 +42,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
     <section
       className="relative overflow-hidden"
       style={{
-        height:      '85vh',
+        height:      '100vh',
         display:     'flex',
         alignItems:  'center',
         overflow:    'hidden',
@@ -140,7 +140,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
               alt="Foody Moody bag"
               style={{
                 width: '600px',
-                height: '660px',
+                height: '580px',
                 maxWidth: 'none',
                 objectFit: 'contain',
                 display: 'block',
