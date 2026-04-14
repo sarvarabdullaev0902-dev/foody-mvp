@@ -146,7 +146,6 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
                 objectFit: 'contain',
                 display: 'block',
                 filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.16))',
-                mixBlendMode: 'multiply',
               }}
             />
 
