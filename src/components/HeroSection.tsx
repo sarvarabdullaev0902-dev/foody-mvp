@@ -150,8 +150,8 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
             <div
               style={{
                 position:      'absolute',
-                top:           '10px',
-                right:         '-35px',
+                top:           '18%',
+                right:         '8%',
                 zIndex:        10,
                 width:         '84px',
                 height:        '84px',
