@@ -42,7 +42,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
     <section
       className="relative overflow-hidden"
       style={{
-        height:          '100vh',
+        height:          'calc(100vh - 120px)',
         display:         'flex',
         flexDirection:   'column',
         justifyContent:  'center',
@@ -133,15 +133,15 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={floatTransition}
-            style={{ position: 'relative', width: '480px', flexShrink: 0 }}
+            style={{ position: 'relative', width: '540px', flexShrink: 0 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/foody-bag.png"
               alt="Foody Moody bag"
               style={{
-                width: '480px',
-                height: '530px',
+                width: '540px',
+                height: '600px',
                 maxWidth: 'none',
                 objectFit: 'contain',
                 display: 'block',
