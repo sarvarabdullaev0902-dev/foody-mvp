@@ -42,10 +42,9 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
     <section
       className="relative overflow-hidden"
       style={{
-        height:          'calc(100vh - 120px)',
+        height:          '100vh',
         display:         'flex',
-        flexDirection:   'column',
-        justifyContent:  'center',
+        alignItems:      'center',
         overflow:        'hidden',
         background: 'radial-gradient(ellipse 900px 800px at -5% 10%, rgba(224,90,40,0.40) 0%, transparent 55%), radial-gradient(ellipse 800px 700px at 108% 95%, rgba(255,120,60,0.38) 0%, transparent 55%), #FDF4F0',
       }}
@@ -142,10 +141,8 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
               style={{
                 width: '100%',
                 height: 'auto',
-                maxWidth: '520px',
-                objectFit: 'contain',
+                maxWidth: '500px',
                 display: 'block',
-                marginBottom: '-40px',
               }}
             />
 
