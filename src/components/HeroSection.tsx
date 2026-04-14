@@ -45,8 +45,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
         height:      '90vh',
         display:     'flex',
         alignItems:  'center',
-        paddingTop:  '0',
-        marginTop:   '0',
+        paddingTop:  '40px',
         overflow:    'hidden',
         background: 'radial-gradient(ellipse 900px 800px at -5% 10%, rgba(224,90,40,0.40) 0%, transparent 55%), radial-gradient(ellipse 800px 700px at 108% 95%, rgba(255,120,60,0.38) 0%, transparent 55%), #FDF4F0',
       }}
@@ -134,7 +133,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={floatTransition}
-            style={{ position: 'relative', width: '600px', flexShrink: 0 }}
+            style={{ position: 'relative', width: '600px', flexShrink: 0, marginTop: '60px' }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
