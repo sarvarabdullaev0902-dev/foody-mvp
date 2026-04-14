@@ -42,7 +42,7 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
     <section
       className="relative"
       style={{
-        height: '100vh',
+        height: 'calc(100vh - 160px)',
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
