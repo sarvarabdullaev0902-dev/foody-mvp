@@ -51,7 +51,10 @@
     "hero_stat_deals": "Сделок сохранено",
     "hero_stat_discount": "Средняя скидка",
     "hero_stat_rescued": "Еды спасено",
-    "hero_badge_today": "Сегодня"
+    "hero_badge_today": "Сегодня",
+    "hero": {
+      "bagAlt": "Бумажный пакет со спасёнными продуктами и ценником −70%"
+    }
   },
   "listing": {
     "expires_in": "Годен до",

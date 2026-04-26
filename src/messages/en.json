@@ -51,7 +51,10 @@
     "hero_stat_deals": "Deals saved",
     "hero_stat_discount": "Avg. discount",
     "hero_stat_rescued": "Food rescued",
-    "hero_badge_today": "Today"
+    "hero_badge_today": "Today",
+    "hero": {
+      "bagAlt": "Paper bag of rescued groceries with -70% discount tag"
+    }
   },
   "listing": {
     "expires_in": "Expires in",

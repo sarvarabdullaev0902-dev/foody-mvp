@@ -51,7 +51,10 @@
     "hero_stat_deals": "Takliflar saqlangan",
     "hero_stat_discount": "O'rtacha chegirma",
     "hero_stat_rescued": "Oziq-ovqat qutqarilgan",
-    "hero_badge_today": "Bugun"
+    "hero_badge_today": "Bugun",
+    "hero": {
+      "bagAlt": "Qutqarilgan oziq-ovqat solingan qog'oz sumka, -70% chegirma belgisi bilan"
+    }
   },
   "listing": {
     "expires_in": "Muddati tugaydi",

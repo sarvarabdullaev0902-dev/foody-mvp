@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
@@ -122,28 +123,25 @@ export default function HeroSection({ t, tMap }: HeroSectionProps) {
 
         {/* ── Right column ── */}
         <motion.div
-          className="flex items-center justify-center order-1 md:order-2"
-          style={{ width: '50%', alignItems: 'center' }}
+          className="flex items-center justify-center order-1 md:order-2 w-full md:w-1/2 lg:w-2/5"
           variants={rightPanel}
           initial="hidden"
           animate="visible"
         >
           {/* Single wrapper: float animation + relative anchor for badge */}
           <motion.div
+            className="relative w-full max-w-[490px] flex-shrink-0"
             animate={{ y: [0, -12, 0] }}
             transition={floatTransition}
-            style={{ position: 'relative', width: '100%', maxWidth: '490px', flexShrink: 0 }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/foody-bag.png"
-              alt="Foody Moody bag"
-              style={{
-                width: '100%',
-                height: 'auto',
-                maxWidth: '490px',
-                display: 'block',
-              }}
+              alt={t('hero.bagAlt')}
+              width={664}
+              height={749}
+              priority
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 40vw"
+              className="w-full h-auto"
             />
 
             {/* Badge — absolute inside wrapper, no filter interference */}
